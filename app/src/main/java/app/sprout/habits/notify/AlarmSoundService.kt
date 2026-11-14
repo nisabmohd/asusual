@@ -6,6 +6,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.ServiceInfo
 import android.media.AudioAttributes
+import android.media.AudioFocusRequest
+import android.media.AudioManager
 import android.media.MediaPlayer
 import android.media.Ringtone
 import android.media.RingtoneManager
@@ -58,6 +60,9 @@ class AlarmSoundService : Service() {
                 return START_NOT_STICKY
             }
             running = this
+            // Before Android 15 this is enough. Android 15+ refuses focus to anything but the app on
+            // top ("HardeningEnforcer", even to this service), so the ringing screen asks again.
+            holdFocus(this)
             play()
         }
         return START_NOT_STICKY
@@ -117,6 +122,42 @@ class AlarmSoundService : Service() {
 
         private val lock = Any()
 
+        /**
+         * Audio focus held while an alarm sounds, so music or a video pauses (and picks up again
+         * after) instead of playing over it. Without it the song and the alarm took turns in the
+         * headphones: the channel's short silent sound took focus for half a second, the music came
+         * back, and the alarm played on top (user, 2026-11-15). Losing focus doesn't stop the alarm.
+         */
+        private var focus: AudioFocusRequest? = null
+
+        /** Takes audio focus for the alarm, before its notification is posted; held until [stop]. */
+        fun holdFocus(context: Context) {
+            synchronized(focusLock) {
+                if (focus != null) return
+                // In a call the call keeps the audio; the alarm rings quietly beside it.
+                if (AlarmScreenFallback.inCall(context)) return
+                val request = AudioFocusRequest.Builder(AudioManager.AUDIOFOCUS_GAIN_TRANSIENT)
+                    .setAudioAttributes(ALARM_AUDIO)
+                    .setOnAudioFocusChangeListener { }
+                    .build()
+                val audio = context.applicationContext.getSystemService(AudioManager::class.java)
+                if (audio.requestAudioFocus(request) == AudioManager.AUDIOFOCUS_REQUEST_GRANTED) {
+                    focus = request
+                    audioManager = audio
+                }
+            }
+        }
+
+        private var audioManager: AudioManager? = null
+
+        private val focusLock = Any()
+
+        private fun releaseFocus() = synchronized(focusLock) {
+            focus?.let { f -> audioManager?.abandonAudioFocusRequest(f) }
+            focus = null
+            audioManager = null
+        }
+
         /** The notification id that should be sounding, or null. */
         private var wanted: Int? = null
         private var running: AlarmSoundService? = null
@@ -140,6 +181,7 @@ class AlarmSoundService : Service() {
          * [sound] (Weft's tone if it can't be played), vibrating if [vibrate].
          */
         fun start(context: Context, id: Int, notification: Notification, sound: Uri, vibrate: Boolean) {
+            holdFocus(context)
             synchronized(lock) {
                 if (wanted == id && running != null) return
                 wanted = id
@@ -181,6 +223,7 @@ class AlarmSoundService : Service() {
                 wanted = null
                 fallback?.stop()
                 fallback = null
+                releaseFocus()
                 running?.let {
                     it.silence(keepCard)
                     running = null

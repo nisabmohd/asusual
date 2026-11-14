@@ -241,6 +241,10 @@ class AlarmActivity : ComponentActivity() {
     override fun onResume() {
         super.onResume()
         showing = true
+        // Android 15+ gives audio focus only to the app on top, not to the sound service, so music
+        // pauses from here (user, 2026-11-15: song and alarm took turns in headphones).
+        if (app.sprout.habits.notify.AlarmSoundService.isRinging) app.sprout.habits.notify.AlarmSoundService.holdFocus(this)
+        (application as WeftApp).container.alarmRinger.screenShown()
     }
 
     override fun onPause() {

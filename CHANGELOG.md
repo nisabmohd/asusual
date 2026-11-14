@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.6.3
+
+Fixed:
+
+- Music playing when an alarm rang (in headphones too) and the alarm took turns, stuttering. Music now pauses while the alarm rings and plays again after.
+- An alarm showed the banner and the full screen at once. Now it fills the screen when the phone is off or locked; while you're using the phone it's only the banner. "Show over other apps" no longer opens the alarm over the app you're in.
+
 ## 1.6.2
 
 Added:

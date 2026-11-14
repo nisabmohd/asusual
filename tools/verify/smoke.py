@@ -1501,6 +1501,77 @@ def alarm_heads_up_while_phone_in_use():
 
 
 @check
+def alarm_holds_audio_focus_so_music_pauses():
+    """User, 2026-11-15: music and the alarm took turns in headphones. Weft holds audio focus while
+    it rings (so music pauses) and gives it back after. Android 15+ gives it only to the app on top,
+    so this is the full-screen case (screen off)."""
+    h = make_alarm()
+    screen(False)
+    fire(h)
+    focus = lambda: "app.sprout.habits" in d.shell("dumpsys audio | grep -A4 'Focus stack entries'")
+    assert ringing() and sound_playing(), "the alarm isn't ringing"
+    assert focus(), "no audio focus while the alarm rings: music would play over it"
+    press_action(h, "ALARM_DISMISS")
+    assert not focus(), "audio focus kept after Dismiss: music wouldn't come back"
+    # Snooze and a volume key give the music back too.
+    h = make_alarm()
+    screen(False)
+    fire(h)
+    assert focus(), "no audio focus while the alarm rings"
+    press_action(h, "REMINDER_SNOOZE")
+    assert not focus(), "audio focus kept after Snooze"
+    h = make_alarm()
+    screen(False)
+    fire(h)
+    d.shell("input keyevent KEYCODE_VOLUME_DOWN")
+    time.sleep(2)
+    assert not focus(), "audio focus kept after a volume key stopped the sound"
+    press_action(h, "ALARM_DISMISS")
+    screen(True)
+
+
+@check
+def alarm_banner_leaves_once_full_screen_is_up():
+    """User, 2026-11-15: the banner and the full screen showed at once. Once the ringing screen is
+    up the card is posted again without its full-screen intent, so no banner stays over it."""
+    h = make_alarm()
+    screen(False)
+    fire(h)
+    assert "AlarmActivity" in top_activity(), "the ringing screen didn't open"
+    time.sleep(1)
+    dump = d.shell("dumpsys notification --noredact")
+    # The alarm card's record: from its channel to the next record.
+    mine = dump[dump.find("channel=alarms_popup"):]
+    end = mine.find("NotificationRecord(")
+    mine = mine[:end] if end > 0 else mine
+    assert "fullscreenIntent=PendingIntent" not in mine, "the card still has its full-screen intent: the banner stays over the screen"
+    press_action(h, "ALARM_DISMISS")
+    screen(True)
+
+
+@check
+def alarm_stays_a_banner_while_phone_is_touched():
+    """User, 2026-11-15: unlocked and in use = only the banner, even with Show over other apps on."""
+    h = make_alarm()
+    d.shell(f"appops set {d.PACKAGE} SYSTEM_ALERT_WINDOW allow")
+    try:
+        screen(True)
+        d.home()
+        d.shell(f"am broadcast -n {RECEIVER} -a app.sprout.habits.action.REMINDER --el habitId {h}")
+        # Someone scrolling the home screen while it rings.
+        for _ in range(8):
+            d.shell("input swipe 540 1600 540 1200 150")
+            time.sleep(0.5)
+        time.sleep(3)
+        assert ringing(), "alarm notification not posted"
+        assert "AlarmActivity" not in top_activity(), "full screen opened while the phone was being used"
+        press_action(h, "ALARM_DISMISS")
+        assert not ringing(), "Dismiss didn't stop the alarm"
+    finally:
+        d.shell(f"appops set {d.PACKAGE} SYSTEM_ALERT_WINDOW default")
+
+
+@check
 def alarm_full_screen_when_locked_and_slide_marks_done():
     h = make_alarm()
     screen(False)

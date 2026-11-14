@@ -234,11 +234,14 @@ class AlarmRinger(
             .setContentIntent(screen)
         if (loud) builder.setFullScreenIntent(screen, true)
         val notification = builder.build()
+        val wasIdle = loud && AlarmScreenFallback.idle(context)
+        // Music pauses before the card's own (silent) sound can take focus for a moment.
+        if (loud) AlarmSoundService.holdFocus(context)
         NotificationManagerCompat.from(context).notify(id, notification)
         if (loud) {
             val prefs = sound ?: Settings()
             AlarmSoundService.start(context, id, notification, AlarmSounds.uri(context, prefs.alarmSound), prefs.alarmVibrate)
-            AlarmScreenFallback.schedule(context, habit.id) { _queue.value.firstOrNull()?.habitId == habit.id }
+            AlarmScreenFallback.schedule(context, habit.id, wasIdle) { _queue.value.firstOrNull()?.habitId == habit.id }
         }
     }
 
@@ -278,6 +281,23 @@ class AlarmRinger(
                 synchronized(this@AlarmRinger) {
                     if (_queue.value.firstOrNull()?.habitId == head) post(habit, next.minutes, loud = false)
                 }
+            }
+        }
+    }
+
+    /**
+     * The ringing screen came up: the card is posted again quietly, with no full-screen intent, so
+     * the heads-up banner leaves instead of sitting over the screen (user, 2026-11-15: both showed
+     * at once when the phone was in use and Show over other apps opened the screen). The sound
+     * plays on; the card stays in the shade.
+     */
+    fun screenShown() {
+        val r = _queue.value.firstOrNull() ?: return
+        val habitId = r.habitId
+        CoroutineScope(Dispatchers.IO).launch {
+            val habit = repository.getHabit(habitId) ?: return@launch
+            synchronized(this@AlarmRinger) {
+                if (_queue.value.firstOrNull()?.habitId == habitId && AlarmActivity.showing) post(habit, r.minutes, loud = false)
             }
         }
     }

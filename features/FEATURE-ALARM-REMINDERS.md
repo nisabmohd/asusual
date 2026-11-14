@@ -105,6 +105,8 @@ Plain language, short, and built like the app's other sheets.
 - Built (1.6.2, 2026-11-09): `ui/more/RemindersAlarmsScreen.kt`, `ExtraPhoneSettingsSheet` in `ui/alarm/AlarmSetupSheet.kt`.
 
 ## 12. Ringing while the phone is in use (decision)
+- **Changed 2026-11-15 (user):** screen off or locked gets the full ringing screen; an unlocked phone gets only the heads-up banner, as Android does by itself. Show over other apps no longer opens the screen over an app the person is using; it only steps in when the phone was off or locked and Android didn't open the screen. Once the screen is up the card is re-posted quietly (no full-screen intent), so the banner never stays over it. Once the screen is up the card is re-posted quietly (no full-screen intent), so the banner never stays over it. The points below about opening over another app are kept for history.
+- **Music (2026-11-15):** while an alarm sounds Weft holds transient audio focus, so music or a video pauses and comes back after. Before, the song and the alarm took turns in headphones.
 - Keep the **same full ringing screen** when it opens over another app (Show over other apps on). Don't make a smaller version: the user picked Alarm for this habit precisely so it can't be missed, and one screen keeps the behaviour predictable. A compact card would just repeat the heads-up notification, which the Notification type already gives.
 - Two small differences when the phone is unlocked:
   - **Open Weft** opens the habit straight away, with no unlock step.
