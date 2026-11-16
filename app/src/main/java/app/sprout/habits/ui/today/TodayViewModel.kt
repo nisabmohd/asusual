@@ -108,7 +108,7 @@ class TodayViewModel(
 
     private val _supportPrompt = MutableStateFlow(false)
 
-    /** True while the "Enjoying Weft?" dialog should show. */
+    /** True while the "Enjoying Asusual?" dialog should show. */
     val supportPrompt: StateFlow<Boolean> = _supportPrompt
 
     /** Quick actions, the log sheet and Undo; shared with Habits and the habit detail. */

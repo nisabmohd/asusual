@@ -22,14 +22,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 import app.sprout.habits.ui.theme.ButtonLabelMinSize
 import androidx.compose.foundation.text.TextAutoSize
 import androidx.compose.foundation.text.BasicText
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.ui.unit.sp
 
-/** What a [WeftButton] does, which sets its colours (docs/DESIGN-RULES.md → 6). */
+/** What a [AsusualButton] does, which sets its colours (docs/DESIGN-RULES.md → 6). */
 enum class ButtonRole {
     /** Confirms or goes ahead: primary / onPrimary. At most one per screen or sheet. */
     Primary,
@@ -49,7 +49,7 @@ val ButtonPairGap = 8.dp
 
 /** The app's 48 dp fully rounded button, filled in the colours of its [role]. Never outlined. */
 @Composable
-fun WeftButton(
+fun AsusualButton(
     label: String,
     role: ButtonRole,
     onClick: () -> Unit,
@@ -78,7 +78,7 @@ fun WeftButton(
             else -> {
                 if (icon != null) Icon(painterResource(icon), contentDescription = null, modifier = Modifier.padding(end = IconLabelGap).size(IconSizeChip))
                 // A long label ("Snooze 10 min" at a large text size) shrinks to fit instead of being cut off.
-                val style = WeftType.cardTitle
+                val style = AsusualType.cardTitle
                 BasicText(
                     label,
                     style = style.copy(color = LocalContentColor.current),
@@ -92,7 +92,7 @@ fun WeftButton(
 }
 
 /**
- * The one button pair: two equal [WeftButton]s filling the width, 8 dp apart, the secondary one
+ * The one button pair: two equal [AsusualButton]s filling the width, 8 dp apart, the secondary one
  * (Cancel, Later, Snooze) on the left and the one that goes ahead on the right, in [primaryRole].
  */
 @Composable
@@ -106,7 +106,7 @@ fun ButtonPair(
     primaryEnabled: Boolean = true,
 ) {
     Row(modifier.fillMaxWidth(), horizontalArrangement = Arrangement.spacedBy(ButtonPairGap)) {
-        WeftButton(secondaryLabel, ButtonRole.Secondary, onSecondary, Modifier.weight(1f))
-        WeftButton(primaryLabel, primaryRole, onPrimary, Modifier.weight(1f), enabled = primaryEnabled)
+        AsusualButton(secondaryLabel, ButtonRole.Secondary, onSecondary, Modifier.weight(1f))
+        AsusualButton(primaryLabel, primaryRole, onPrimary, Modifier.weight(1f), enabled = primaryEnabled)
     }
 }

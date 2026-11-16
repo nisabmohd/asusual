@@ -3,8 +3,8 @@
 The same look as Burrow's store shots (tools/store_shots.py there; both apps are by mid apps and sit
 side by side on Play, user 2026-11-08): a title and a one-line subtitle, then a phone frame with a soft
 shadow, sized to fit under the tallest caption with 72 px left below it, so the navigation bar and
-the bezel are never cut. The last shot (dark theme) sits on a dark page. Weft's colours: the logo's
-green #2A6F52 as the page, like Burrow's shots follow its logo (user, 2026-11-16; Rust #733626 before),
+the bezel are never cut. The last shot (dark theme) sits on a dark page. Asusual's colours: the logo's
+green #2B6F52 as the page, like Burrow's shots follow its logo (user, 2026-11-16; Rust #733626 before),
 with pale green text; the app inside is on the Green accent.
 
 usage: python3 tools/store_shots.py <folder with the raw shots> [out folder]
@@ -45,7 +45,7 @@ BEZEL, OUTER_R, INNER_R = 14, 62, 48
 RAW_W, RAW_H = 1080, 2400                             # emulator screenshot size
 TITLE_SIZE, TITLE_LINE, SUB_SIZE, SUB_LINE = 68, 82, 36, 48
 
-PAGE = (0x2A, 0x6F, 0x52)                             # the logo's green (2026-11-16; Rust #733626 before)
+PAGE = (0x2B, 0x6F, 0x52)                             # the logo's green (2026-11-16; Rust #733626 before)
 PAGE_DARK = (0x10, 0x2B, 0x20)                        # the same hue, dark, for the dark-theme shot
 TITLE = (0xE6, 0xF4, 0xEC)                            # pale green
 SUB = (0xBF, 0xDD, 0xCE)                              # pale green, quieter

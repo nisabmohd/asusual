@@ -17,7 +17,7 @@ import app.sprout.habits.ui.components.SectionGapAbove
 import app.sprout.habits.ui.components.SectionHeader
 import app.sprout.habits.ui.components.toggle
 import androidx.compose.ui.platform.LocalHapticFeedback
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -102,12 +102,12 @@ fun SettingsRow(
             androidx.compose.foundation.layout.Spacer(Modifier.size(TileTextGap))
         }
         Column(Modifier.weight(1f).padding(end = Space12), verticalArrangement = Arrangement.spacedBy(TitleLineGap)) {
-            Text(title, style = WeftType.cardTitle, color = titleColor.takeOrElse { MaterialTheme.colorScheme.onSurface })
+            Text(title, style = AsusualType.cardTitle, color = titleColor.takeOrElse { MaterialTheme.colorScheme.onSurface })
             if (badge == null) {
-                subtitle?.let { Text(it, style = WeftType.supporting, color = subtitleColor.takeOrElse { MaterialTheme.colorScheme.onSurfaceVariant }) }
+                subtitle?.let { Text(it, style = AsusualType.supporting, color = subtitleColor.takeOrElse { MaterialTheme.colorScheme.onSurfaceVariant }) }
             } else {
                 Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(ItemGap)) {
-                    subtitle?.let { Text(it, style = WeftType.supporting, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.weight(1f, fill = false)) }
+                    subtitle?.let { Text(it, style = AsusualType.supporting, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.weight(1f, fill = false)) }
                     badge()
                 }
             }
@@ -134,8 +134,8 @@ fun SwitchRow(title: String, subtitle: String?, checked: Boolean, icon: Int? = n
             androidx.compose.foundation.layout.Spacer(Modifier.size(TileTextGap))
         }
         Column(Modifier.weight(1f).padding(end = Space12), verticalArrangement = Arrangement.spacedBy(TitleLineGap)) {
-            Text(title, style = WeftType.cardTitle, color = MaterialTheme.colorScheme.onSurface)
-            subtitle?.let { Text(it, style = WeftType.supporting, color = MaterialTheme.colorScheme.onSurfaceVariant) }
+            Text(title, style = AsusualType.cardTitle, color = MaterialTheme.colorScheme.onSurface)
+            subtitle?.let { Text(it, style = AsusualType.supporting, color = MaterialTheme.colorScheme.onSurfaceVariant) }
         }
         Switch(checked = checked, onCheckedChange = null)
     }
@@ -143,4 +143,4 @@ fun SwitchRow(title: String, subtitle: String?, checked: Boolean, icon: Int? = n
 
 @Composable
 fun TrailingValue(text: String) =
-    Text(text, style = WeftType.supporting, color = MaterialTheme.colorScheme.onSurfaceVariant)
+    Text(text, style = AsusualType.supporting, color = MaterialTheme.colorScheme.onSurfaceVariant)

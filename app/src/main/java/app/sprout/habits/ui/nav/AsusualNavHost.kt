@@ -3,7 +3,7 @@ package app.sprout.habits.ui.nav
 import app.sprout.habits.ui.theme.AutoSizeStep
 import app.sprout.habits.ui.theme.IconSize
 import app.sprout.habits.ui.theme.NavLabelMinSize
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 import androidx.compose.ui.unit.sp
 import androidx.compose.material3.LocalContentColor
 import androidx.compose.foundation.text.TextAutoSize
@@ -96,7 +96,7 @@ private enum class Tab(val route: Any, val routeClass: KClass<*>, @StringRes val
 }
 
 @Composable
-fun WeftNavHost(
+fun AsusualNavHost(
     container: AppContainer,
     settings: Settings,
     link: AppLink?,
@@ -259,7 +259,7 @@ fun WeftNavHost(
             // Keeps showing the last tab while the bar slides out.
             var lastTab by remember { mutableStateOf(Tab.TODAY) }
             if (currentTab != null) lastTab = currentTab
-            WeftNavigationBar(lastTab) { tab -> openTab(tab) }
+            AsusualNavigationBar(lastTab) { tab -> openTab(tab) }
         }
     }
     }
@@ -291,7 +291,7 @@ private fun backIn() = slideInHorizontally(tween(MOTION_MS)) { -it / 8 } + fadeI
 private fun backOut() = slideOutHorizontally(tween(MOTION_MS)) { it / 8 } + fadeOut(tween(MOTION_MS / 2))
 
 @Composable
-private fun WeftNavigationBar(current: Tab, onSelect: (Tab) -> Unit) {
+private fun AsusualNavigationBar(current: Tab, onSelect: (Tab) -> Unit) {
     val colors = MaterialTheme.colorScheme
     // Five labels have to fit in one row; past 1.3x they would wrap mid-word.
     CappedFontScale {
@@ -307,7 +307,7 @@ private fun WeftNavigationBar(current: Tab, onSelect: (Tab) -> Unit) {
                 icon = { Icon(painterResource(tab.icon), contentDescription = null, Modifier.size(IconSize)) },
                 label = {
                     // Long translations ("Gewohnheiten", "Statistiques") shrink to fit instead of being cut off.
-                    val style = if (selected) WeftType.captionStrong else WeftType.caption
+                    val style = if (selected) AsusualType.captionStrong else AsusualType.caption
                     BasicText(
                         stringResource(tab.label),
                         maxLines = 1,

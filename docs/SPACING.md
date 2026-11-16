@@ -1,4 +1,4 @@
-# Weft spacing and size rule (applies to every screen)
+# Asusual spacing and size rule (applies to every screen)
 
 **Every value below is a named token** in `ui/theme/Dimens.kt` or next to its component in `ui/components/`; screens never use a raw number, and `NoRawSizesTest` fails the build if one appears (user, 2026-11-11). The full list with values: the rules zip's `SIZES.md`, generated from the code.
 
@@ -40,7 +40,7 @@ The Journal's day groups are the model. In code: `ui/components/Grouping.kt` (`S
 
 ## Sheets (2026-11-08, `docs/DESIGN-RULES.md`)
 
-Every sheet is `WeftSheet` and is built from the same pieces, in `ui/components/`; never hand-roll one.
+Every sheet is `AsusualSheet` and is built from the same pieces, in `ui/components/`; never hand-roll one.
 
 | Element | Value | In code |
 | --- | --- | --- |
@@ -50,7 +50,7 @@ Every sheet is `WeftSheet` and is built from the same pieces, in `ui/components/
 | Header → content | 16dp (20dp to an action list) | `SheetHeader`, `ActionGroup` |
 | List → its one full-width button (Set up alarms) | 20dp | `SheetActionGap` |
 | Under the last element | 16dp + the navigation bar's inset | `Modifier.sheetBottomPadding()` |
-| Buttons | 48dp, fully rounded, `cardTitle` 16sp label; a pair is two equal buttons 8dp apart | `WeftButton`, `ButtonPair`, `ButtonHeight`, `ButtonPairGap` |
+| Buttons | 48dp, fully rounded, `cardTitle` 16sp label; a pair is two equal buttons 8dp apart | `AsusualButton`, `ButtonPair`, `ButtonHeight`, `ButtonPairGap` |
 | Action rows | 60dp (68dp with a second line), surfaceContainerHigh, grouped 2dp apart, 16dp inside, 40dp tile with 14dp corners and a 20dp icon, 16dp tile → text | `ActionGroup`, `ActionRow` |
 | Note field | filled surfaceContainerHigh, 24dp corners, 18 × 14dp padding, `body` text | `NoteField` |
 | Yes / no question | header + Cancel | action | `PromptSheet` |

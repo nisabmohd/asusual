@@ -13,11 +13,11 @@ import app.sprout.habits.widget.WidgetUpdater
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.SupervisorJob
-import app.sprout.habits.data.WeftDatabase
+import app.sprout.habits.data.AsusualDatabase
 
 /** Holds the app's long-lived objects. The only dependency "graph" in the app. */
 class AppContainer(private val context: Context) {
-    private val database by lazy { WeftDatabase.create(context) }
+    private val database by lazy { AsusualDatabase.create(context) }
     val repository by lazy { HabitRepository(database) { settings.hideSampleBanner() } }
     val settings by lazy { SettingsRepository(context) }
     val reminders by lazy { ReminderScheduler(context, repository) }

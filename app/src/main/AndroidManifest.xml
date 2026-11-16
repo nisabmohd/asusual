@@ -9,7 +9,7 @@
          as an alarm feature; when Android 14+ doesn't grant it, alarms show as heads-up notifications. -->
     <uses-permission android:name="android.permission.USE_FULL_SCREEN_INTENT" />
     <!-- Optional (More → Alarms, "Show over other apps"): on phones that block the full-screen alarm
-         (OnePlus / ColorOS), Weft opens the ringing screen itself when the phone is locked (1.6.2). -->
+         (OnePlus / ColorOS), Asusual opens the ringing screen itself when the phone is locked (1.6.2). -->
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
     <!-- A ringing alarm plays its sound from AlarmSoundService (media playback) and vibrates. -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
@@ -17,13 +17,13 @@
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
-        android:name=".WeftApp"
+        android:name=".AsusualApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Weft">
+        android:theme="@style/Theme.Asusual">
         <activity
             android:name=".MainActivity"
             android:exported="true"
@@ -33,11 +33,12 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <!-- weft:// links (ui/nav/AppLink.kt): they only open screens. sprout:// is the name before the rename. -->
+            <!-- asusual:// links (ui/nav/AppLink.kt): they only open screens. weft:// and sprout:// are the app's earlier names. -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="asusual" />
                 <data android:scheme="weft" />
                 <data android:scheme="sprout" />
             </intent-filter>
@@ -55,7 +56,7 @@
             android:taskAffinity="app.sprout.habits.alarm"
             android:showWhenLocked="true"
             android:turnScreenOn="true"
-            android:theme="@style/Theme.Weft.Alarm" />
+            android:theme="@style/Theme.Asusual.Alarm" />
         <service
             android:name=".notify.AlarmSoundService"
             android:exported="false"
@@ -128,7 +129,7 @@
         <activity
             android:name=".widget.StreakWidgetConfigActivity"
             android:exported="true"
-            android:theme="@style/Theme.Weft">
+            android:theme="@style/Theme.Asusual">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
             </intent-filter>

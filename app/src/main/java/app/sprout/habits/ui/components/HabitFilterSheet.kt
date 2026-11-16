@@ -20,7 +20,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.platform.LocalHapticFeedback
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.rememberScrollState
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 import androidx.compose.foundation.clickable
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
@@ -98,10 +98,10 @@ fun HabitFilterSheet(
     val colors = MaterialTheme.colorScheme
     var picked by remember { mutableStateOf(selected) }
     val haptics = LocalHapticFeedback.current
-    WeftSheet(onDismissRequest = onDismiss) {
+    AsusualSheet(onDismissRequest = onDismiss) {
         Row(Modifier.fillMaxWidth().padding(start = SheetTitleInset, end = Space12), verticalAlignment = Alignment.CenterVertically) {
-            Text(stringResource(R.string.filter_by_habit), style = WeftType.title, color = colors.onSurface, modifier = Modifier.weight(1f))
-            TextButton(onClick = { picked = emptySet() }, enabled = picked.isNotEmpty()) { Text(stringResource(R.string.clear), style = WeftType.label) }
+            Text(stringResource(R.string.filter_by_habit), style = AsusualType.title, color = colors.onSurface, modifier = Modifier.weight(1f))
+            TextButton(onClick = { picked = emptySet() }, enabled = picked.isNotEmpty()) { Text(stringResource(R.string.clear), style = AsusualType.label) }
         }
         FlowRow(
             Modifier.weight(1f, fill = false).verticalScroll(rememberScrollState()).padding(horizontal = SheetSidePadding).padding(top = Space12),
@@ -115,11 +115,11 @@ fun HabitFilterSheet(
         }
         Text(
             helper,
-            style = WeftType.supporting,
+            style = AsusualType.supporting,
             color = colors.onSurfaceVariant,
             modifier = Modifier.padding(start = SheetTitleInset, end = SheetTitleInset, top = Space16),
         )
-        WeftButton(
+        AsusualButton(
             applyLabel(picked.size),
             ButtonRole.Primary,
             onClick = { onApply(picked) },
@@ -147,7 +147,7 @@ private fun HabitChip(option: HabitFilterOption, checked: Boolean, onToggle: (Bo
         }
         Text(
             option.name,
-            style = WeftType.label,
+            style = AsusualType.label,
             color = if (checked) colors.onSecondaryContainer else colors.onSurface,
             maxLines = 1,
             modifier = Modifier.padding(start = IconLabelGap),
@@ -236,7 +236,7 @@ fun DefaultRangeChip(label: String, openLabel: String, onOpen: () -> Unit) {
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Icon(painterResource(R.drawable.ic_check), contentDescription = null, tint = colors.onSecondaryContainer, modifier = Modifier.padding(end = IconLabelGap).size(IconSizeChip))
-        Text(label, style = WeftType.label, color = colors.onSecondaryContainer, maxLines = 1)
+        Text(label, style = AsusualType.label, color = colors.onSecondaryContainer, maxLines = 1)
     }
 }
 
@@ -256,7 +256,7 @@ fun CustomRangeChip(label: String, openLabel: String, clearLabel: String, onOpen
             .padding(start = Space12, end = Space4),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        Text(label, style = WeftType.label, color = colors.onSecondaryContainer, maxLines = 1, modifier = Modifier.padding(end = Space4))
+        Text(label, style = AsusualType.label, color = colors.onSecondaryContainer, maxLines = 1, modifier = Modifier.padding(end = Space4))
         SmallClearButton(clearLabel, ChipClearSize, Color.Transparent, colors.onSecondaryContainer, onClear)
     }
 }
@@ -284,7 +284,7 @@ fun HabitFilterChip(selected: List<HabitFilterOption>, label: String, removeLabe
         }
         Text(
             label,
-            style = WeftType.label,
+            style = AsusualType.label,
             color = colors.onSecondaryContainer,
             maxLines = 1,
             modifier = Modifier.padding(start = IconLabelGap, end = Space4),

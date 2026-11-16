@@ -14,7 +14,7 @@ import app.sprout.habits.ui.components.TitleLineGap
 import app.sprout.habits.ui.components.ProgressRing
 import app.sprout.habits.ui.components.HabitTile
 import app.sprout.habits.ui.components.toggle
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.combinedClickable
@@ -112,14 +112,14 @@ fun HabitCard(
             Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(TitleLineGap)) {
                 Text(
                     habit.name,
-                    style = WeftType.cardTitle,
+                    style = AsusualType.cardTitle,
                     color = if (skipped) colors.onSurfaceVariant else colors.onSurface,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
                 )
                 Text(
                     habit.subtitle,
-                    style = WeftType.supporting,
+                    style = AsusualType.supporting,
                     color = colors.onSurfaceVariant,
                     maxLines = 1,
                     overflow = TextOverflow.Ellipsis,
@@ -158,7 +158,7 @@ private fun TrailingControl(habit: HabitRowUi, hc: HabitColors, onToggle: () -> 
                 .padding(horizontal = Space12),
             contentAlignment = Alignment.Center,
         ) {
-            Text(stringResource(R.string.outcome_skipped), style = WeftType.label, color = colors.onSurfaceVariant)
+            Text(stringResource(R.string.outcome_skipped), style = AsusualType.label, color = colors.onSurfaceVariant)
         }
 
         DayOutcome.DONE -> CircleButton(label, onToggle) {

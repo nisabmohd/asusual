@@ -55,7 +55,7 @@ import app.sprout.habits.data.SettingsRepository
 import app.sprout.habits.data.backup.BackupManager
 import app.sprout.habits.data.backup.DriveBackup
 import app.sprout.habits.ui.components.HabitTile
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 import app.sprout.habits.ui.today.UndoSnackbarHost
 import kotlinx.coroutines.launch
 
@@ -147,8 +147,8 @@ internal fun StatusCard(icon: Int, tile: Color, ink: Color, title: String, subti
             Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(Space12)) {
                 HabitTile(icon, tile, ink)
                 Column(Modifier.weight(1f).semantics { liveRegion = LiveRegionMode.Polite }, verticalArrangement = Arrangement.spacedBy(TitleLineGap)) {
-                    Text(title, style = WeftType.cardTitle, color = MaterialTheme.colorScheme.onSurface)
-                    Text(subtitle, style = WeftType.supporting, color = MaterialTheme.colorScheme.onSurfaceVariant)
+                    Text(title, style = AsusualType.cardTitle, color = MaterialTheme.colorScheme.onSurface)
+                    Text(subtitle, style = AsusualType.supporting, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
             }
             button()
@@ -175,7 +175,7 @@ internal fun StatusButton(
             if (busy) CircularProgressIndicator(Modifier.size(IconSizeChip), strokeWidth = BorderThick, color = LocalContentColor.current)
             else if (icon != null) Icon(painterResource(icon), contentDescription = null, modifier = Modifier.size(IconSizeChip))
             if (busy || icon != null) Spacer(Modifier.size(Space8))
-            Text(text, style = WeftType.label)
+            Text(text, style = AsusualType.label)
         }
     }
     if (filled) Button(onClick = onClick, enabled = enabled, modifier = modifier) { content() }

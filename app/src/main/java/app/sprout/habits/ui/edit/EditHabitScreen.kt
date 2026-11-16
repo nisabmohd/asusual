@@ -35,7 +35,7 @@ import app.sprout.habits.ui.components.SectionHeader
 import app.sprout.habits.ui.components.toggle
 import app.sprout.habits.ui.components.tick
 import androidx.compose.ui.platform.LocalHapticFeedback
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -199,7 +199,7 @@ private fun EditHabitContent(
             HeaderIconButton(R.drawable.ic_close, stringResource(R.string.action_close), onClick = onClose)
             Text(
                 stringResource(if (form.isNew) R.string.new_habit else R.string.edit_habit),
-                style = WeftType.title,
+                style = AsusualType.title,
                 color = colors.onBackground,
                 modifier = Modifier.weight(1f).padding(start = TopBarTitleGap),
             )
@@ -226,7 +226,7 @@ private fun EditHabitContent(
                     onValueChange = { v -> onEdit { it.copy(name = v) } },
                     label = { Text(stringResource(R.string.name)) },
                     singleLine = true,
-                    textStyle = WeftType.cardTitle,
+                    textStyle = AsusualType.cardTitle,
                     shape = FieldShape,
                     keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences),
                     modifier = Modifier.weight(1f).padding(start = TileTextGap),
@@ -288,7 +288,7 @@ private fun EditHabitContent(
                             onClick = { if (form.trackType != value) haptics.tick(); edit { it.copy(trackType = value) } },
                             shape = SegmentedButtonDefaults.itemShape(index, options.size),
                             icon = {},
-                        ) { Text(label, style = WeftType.label) }
+                        ) { Text(label, style = AsusualType.label) }
                     }
                 }
                 }
@@ -309,7 +309,7 @@ private fun EditHabitContent(
                 }
                 Text(
                     stringResource(if (form.trackType == TrackType.AMOUNT) R.string.step_hint else R.string.partial_hint),
-                    style = WeftType.caption,
+                    style = AsusualType.caption,
                     color = colors.onSurfaceVariant,
                 )
             }
@@ -342,7 +342,7 @@ private fun EditHabitContent(
                                 CappedFontScale {
                                     Text(
                                         day.getDisplayName(TextStyle.NARROW, Locale.getDefault()),
-                                        style = WeftType.label,
+                                        style = AsusualType.label,
                                         color = if (on) hc.on else colors.onSurface,
                                         // The full day name is on the toggle; don't also read "M".
                                         modifier = Modifier.clearAndSetSemantics {},
@@ -381,7 +381,7 @@ private fun EditHabitContent(
                         HabitTile(R.drawable.ic_sym_alarm, hc.soft, hc.ink)
                         Column(Modifier.weight(1f).padding(start = TileTextGap, end = TrailingGap), verticalArrangement = Arrangement.spacedBy(TitleLineGap)) {
                             // 16sp like the titles in the card below; 22sp looked too big next to them.
-                            Text(TodayViewModel.formatTime(form.reminderMinutes), style = WeftType.cardTitle, color = colors.onSurface)
+                            Text(TodayViewModel.formatTime(form.reminderMinutes), style = AsusualType.cardTitle, color = colors.onSurface)
                             Text(
                                 if (reminderWarning) {
                                     stringResource(
@@ -402,7 +402,7 @@ private fun EditHabitContent(
                                 } else {
                                     stringResource(R.string.reminder_card_off)
                                 },
-                                style = WeftType.supporting,
+                                style = AsusualType.supporting,
                                 color = if (reminderWarning) colors.error else colors.onSurfaceVariant,
                             )
                         }
@@ -411,7 +411,7 @@ private fun EditHabitContent(
                 }
                 Text(
                     stringResource(R.string.reminder_card_hint),
-                    style = WeftType.supporting,
+                    style = AsusualType.supporting,
                     color = colors.onSurfaceVariant,
                     modifier = Modifier.padding(start = SectionHeaderInset, top = Space8),
                 )
@@ -421,7 +421,7 @@ private fun EditHabitContent(
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
                         stringResource(R.string.exact_alarm_hint),
-                        style = WeftType.supporting,
+                        style = AsusualType.supporting,
                         color = colors.onSurfaceVariant,
                         modifier = Modifier.weight(1f),
                     )
@@ -432,7 +432,7 @@ private fun EditHabitContent(
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
                         stringResource(R.string.notifications_off_hint),
-                        style = WeftType.supporting,
+                        style = AsusualType.supporting,
                         color = colors.error,
                         modifier = Modifier.weight(1f),
                     )
@@ -538,8 +538,8 @@ private fun ToggleRow(title: String, subtitle: String, checked: Boolean, onChang
         verticalAlignment = Alignment.CenterVertically,
     ) {
         Column(Modifier.weight(1f).padding(end = TrailingGap), verticalArrangement = Arrangement.spacedBy(TitleLineGap)) {
-            Text(title, style = WeftType.cardTitle, color = MaterialTheme.colorScheme.onSurface)
-            Text(subtitle, style = WeftType.supporting, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text(title, style = AsusualType.cardTitle, color = MaterialTheme.colorScheme.onSurface)
+            Text(subtitle, style = AsusualType.supporting, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
         Switch(checked = checked, onCheckedChange = null)
     }

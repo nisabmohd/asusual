@@ -15,14 +15,14 @@ import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.sprout.habits.ui.WelcomeScreen
 import app.sprout.habits.ui.drawEdgeToEdge
-import app.sprout.habits.ui.nav.WeftNavHost
-import app.sprout.habits.ui.theme.WeftTheme
+import app.sprout.habits.ui.nav.AsusualNavHost
+import app.sprout.habits.ui.theme.AsusualTheme
 import app.sprout.habits.ui.theme.isDark
 import app.sprout.habits.ui.nav.AppLink
 import kotlinx.coroutines.flow.MutableStateFlow
 
 class MainActivity : ComponentActivity() {
-    /** Where an outside tap should land (widget, notification, shortcut, weft:// link); consumed by the nav host. */
+    /** Where an outside tap should land (widget, notification, shortcut, asusual:// link); consumed by the nav host. */
     private val pendingLink = MutableStateFlow<AppLink?>(null)
 
     override fun attachBaseContext(newBase: Context) {
@@ -38,7 +38,7 @@ class MainActivity : ComponentActivity() {
         Notifications.createChannels(this)
         if (savedInstanceState == null) handleIntent(intent)
         drawEdgeToEdge(dark = false)
-        val container = (application as WeftApp).container
+        val container = (application as AsusualApp).container
         setContent {
             // Null until DataStore has loaded, so the first real frame already has the right theme.
             // Until then draw an empty frame over the window background (light or night), so the
@@ -50,7 +50,7 @@ class MainActivity : ComponentActivity() {
             }
             val dark = current.theme.isDark()
             LaunchedEffect(dark) { drawEdgeToEdge(dark) }
-            WeftTheme(current.theme) {
+            AsusualTheme(current.theme) {
                 if (!current.onboarded) {
                     WelcomeScreen(container, onDone = { container.settings.setOnboarded() })
                 } else {
@@ -60,7 +60,7 @@ class MainActivity : ComponentActivity() {
                         app.sprout.habits.ui.components.LocalPendingUndo provides container.pendingUndo,
                         app.sprout.habits.ui.LocalUndoableActions provides container.actions,
                     ) {
-                        WeftNavHost(container, current, link = link, onLinkHandled = { pendingLink.value = null })
+                        AsusualNavHost(container, current, link = link, onLinkHandled = { pendingLink.value = null })
                     }
                     UpdatePrompt(container.updates, container.playUpdates)
                 }

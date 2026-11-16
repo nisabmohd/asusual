@@ -4,7 +4,7 @@ name in white and two short lines under it.
 
 usage: python3 tools/feature_graphic.py [out file]
 Writes release/feature-graphic-1024x500.png and the fastlane copy. Needs Pillow; the mark is taken
-from release/icon-512.png (tools/weft_mark.py), so it is the store icon's drawing."""
+from release/icon-512.png (tools/asusual_mark.py), so it is the store icon's drawing."""
 import os
 import sys
 
@@ -19,7 +19,7 @@ FONT = os.path.join(ROOT, "app", "src", "main", "res", "font", "lexend.ttf")
 W, H = 1024, 500
 SS = 2                                  # drawn at twice the size, then scaled down
 
-GREEN = (0x2A, 0x6F, 0x52)              # the logo's tile (weft-icon.zip)
+GREEN = (0x2B, 0x6F, 0x52)              # the logo's tile (asusual-logo.zip)
 TILE = (0xD6, 0xEE, 0xE2)               # a pale tint of it, like Burrow's pale tile
 NAME = (0xFF, 0xFF, 0xFF)
 LINES = (0xD6, 0xEE, 0xE2)
@@ -40,9 +40,13 @@ def mark(px, color):
     lo, hi = icon.getpixel((4, 4)), icon.getextrema()[1]
     m = icon.point(lambda v: max(0, min(255, round((v - lo) * 255 / (hi - lo)))))
     # The mark's own box (it is centred on the icon), so it can be sized on its own.
-    m = m.crop(m.getbbox()).resize((px, px), Image.LANCZOS)
+    # The wave is wider than tall: keep its shape, `px` wide, in the middle of a `px` square.
+    m = m.crop(m.getbbox())
+    h = round(px * m.height / m.width)
+    alpha = Image.new("L", (px, px), 0)
+    alpha.paste(m.resize((px, h), Image.LANCZOS), (0, (px - h) // 2))
     out = Image.new("RGBA", (px, px), color + (0,))
-    out.putalpha(m)
+    out.putalpha(alpha)
     return out
 
 
@@ -52,12 +56,12 @@ d.rounded_rectangle(
     (TILE_X * SS, TILE_Y * SS, (TILE_X + TILE_SIZE) * SS - 1, (TILE_Y + TILE_SIZE) * SS - 1),
     TILE_R * SS, fill=TILE + (255,),
 )
-# The mark at about the share of the tile Burrow's mark takes (0.56), centred exactly.
-size = round(TILE_SIZE * 0.56) * SS
+# The wave takes the share of the tile it takes on the icon (404 of 512, about 0.7 of what shows), centred exactly.
+size = round(TILE_SIZE * 0.7) * SS
 m = mark(size, GREEN)
 img.alpha_composite(m, (TILE_X * SS + (TILE_SIZE * SS - size) // 2, TILE_Y * SS + (TILE_SIZE * SS - size) // 2))
 d = ImageDraw.Draw(img)
-d.text((TEXT_X * SS, 235 * SS), "Weft", font=font(96, 600), fill=NAME, anchor="ls")
+d.text((TEXT_X * SS, 235 * SS), "Asusual", font=font(96, 600), fill=NAME, anchor="ls")
 d.text((TEXT_X * SS, 297 * SS), "Small habits, kept honestly.", font=font(32, 400), fill=LINES, anchor="ls")
 d.text((TEXT_X * SS, 341 * SS), "Private. No ads. Open source.", font=font(32, 400), fill=LINES, anchor="ls")
 

@@ -50,7 +50,7 @@ class WeekWidget : GlanceAppWidget() {
         val bitmaps = WidgetBitmaps(context)
         provideContent {
             val live by liveWidgetData(context, data) { it.week() }
-            WeftGlanceTheme { WeekContent(context, live, bitmaps) }
+            AsusualGlanceTheme { WeekContent(context, live, bitmaps) }
         }
     }
 }

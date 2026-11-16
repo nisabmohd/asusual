@@ -10,10 +10,10 @@ import app.sprout.habits.ui.theme.Space2
 import app.sprout.habits.ui.theme.Space24
 import app.sprout.habits.ui.theme.Space8
 import app.sprout.habits.ui.theme.TouchTarget
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import app.sprout.habits.ui.components.WeftSheet
+import app.sprout.habits.ui.components.AsusualSheet
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
@@ -56,7 +56,7 @@ import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.dp
 import app.sprout.habits.R
 import app.sprout.habits.ui.components.ButtonRole
-import app.sprout.habits.ui.components.WeftButton
+import app.sprout.habits.ui.components.AsusualButton
 import app.sprout.habits.ui.components.sheetBottomPadding
 import app.sprout.habits.ui.components.SheetSidePadding
 import app.sprout.habits.ui.components.SheetHeader
@@ -83,16 +83,16 @@ fun IconPickerSheet(
     val res = LocalContext.current.resources
     val matches = HabitIcon.entries.filter { query.isBlank() || res.getString(it.label).contains(query.trim(), ignoreCase = true) || it.key.replace('_', ' ').contains(query.trim(), ignoreCase = true) }
 
-    WeftSheet(onDismissRequest = onDismiss) {
+    AsusualSheet(onDismissRequest = onDismiss) {
         SheetHeader(stringResource(R.string.choose_icon))
         Column(Modifier.padding(horizontal = SheetSidePadding).sheetBottomPadding().imePadding()) {
             TextField(
                 value = query,
                 onValueChange = { query = it },
-                placeholder = { Text(stringResource(R.string.search_icons), style = WeftType.body) },
+                placeholder = { Text(stringResource(R.string.search_icons), style = AsusualType.body) },
                 leadingIcon = { Icon(painterResource(R.drawable.ic_search), contentDescription = null, modifier = Modifier.size(IconSizeSmall)) },
                 singleLine = true,
-                textStyle = WeftType.body,
+                textStyle = AsusualType.body,
                 shape = CircleShape,
                 colors = TextFieldDefaults.colors(
                     focusedContainerColor = scheme.surfaceContainerHigh,
@@ -115,7 +115,7 @@ fun IconPickerSheet(
                     item(key = group.name, span = { GridItemSpan(maxLineSpan) }) {
                         Text(
                             stringResource(group.label),
-                            style = WeftType.captionStrong,
+                            style = AsusualType.captionStrong,
                             color = scheme.onSurfaceVariant,
                             modifier = Modifier.padding(top = Space12, bottom = Space2),
                         )
@@ -130,14 +130,14 @@ fun IconPickerSheet(
                     item(key = "none", span = { GridItemSpan(maxLineSpan) }) {
                         Text(
                             stringResource(R.string.no_icons_match, query.trim()),
-                            style = WeftType.supporting,
+                            style = AsusualType.supporting,
                             color = scheme.onSurfaceVariant,
                             modifier = Modifier.padding(vertical = Space24),
                         )
                     }
                 }
             }
-            WeftButton(
+            AsusualButton(
                 stringResource(R.string.use_this_icon),
                 ButtonRole.Primary,
                 onClick = { onPick(picked) },

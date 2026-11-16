@@ -16,11 +16,11 @@ import org.junit.runner.RunWith
 /** Deleting habits (Delete habit, Remove sample data) and Undo putting them back exactly. */
 @RunWith(AndroidJUnit4::class)
 class UndoDeleteTest {
-    private lateinit var db: WeftDatabase
+    private lateinit var db: AsusualDatabase
     private lateinit var repository: HabitRepository
 
     @Before fun setUp() {
-        db = Room.inMemoryDatabaseBuilder(InstrumentationRegistry.getInstrumentation().targetContext, WeftDatabase::class.java)
+        db = Room.inMemoryDatabaseBuilder(InstrumentationRegistry.getInstrumentation().targetContext, AsusualDatabase::class.java)
             .allowMainThreadQueries().build()
         repository = HabitRepository(db)
     }

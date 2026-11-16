@@ -16,7 +16,7 @@ import app.sprout.habits.ui.alarm.AlarmActivity
 /**
  * The optional "Show over other apps" fallback (features/FEATURE-ALARM-REMINDERS.md 7, 12): some
  * phones (OnePlus / ColorOS seen, 2026-11-08) never open an alarm's full-screen intent. When the
- * user allowed drawing over other apps, Weft opens the ringing screen itself if it isn't up shortly
+ * user allowed drawing over other apps, Asusual opens the ringing screen itself if it isn't up shortly
  * after the alarm starts, but only when the phone was idle as it rang: screen off, or on and locked.
  * While the person is using the phone the alarm stays a heads-up banner, like Android's own rule
  * (user, 2026-11-15: banner and full screen together was wrong; this replaces "locked or in use",

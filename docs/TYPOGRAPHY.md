@@ -1,6 +1,6 @@
-# Weft typography rule (applies to every screen)
+# Asusual typography rule (applies to every screen)
 
-Use **only** these 9 text styles. Define them once in `ui/theme/Type.kt` as `WeftType.*`, and never write a raw `fontSize` / `fontWeight` anywhere else.
+Use **only** these 9 text styles. Define them once in `ui/theme/Type.kt` as `AsusualType.*`, and never write a raw `fontSize` / `fontWeight` anywhere else.
 Weights are only **Regular (400)** and **SemiBold (600)**. Line height: about 1.3 for titles and labels, 1.5 for body and notes.
 
 | Style | Font | Size | Weight | Colour | Use it for (and nothing else) |
@@ -23,8 +23,8 @@ Weights are only **Regular (400)** and **SemiBold (600)**. Line height: about 1.
 
 **Exceptions (only these):**
 - The New note editor uses 18sp Regular with 1.55 line height, for comfortable writing.
-- The time on the alarm ringing screen is 88sp (`WeftType.alarmTime`, design 2026-11-08).
-- The value in Insights' Patterns cards ("Tuesday", "No sugar") is 18sp SemiBold (`WeftType.patternValue`, design 2026-11-08).
+- The time on the alarm ringing screen is 88sp (`AsusualType.alarmTime`, design 2026-11-08).
+- The value in Insights' Patterns cards ("Tuesday", "No sugar") is 18sp SemiBold (`AsusualType.patternValue`, design 2026-11-08).
 - Text that would be cut off shrinks to fit, never below its floor in `Type.kt`: nav bar labels (`NavLabelMinSize` 9sp), habit detail stat values (`StatValueMinSize` 16sp) and every button label (`ButtonLabelMinSize` 12sp, e.g. "Snooze 10 min" at a large text size, 2026-11-08).
 - Font previews in More → Font show each name in its own font at 16sp, with "Aa" at 22sp.
 - Note cards (Journal, habit detail): the name `cardTitle`, the outcome · time line `supporting` muted, the note `body` (design 2026-11-11b).

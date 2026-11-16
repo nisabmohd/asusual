@@ -75,7 +75,7 @@ import app.sprout.habits.MainActivity
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.material3.TextButton
 import android.app.KeyguardManager
-import app.sprout.habits.WeftApp
+import app.sprout.habits.AsusualApp
 import app.sprout.habits.data.Habit
 import app.sprout.habits.data.HabitIcon
 import app.sprout.habits.notify.ReminderActionReceiver
@@ -83,12 +83,12 @@ import app.sprout.habits.notify.ReminderActions
 import app.sprout.habits.notify.ReminderScheduler
 import app.sprout.habits.ui.components.ButtonPair
 import app.sprout.habits.ui.components.ButtonRole
-import app.sprout.habits.ui.components.WeftButton
+import app.sprout.habits.ui.components.AsusualButton
 import app.sprout.habits.ui.components.HabitTile
 import app.sprout.habits.ui.components.SheetSidePadding
 import app.sprout.habits.ui.drawEdgeToEdge
-import app.sprout.habits.ui.theme.WeftTheme
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualTheme
+import app.sprout.habits.ui.theme.AsusualType
 import app.sprout.habits.ui.theme.habitColors
 import java.time.LocalDate
 import java.time.LocalTime
@@ -134,7 +134,7 @@ class AlarmActivity : ComponentActivity() {
         showOverLockScreen()
         drawEdgeToEdge(dark = false)
         habitId = intent.getLongExtra(EXTRA_HABIT_ID, 0L)
-        val container = (application as WeftApp).container
+        val container = (application as AsusualApp).container
         // Read the settings and the habit before the first frame (a few ms), and paint the window
         // in the habit's colour, so the screen opens already drawn: no blank or page-coloured flash.
         val first = runBlocking {
@@ -150,7 +150,7 @@ class AlarmActivity : ComponentActivity() {
             }
             window.setBackgroundDrawable(ColorDrawable(habitColors(firstHabit.colorHue.toFloat(), dark).soft.toArgb()))
         } else {
-            window.setBackgroundDrawableResource(R.color.weft_bg)
+            window.setBackgroundDrawableResource(R.color.asusual_bg)
         }
         // The theme starts see-through on Android 11+ so Android shows no splash screen (values-v30);
         // make it opaque now, because only an opaque screen covers the lock screen.
@@ -186,7 +186,7 @@ class AlarmActivity : ComponentActivity() {
             val h = habit?.takeIf { it.id == habitId } ?: return@setContent
             val minutes = ringing?.takeIf { it.habitId == habitId }?.minutes ?: LocalTime.now().let { it.hour * 60 + it.minute }
             val sheet by logger.sheet.collectAsStateWithLifecycle()
-            WeftTheme(current.theme) {
+            AsusualTheme(current.theme) {
                 AlarmScreen(
                     habit = h,
                     time = clockTime(this@AlarmActivity, minutes),
@@ -203,7 +203,7 @@ class AlarmActivity : ComponentActivity() {
                         container.alarmRinger.hush(h.id)
                         logger.open(h.id, LocalDate.now())
                     },
-                    onOpenWeft = { openWeft(h.id, several = queue.size > 1) },
+                    onOpenAsusual = { openAsusual(h.id, several = queue.size > 1) },
                 )
                 // Save logs it, and the alarm moves on (AlarmRinger sees the log); Cancel or a
                 // swipe down comes back here, still quiet.
@@ -230,7 +230,7 @@ class AlarmActivity : ComponentActivity() {
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
         // A volume button only stops the sound; the screen stays to answer it (user, 2026-11-09).
         if (keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
-            if (event?.repeatCount == 0) (application as WeftApp).container.alarmRinger.hush(habitId)
+            if (event?.repeatCount == 0) (application as AsusualApp).container.alarmRinger.hush(habitId)
             return true
         }
         return super.onKeyDown(keyCode, event)
@@ -244,7 +244,7 @@ class AlarmActivity : ComponentActivity() {
         // Android 15+ gives audio focus only to the app on top, not to the sound service, so music
         // pauses from here (user, 2026-11-15: song and alarm took turns in headphones).
         if (app.sprout.habits.notify.AlarmSoundService.isRinging) app.sprout.habits.notify.AlarmSoundService.holdFocus(this)
-        (application as WeftApp).container.alarmRinger.screenShown()
+        (application as AsusualApp).container.alarmRinger.screenShown()
     }
 
     override fun onPause() {
@@ -259,16 +259,16 @@ class AlarmActivity : ComponentActivity() {
 
     /** The app's own logging, for Log amount: the same sheet and rules as on Today. */
     private val logger by lazy {
-        val app = application as WeftApp
+        val app = application as AsusualApp
         DayLogger(app.container.repository, app.container.settings, lifecycleScope, ResourceStrings(this))
     }
 
     /**
-     * Open Weft: stops this alarm, asks to unlock, then opens the habit (or Today when other
+     * Open Asusual: stops this alarm, asks to unlock, then opens the habit (or Today when other
      * alarms were waiting; they stay as notifications, unanswered).
      */
-    private fun openWeft(id: Long, several: Boolean) {
-        (application as WeftApp).container.alarmRinger.leave(id)
+    private fun openAsusual(id: Long, several: Boolean) {
+        (application as AsusualApp).container.alarmRinger.leave(id)
         val open = Intent(this, MainActivity::class.java).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
         if (!several) open.setAction(MainActivity.ACTION_OPEN_HABIT).putExtra(MainActivity.EXTRA_HABIT_ID, id)
         val go = { startActivity(open); finish() }
@@ -291,13 +291,13 @@ class AlarmActivity : ComponentActivity() {
         answeredId = id
         // Stop the sound now (the next alarm, if any, starts); the receiver logs (Done),
         // reschedules (Snooze) and refreshes widgets.
-        (application as WeftApp).container.alarmRinger.stop(id)
+        (application as AsusualApp).container.alarmRinger.stop(id)
         send(action, id)
     }
 
     /** The power button: every ringing alarm stops, like Dismiss on each. */
     private fun silenceAll() {
-        val ringer = (application as WeftApp).container.alarmRinger
+        val ringer = (application as AsusualApp).container.alarmRinger
         ringer.queue.value.map { it.habitId }.forEach { id ->
             ringer.stop(id)
             send(ReminderActions.ACTION_DISMISS, id)
@@ -367,7 +367,7 @@ private fun AlarmScreen(
     onDismiss: () -> Unit,
     onSkip: () -> Unit,
     onLogAmount: () -> Unit,
-    onOpenWeft: () -> Unit,
+    onOpenAsusual: () -> Unit,
 ) {
     val hc = habitColors(habit.colorHue.toFloat())
     val measured = habit.trackType == TrackType.AMOUNT
@@ -380,16 +380,16 @@ private fun AlarmScreen(
             .padding(horizontal = SheetSidePadding),
         horizontalAlignment = Alignment.CenterHorizontally,
     ) {
-        // Open Weft: a text button with a chevron (alarm-4/5).
-        TextButton(onClick = onOpenWeft, modifier = Modifier.padding(top = Space16).heightIn(min = ButtonHeight)) {
-            Text(stringResource(R.string.alarm_open_weft), style = WeftType.label, color = hc.ink)
+        // Open Asusual: a text button with a chevron (alarm-4/5).
+        TextButton(onClick = onOpenAsusual, modifier = Modifier.padding(top = Space16).heightIn(min = ButtonHeight)) {
+            Text(stringResource(R.string.alarm_open_asusual), style = AsusualType.label, color = hc.ink)
             Icon(painterResource(R.drawable.ic_chevron_right), contentDescription = null, tint = hc.ink, modifier = Modifier.padding(start = Space8).size(IconSizeChip))
         }
         Spacer(Modifier.weight(1f))
         if (position != null) {
             Text(
                 stringResource(R.string.alarm_position, position.first, position.second),
-                style = WeftType.captionStrong,
+                style = AsusualType.captionStrong,
                 color = hc.ink,
                 modifier = Modifier.padding(bottom = Space16).background(hc.mid, CircleShape).padding(horizontal = Space12, vertical = Space8),
             )
@@ -397,13 +397,13 @@ private fun AlarmScreen(
         HabitTile(hc.mid, Modifier.size(AlarmTileSize), RoundedCornerShape(AlarmTileCorner)) {
             Icon(painterResource(HabitIcon.fromKey(habit.icon).drawable), contentDescription = null, tint = hc.ink, modifier = Modifier.size(AlarmTileIconSize))
         }
-        Text(habit.name, style = WeftType.title, color = hc.ink, textAlign = TextAlign.Center, modifier = Modifier.padding(top = Space20))
+        Text(habit.name, style = AsusualType.title, color = hc.ink, textAlign = TextAlign.Center, modifier = Modifier.padding(top = Space20))
         if (measured) {
-            Text(stringResource(R.string.alarm_goal, habit.measure(habit.target)), style = WeftType.supporting, color = hc.ink.copy(alpha = 0.75f), modifier = Modifier.padding(top = Space4))
+            Text(stringResource(R.string.alarm_goal, habit.measure(habit.target)), style = AsusualType.supporting, color = hc.ink.copy(alpha = 0.75f), modifier = Modifier.padding(top = Space4))
         }
-        Text(time, style = WeftType.alarmTime, color = MaterialTheme.colorScheme.onSurface, modifier = Modifier.padding(top = Space4))
+        Text(time, style = AsusualType.alarmTime, color = MaterialTheme.colorScheme.onSurface, modifier = Modifier.padding(top = Space4))
         if (next != null) {
-            Text(stringResource(R.string.widget_next, next), style = WeftType.supporting, color = hc.ink.copy(alpha = 0.75f), modifier = Modifier.padding(top = Space8))
+            Text(stringResource(R.string.widget_next, next), style = AsusualType.supporting, color = hc.ink.copy(alpha = 0.75f), modifier = Modifier.padding(top = Space8))
         }
         Spacer(Modifier.weight(2f))
         // Keyed by habit: when the next alarm takes the screen ("2 of 2") its slider starts at the left.
@@ -415,7 +415,7 @@ private fun AlarmScreen(
             onClick = if (measured) onLogAmount else onSkip,
             modifier = Modifier.padding(vertical = Space8).heightIn(min = ButtonHeight),
         ) {
-            Text(stringResource(if (measured) R.string.log_amount else R.string.alarm_skip_today), style = WeftType.cardTitle, color = hc.ink)
+            Text(stringResource(if (measured) R.string.log_amount else R.string.alarm_skip_today), style = AsusualType.cardTitle, color = hc.ink)
         }
         if (onSnooze != null) {
             ButtonPair(
@@ -426,7 +426,7 @@ private fun AlarmScreen(
             )
         } else {
             // One action: the one full-width button (docs/DESIGN-RULES.md 2).
-            WeftButton(stringResource(R.string.alarm_dismiss), ButtonRole.Primary, onClick = onDismiss, modifier = Modifier.fillMaxWidth())
+            AsusualButton(stringResource(R.string.alarm_dismiss), ButtonRole.Primary, onClick = onDismiss, modifier = Modifier.fillMaxWidth())
         }
         Spacer(Modifier.height(Space40))
     }
@@ -452,7 +452,7 @@ private fun SlideToDone(track: Color, thumb: Color, label: String, labelColor: C
         val max = (width - with(density) { (thumbSize + SlideInset * 2).toPx() }).coerceAtLeast(0f)
         var offset by remember { mutableFloatStateOf(0f) }
         var done by remember { mutableStateOf(false) }
-        Text(label, style = WeftType.cardTitle, color = labelColor, textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth().padding(start = thumbSize))
+        Text(label, style = AsusualType.cardTitle, color = labelColor, textAlign = TextAlign.Center, modifier = Modifier.fillMaxWidth().padding(start = thumbSize))
         Box(
             Modifier
                 .padding(start = SlideInset)

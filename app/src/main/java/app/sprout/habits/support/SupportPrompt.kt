@@ -2,7 +2,7 @@ package app.sprout.habits.support
 
 import app.sprout.habits.data.Settings
 
-/** When the "Enjoying Weft?" prompt may show. */
+/** When the "Enjoying Asusual?" prompt may show. */
 object SupportPrompt {
     private const val DAY = 24 * 60 * 60 * 1000L
     const val MIN_DAYS_OF_USE = 7

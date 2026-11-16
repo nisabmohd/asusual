@@ -9,7 +9,7 @@ import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import app.sprout.habits.MainActivity
 import app.sprout.habits.R
-import app.sprout.habits.WeftApp
+import app.sprout.habits.AsusualApp
 import app.sprout.habits.data.Entry
 import app.sprout.habits.data.EntryStatus
 import app.sprout.habits.data.Habit
@@ -148,7 +148,7 @@ object ReminderActions {
 /** Runs a reminder button: Done, +step, Skip or Snooze. */
 class ReminderActionReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        val container = (context.applicationContext as WeftApp).container
+        val container = (context.applicationContext as AsusualApp).container
         val habitId = intent.getLongExtra(ReminderScheduler.EXTRA_HABIT_ID, 0L)
         val day = intent.getLongExtra(ReminderScheduler.EXTRA_DAY, LocalDate.now().toEpochDay())
         val manager = NotificationManagerCompat.from(context)

@@ -28,11 +28,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import app.sprout.habits.R
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 
 /**
  * The card under a [ChoiceSheet]'s rows for something that leaves the sheet ("Help translate
- * Weft", "Choose from phone"): a 40 dp primaryContainer tile, title and line, and ↗. Use it as the
+ * Asusual", "Choose from phone"): a 40 dp primaryContainer tile, title and line, and ↗. Use it as the
  * sheet's footer; it brings the sheet's bottom padding.
  */
 @Composable
@@ -54,8 +54,8 @@ fun ExtraActionCard(icon: Int, title: String, text: String, onClick: () -> Unit)
             Icon(painterResource(icon), contentDescription = null, tint = colors.onPrimaryContainer, modifier = Modifier.size(ActionIconSize))
         }
         Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(TitleLineGap)) {
-            Text(title, style = WeftType.cardTitle, color = colors.onSurface)
-            Text(text, style = WeftType.supporting, color = colors.onSurfaceVariant)
+            Text(title, style = AsusualType.cardTitle, color = colors.onSurface)
+            Text(text, style = AsusualType.supporting, color = colors.onSurfaceVariant)
         }
         Icon(painterResource(R.drawable.ic_open_external), contentDescription = null, tint = colors.onSurfaceVariant, modifier = Modifier.size(IconSizeSmall))
     }

@@ -1,4 +1,4 @@
-"""Builds the GitHub Pages site (https://nisabmohd.github.io/weft/) into _site/: the home page from
+"""Builds the GitHub Pages site (https://nisabmohd.github.io/asusual/) into _site/: the home page from
 site/, three app screenshots from docs/screenshots/, and the privacy policy rendered from PRIVACY.md,
 so the repo keeps one copy of the policy. The Pages workflow (.github/workflows/pages.yml) runs it on
 every push to main that touches these files.
@@ -78,7 +78,7 @@ def page(title, body, prefix):
     index = open(os.path.join(ROOT, "site", "index.html"), encoding="utf-8").read()
     head = index[: index.index("<main")]
     foot = index[index.index("<footer") :]
-    head = head.replace("<title>Weft: Habit Tracker</title>", f"<title>{title} · Weft</title>")
+    head = head.replace("<title>Asusual: Habit Tracker</title>", f"<title>{title} · Asusual</title>")
     for attr in ("href", "src"):
         head = re.sub(rf'{attr}="(?!https?:|mailto:|#)([^"]*)"', lambda m: f'{attr}="{prefix}{m.group(1)}"', head)
         foot = re.sub(rf'{attr}="(?!https?:|mailto:|#)([^"]*)"', lambda m: f'{attr}="{prefix}{m.group(1)}"', foot)

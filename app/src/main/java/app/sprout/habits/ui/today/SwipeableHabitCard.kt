@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.drop
 import kotlinx.coroutines.flow.distinctUntilChanged
 import androidx.compose.runtime.snapshotFlow
 import androidx.compose.runtime.LaunchedEffect
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -141,7 +141,7 @@ private fun SwipeBackground(habit: HabitRowUi, direction: SwipeToDismissBoxValue
             horizontalArrangement = Arrangement.spacedBy(IconLabelGap, if (start) Alignment.Start else Alignment.End),
         ) {
             Icon(painterResource(R.drawable.ic_undo), contentDescription = null, tint = colors.onSurfaceVariant, modifier = Modifier.size(IconSizeSmall))
-            Text(stringResource(R.string.action_undo), style = WeftType.label, color = colors.onSurfaceVariant)
+            Text(stringResource(R.string.action_undo), style = AsusualType.label, color = colors.onSurfaceVariant)
         }
         return
     }
@@ -152,7 +152,7 @@ private fun SwipeBackground(habit: HabitRowUi, direction: SwipeToDismissBoxValue
             horizontalArrangement = Arrangement.spacedBy(IconLabelGap),
         ) {
             Icon(painterResource(R.drawable.ic_check), contentDescription = null, tint = hc.on, modifier = Modifier.size(IconSizeSmall))
-            Text(stringResource(R.string.outcome_done), style = WeftType.label, color = hc.on)
+            Text(stringResource(R.string.outcome_done), style = AsusualType.label, color = hc.on)
         }
 
         SwipeToDismissBoxValue.EndToStart -> Row(
@@ -160,7 +160,7 @@ private fun SwipeBackground(habit: HabitRowUi, direction: SwipeToDismissBoxValue
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.spacedBy(IconLabelGap, Alignment.End),
         ) {
-            Text(stringResource(R.string.outcome_skip), style = WeftType.label, color = colors.onSurfaceVariant)
+            Text(stringResource(R.string.outcome_skip), style = AsusualType.label, color = colors.onSurfaceVariant)
             Icon(painterResource(R.drawable.ic_skip), contentDescription = null, tint = colors.onSurfaceVariant, modifier = Modifier.size(IconSizeSmall))
         }
 

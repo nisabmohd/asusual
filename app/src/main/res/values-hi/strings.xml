@@ -169,14 +169,14 @@
     <string name="week_starts_on">हफ़्ता शुरू होता है</string>
     <string name="default_reminder">डिफ़ॉल्ट रिमाइंडर</string>
     <string name="default_reminder_desc">नई आदतों के लिए</string>
-    <string name="about_weft">Weft के बारे में</string>
+    <string name="about_asusual">Asusual के बारे में</string>
     <string name="version_open_source">वर्शन %1$s · ओपन सोर्स</string>
     <string name="accent">मुख्य रंग</string>
     <string name="text_size">टेक्स्ट का आकार</string>
     <string name="language">भाषा</string>
     <string name="backup_error_damaged">यह बैकअप खराब है और इम्पोर्ट नहीं हो सकता।</string>
-    <string name="backup_error_not_weft">यह Weft की बैकअप फ़ाइल नहीं है।</string>
-    <string name="backup_error_newer">यह बैकअप Weft के नए वर्शन से बना है। ऐप अपडेट करें, फिर दोबारा कोशिश करें।</string>
+    <string name="backup_error_not_asusual">यह Asusual की बैकअप फ़ाइल नहीं है।</string>
+    <string name="backup_error_newer">यह बैकअप Asusual के नए वर्शन से बना है। ऐप अपडेट करें, फिर दोबारा कोशिश करें।</string>
     <string name="backup_error_date">बैकअप में एक तारीख पढ़ी नहीं जा सकी: %1$s</string>
     <string name="save_failed">फ़ाइल सेव नहीं हो सकी।</string>
     <string name="backup_saved">बैकअप सेव हो गया</string>
@@ -218,18 +218,18 @@
     <string name="drive_disconnected">Google Drive से डिस्कनेक्ट हो गया। आपके बैकअप Drive में रहेंगे।</string>
     <string name="drive_delete_backups">Drive से बैकअप मिटाएँ</string>
     <string name="drive_delete_title">Drive से बैकअप मिटाएँ?</string>
-    <string name="drive_delete_text">इससे %1$s में Weft के सारे बैकअप मिट जाएँगे। इस फ़ोन का डेटा रहेगा।</string>
+    <string name="drive_delete_text">इससे %1$s में Asusual के सारे बैकअप मिट जाएँगे। इस फ़ोन का डेटा रहेगा।</string>
     <string name="drive_deleted">Drive से बैकअप मिटा दिए गए</string>
     <string name="drive_connected_to">%1$s से कनेक्ट हो गया</string>
     <string name="drive_backed_up">Google Drive पर बैकअप हो गया</string>
     <string name="drive_failed">Google Drive से जुड़ नहीं सके। फिर से कोशिश करें</string>
-    <string name="drive_refused">बैकअप रखने के लिए Weft को Google Drive चाहिए। फिर से जोड़ें और Google Drive पर टिक करें</string>
-    <string name="drive_no_backup">इस Google Drive में अभी कोई Weft बैकअप नहीं है</string>
+    <string name="drive_refused">बैकअप रखने के लिए Asusual को Google Drive चाहिए। फिर से जोड़ें और Google Drive पर टिक करें</string>
+    <string name="drive_no_backup">इस Google Drive में अभी कोई Asusual बैकअप नहीं है</string>
     <string name="drive_offline">इंटरनेट कनेक्शन नहीं है। ऑनलाइन होने पर फिर से कोशिश करें</string>
     <string name="drive_full">आपका Google Drive भर गया है। जगह खाली करके फिर से कोशिश करें</string>
     <string name="csv">CSV</string>
     <string name="replace_data_title">अपना डेटा बदलें?</string>
-    <string name="replace_data_text">इस बैकअप में %1$s, %2$s और %3$s हैं। इसे इम्पोर्ट करने से Weft में सब कुछ बदल जाएगा।</string>
+    <string name="replace_data_text">इस बैकअप में %1$s, %2$s और %3$s हैं। इसे इम्पोर्ट करने से Asusual में सब कुछ बदल जाएगा।</string>
     <string name="backup_restored">बैकअप रीस्टोर हो गया</string>
     <string name="restore_failed">बैकअप रीस्टोर नहीं हो सका।</string>
     <string name="replace">बदलें</string>
@@ -244,11 +244,11 @@
     <string name="contribute">योगदान दें</string>
     <string name="contribute_desc">कोड, डिज़ाइन और अनुवाद का स्वागत है</string>
     <string name="privacy_policy">निजता नीति</string>
-    <string name="privacy_policy_desc">Weft क्या सहेजता है, और क्या कभी इकट्ठा नहीं करता</string>
+    <string name="privacy_policy_desc">Asusual क्या सहेजता है, और क्या कभी इकट्ठा नहीं करता</string>
     <string name="licences">ओपन-सोर्स लाइसेंस</string>
     <string name="licences_desc">इस ऐप में इस्तेमाल लाइब्रेरी और फ़ॉन्ट</string>
     <string name="made_by">Nisab Mohd और योगदानकर्ताओं ने बनाया</string>
-    <string name="support_weft">Weft का साथ दें</string>
+    <string name="support_asusual">Asusual का साथ दें</string>
     <string name="support_desc">हमेशा मुफ़्त, स्पॉन्सर के सहारे चलता है</string>
     <string name="sponsor">स्पॉन्सर करें</string>
     <string name="name">नाम</string>
@@ -373,10 +373,10 @@
     <string name="edit">बदलें</string>
     <string name="archived">संग्रह में</string>
     <string name="drag_to_reorder">क्रम बदलने के लिए खींचें</string>
-    <string name="support_title">Weft पसंद आ रहा है?</string>
-    <string name="support_text_play">Weft मुफ़्त और ओपन सोर्स है। रेटिंग या स्टार से दूसरों को इसे ढूंढने में मदद मिलती है।</string>
-    <string name="support_text_star">Weft मुफ़्त और ओपन सोर्स है। स्टार से दूसरों को इसे ढूंढने में मदद मिलती है।</string>
-    <string name="support_text">Weft मुफ़्त और ओपन सोर्स है। स्टार से दूसरों को इसे ढूंढने में मदद मिलती है, और स्पॉन्सर करने से यह आगे बढ़ता है।</string>
+    <string name="support_title">Asusual पसंद आ रहा है?</string>
+    <string name="support_text_play">Asusual मुफ़्त और ओपन सोर्स है। रेटिंग या स्टार से दूसरों को इसे ढूंढने में मदद मिलती है।</string>
+    <string name="support_text_star">Asusual मुफ़्त और ओपन सोर्स है। स्टार से दूसरों को इसे ढूंढने में मदद मिलती है।</string>
+    <string name="support_text">Asusual मुफ़्त और ओपन सोर्स है। स्टार से दूसरों को इसे ढूंढने में मदद मिलती है, और स्पॉन्सर करने से यह आगे बढ़ता है।</string>
     <string name="star_github">GitHub पर स्टार दें</string>
     <string name="maybe_later">बाद में</string>
     <string name="channel_reminders">आदत रिमाइंडर</string>
@@ -406,7 +406,7 @@
     <string name="last_7_days">पिछले 7 दिन</string>
     <string name="pick_a_habit">एक आदत चुनें</string>
     <string name="language_system">सिस्टम डिफ़ॉल्ट</string>
-    <string name="help_translate">Weft का अनुवाद करने में मदद करें</string>
+    <string name="help_translate">Asusual का अनुवाद करने में मदद करें</string>
     <string name="help_translate_desc">कोई भाषा जोड़ें या सुधारें</string>
     <string name="nav_habits">आदतें</string>
     <string name="nav_insights">आंकड़े</string>
@@ -423,7 +423,7 @@
     <string name="downloading">डाउनलोड हो रहा है…</string>
     <string name="downloading_percent">डाउनलोड हो रहा है… %1$d%%</string>
     <string name="install">इंस्टॉल करें</string>
-    <string name="allow_installs_hint">Weft को ऐप इंस्टॉल करने की अनुमति दें, फिर इंस्टॉल करें पर टैप करें।</string>
+    <string name="allow_installs_hint">Asusual को ऐप इंस्टॉल करने की अनुमति दें, फिर इंस्टॉल करें पर टैप करें।</string>
     <string name="update_failed">डाउनलोड पूरा नहीं हुआ। आप इसे रिलीज़ पेज से ले सकते हैं।</string>
     <string name="open_release_page">रिलीज़ पेज खोलें</string>
     <plurals name="count_done">
@@ -598,7 +598,7 @@
     <string name="drive_account_line">Google Drive · %1$s</string>
     <string name="drive_reason_offline">इंटरनेट नहीं है</string>
     <string name="drive_reason_full">Drive भर गया है</string>
-    <string name="drive_reason_consent">Google चाहता है कि आप Weft को फिर से अनुमति दें</string>
+    <string name="drive_reason_consent">Google चाहता है कि आप Asusual को फिर से अनुमति दें</string>
     <string name="drive_reason_failed">Google Drive तक नहीं पहुँच सके</string>
     <string name="automatic_backup">अपने-आप बैकअप</string>
     <string name="drive_frequency_short">कितनी बार</string>
@@ -607,7 +607,7 @@
     <string name="google_account">Google खाता</string>
     <string name="google_account_desc">खाता बदलें या डिस्कनेक्ट करें</string>
     <string name="drive_connect_title">Google Drive में बैकअप लें</string>
-    <string name="drive_connect_text">हर रात आपकी अपनी Drive में सेव होता है। इन फ़ाइलों को सिर्फ़ Weft देख सकता है।</string>
+    <string name="drive_connect_text">हर रात आपकी अपनी Drive में सेव होता है। इन फ़ाइलों को सिर्फ़ Asusual देख सकता है।</string>
     <string name="drive_connect_button">Google Drive कनेक्ट करें</string>
     <string name="file_backup_text">आपका डेटा इसी फ़ोन पर रहता है। एक फ़ाइल एक्सपोर्ट करें और उसे सुरक्षित जगह रखें।</string>
     <string name="export_now">अभी एक्सपोर्ट करें</string>
@@ -629,7 +629,7 @@
         <item quantity="other">%d बैकअप</item>
     </plurals>
     <string name="support_rate_line">बस कुछ सेकंड लगते हैं</string>
-    <string name="support_star_line">दूसरों को Weft ढूँढने में मदद करता है</string>
+    <string name="support_star_line">दूसरों को Asusual ढूँढने में मदद करता है</string>
     <string name="support_sponsor_line">इसे आगे बढ़ाता है</string>
     <string name="notify_snooze">बाद में याद दिलाएँ</string>
     <string name="notify_snooze_minutes">%1$d मिनट बाद</string>
@@ -647,7 +647,7 @@
     <string name="alarm_missed">%1$s · %2$s पर छूट गया</string>
     <string name="channel_alarms">अलार्म</string>
     <string name="channel_alarms_desc">आदतों के रिमाइंडर जो पूरी स्क्रीन पर बजते हैं</string>
-    <string name="alarm_open_weft">Weft खोलें</string>
+    <string name="alarm_open_asusual">Asusual खोलें</string>
     <string name="alarm_goal">लक्ष्य %1$s</string>
     <string name="alarm_skip_today">आज छोड़ें</string>
     <string name="alarm_position">%2$d में से %1$d</string>
@@ -665,7 +665,7 @@
     <string name="alarm_overlay">दूसरे ऐप के ऊपर दिखाएँ</string>
     <string name="alarm_overlay_desc">वैकल्पिक · अलार्म दूसरे ऐप्स के ऊपर खुल सकता है</string>
     <string name="alarm_lock_screen">लॉक स्क्रीन और पॉप-अप</string>
-    <string name="alarm_lock_screen_desc">Weft की ऐप जानकारी में दोनों चालू करें</string>
+    <string name="alarm_lock_screen_desc">Asusual की ऐप जानकारी में दोनों चालू करें</string>
     <string name="alarm_battery">बैटरी</string>
     <string name="alarm_battery_desc">“प्रतिबंधित न करें” चुनें ताकि अलार्म बंद न हों</string>
     <string name="alarm_use_notification">इसके बजाय सूचना दें</string>
@@ -673,10 +673,10 @@
     <string name="alarm_sound">अलार्म की आवाज़</string>
     <string name="alarm_vibrate">कंपन</string>
     <string name="alarm_vibrate_desc">जब अलार्म बजे</string>
-    <string name="alarm_sound_weft">Weft</string>
-    <string name="alarm_sound_weft_desc">डिफ़ॉल्ट</string>
-    <string name="alarm_sound_weft_soft">Weft · हल्की</string>
-    <string name="alarm_sound_weft_soft_desc">हल्की धुन</string>
+    <string name="alarm_sound_asusual">Asusual</string>
+    <string name="alarm_sound_asusual_desc">डिफ़ॉल्ट</string>
+    <string name="alarm_sound_asusual_soft">Asusual · हल्की</string>
+    <string name="alarm_sound_asusual_soft_desc">हल्की धुन</string>
     <string name="alarm_sound_phone">फ़ोन की अलार्म आवाज़</string>
     <string name="alarm_sound_picked_desc">आपके फ़ोन से</string>
     <string name="alarm_sound_playing">बज रही है</string>
@@ -690,7 +690,7 @@
     <!-- 1.6.2: More → Reminders & alarms (design 2026-11-09) -->
     <string name="reminders_alarms">रिमाइंडर और अलार्म</string>
     <string name="reminders_section">रिमाइंडर</string>
-    <string name="allow_weft_to">Weft को अनुमति दें</string>
+    <string name="allow_asusual_to">Asusual को अनुमति दें</string>
     <string name="extra_phone_settings">फ़ोन की अतिरिक्त सेटिंग</string>
     <string name="extra_phone_settings_desc">सिर्फ़ कुछ फ़ोन पर ज़रूरी</string>
     <string name="extra_phone_settings_text">कुछ फ़ोन अपने आप अलार्म रोक देते हैं। Android यह नहीं बता सकता कि ये चालू हैं या नहीं, इसलिए इन्हें एक बार देख लें।</string>

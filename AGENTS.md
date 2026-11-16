@@ -1,6 +1,6 @@
 # Rules for contributors and AI agents
 
-These rules apply to every change, whether a person or an AI agent makes it. They keep Weft small, fast and consistent. If a rule gets in your way, open an issue before breaking it.
+These rules apply to every change, whether a person or an AI agent makes it. They keep Asusual small, fast and consistent. If a rule gets in your way, open an issue before breaking it.
 
 ## Hard rules
 
@@ -13,10 +13,11 @@ These rules apply to every change, whether a person or an AI agent makes it. The
 
 ## Names
 
-The app was called Sprout until 1.5.0 (2026-11-01). User-facing text, class names (`WeftApp`, `WeftType`…), export file names and links say **Weft**. These stored names stay `sprout` on purpose, so Sprout installs update to Weft and keep their data; never rename them:
+The app was called Sprout until 1.5.0 (2026-11-01), then Weft until 1.6.3 (2026-11-16). User-facing text, class names (`AsusualApp`, `AsusualType`…), export file names and links say **Asusual**. These stored names stay as they are on purpose, so Sprout and Weft installs update to Asusual and keep their data; never rename them:
 
 - The package / applicationId `app.sprout.habits` and the `app/sprout/habits` source folders. A new package would be a new app on Google Play, GitHub/Obtainium and F-Droid, leaving users behind on Sprout.
-- The database file `sprout.db`, the backup file's `"app":"sprout"` tag (old and new versions read each other's files), the Drive backup names `sprout-backup-*`, the `sprout://` links (still accepted next to `weft://`) and the `app.sprout.habits.action.*` intent actions.
+- The database file `sprout.db`, the backup file's `"app":"sprout"` tag (old and new versions read each other's files), the Drive backup names `sprout-backup-*`, the `weft://` and `sprout://` links (still accepted next to `asusual://`) and the `app.sprout.habits.action.*` intent actions.
+- The alarm sound setting's stored keys `"weft"` and `"weft_soft"` (`AlarmSound.ASUSUAL` / `ASUSUAL_SOFT`; in settings and backups). They are shown as "Asusual" and "Asusual · Soft".
 - The `SPROUT_KEYSTORE_*` variables and GitHub secrets, `keystore/sprout-release.jks` and its alias: renaming them only risks a broken release build.
 - GitHub update checks: old installs find a new version by the asset name ending `-github.apk` and by `SHA256SUMS.txt`, so release assets keep that ending and that file.
 
@@ -39,10 +40,10 @@ The app was called Sprout until 1.5.0 (2026-11-01). User-facing text, class name
 - Gaps and sizes follow [`docs/SPACING.md`](docs/SPACING.md): 16 dp side padding, cards 8 dp apart, sections 16 dp apart, 16 dp inside a card, section labels with 16 dp above and 8 dp below, a 44 dp habit tile wherever a habit is listed.
 - Charts (Insights) are drawn with Compose `Canvas` and use only the app colors: primary for done, the light primary tone for partial, outline grey for the rest. Every chart mark that can be tapped shows its numbers and has a content description.
 - When a screen changes, retake its screenshot in `docs/screenshots/` (see `release/README.md` for how they are staged) in the same commit. Don't invent a new value; copy the same element on Today.
-- Text uses only the nine styles in [`docs/TYPOGRAPHY.md`](docs/TYPOGRAPHY.md), available as `WeftType.*` from `ui/theme/Type.kt`. Never set a font size or weight anywhere else, and never read `MaterialTheme.typography` in a screen. Every style, headings included, uses the chosen font (Lexend by default).
+- Text uses only the nine styles in [`docs/TYPOGRAPHY.md`](docs/TYPOGRAPHY.md), available as `AsusualType.*` from `ui/theme/Type.kt`. Never set a font size or weight anywhere else, and never read `MaterialTheme.typography` in a screen. Every style, headings included, uses the chosen font (Lexend by default).
 - Haptics go through `ui/components/Haptics.kt`, so the same kind of action always feels the same. A new switch, chip, choice or stepper gets the matching one.
 - Text must grow with the user's font size. Only text inside a fixed-size shape (rings, segmented buttons, the navigation bar, the week columns) may cap its scaling, using `CappedFontScale`.
-- Filters, pickers and choices (dates, times, habits, amounts, week start) open in a bottom sheet, never a dialog, inline chips or menus. Use `DateRangeSheet`, `DatePickerSheet`, `TimePickerSheet` and `HabitFilterSheet` in `ui/components`. `TimePickerSheet` (the wheel) is the only time picker: every time setting uses it. Dialogs are only for confirming something (delete, import). Every sheet is a `WeftSheet` (ui/components): it opens fully and stops at 90% of the screen, so put long content in a scrolling list with `Modifier.weight(1f, fill = false)` and keep the main button below it. Full screens are only for creating or editing (New habit, New note).
+- Filters, pickers and choices (dates, times, habits, amounts, week start) open in a bottom sheet, never a dialog, inline chips or menus. Use `DateRangeSheet`, `DatePickerSheet`, `TimePickerSheet` and `HabitFilterSheet` in `ui/components`. `TimePickerSheet` (the wheel) is the only time picker: every time setting uses it. Dialogs are only for confirming something (delete, import). Every sheet is a `AsusualSheet` (ui/components): it opens fully and stops at 90% of the screen, so put long content in a scrolling list with `Modifier.weight(1f, fill = false)` and keep the main button below it. Full screens are only for creating or editing (New habit, New note).
 - Tab headers (`TabHeader`, plus the filter chips on Journal and Insights) sit above the list, not inside it, so they stay in place while the list scrolls.
 - Widgets follow the system: wallpaper colors on Android 12+ (the logo's blue below that) and the system light or dark mode. Never apply the in-app theme, accent or dynamic-color setting to them.
 - Every clickable element is at least 48 dp and has a label TalkBack can read. Gestures such as swipe and press and hold also get an accessibility action.
@@ -65,7 +66,7 @@ The app was called Sprout until 1.5.0 (2026-11-01). User-facing text, class name
 5. When the maintainer asks for a commit, write a message that says what changed and why.
 
 ## Consistency (2026-11-08)
-- Before building any UI, find the existing element of the same kind and reuse it: `WeftSheet` + `SheetHeader`, `WeftButton` / `ButtonPair`, `PromptSheet`, `ActionGroup` / `ActionRow`, `NoteField`, `ChoiceSheet` / `ChoiceRow`, `HabitTile`, `SectionHeader` / `groupedShape`. No dialogs: every prompt is a sheet.
-- Sizes and gaps come from named constants and `docs/SPACING.md` (Sheets: `SheetSidePadding` 20, `SheetTitleInset` 24, `sheetBottomPadding()`); text only from `WeftType`. A new size gets a constant and a doc line in the same change. See CLAUDE.md → Hard rules → Consistency first.
-- The logo is drawn only by `tools/weft_mark.py` (launcher, in-app mark, notification icon, store icon, site), centred on its canvas.
+- Before building any UI, find the existing element of the same kind and reuse it: `AsusualSheet` + `SheetHeader`, `AsusualButton` / `ButtonPair`, `PromptSheet`, `ActionGroup` / `ActionRow`, `NoteField`, `ChoiceSheet` / `ChoiceRow`, `HabitTile`, `SectionHeader` / `groupedShape`. No dialogs: every prompt is a sheet.
+- Sizes and gaps come from named constants and `docs/SPACING.md` (Sheets: `SheetSidePadding` 20, `SheetTitleInset` 24, `sheetBottomPadding()`); text only from `AsusualType`. A new size gets a constant and a doc line in the same change. See CLAUDE.md → Hard rules → Consistency first.
+- The logo is drawn only by `tools/asusual_mark.py` (launcher, in-app mark, notification icon, store icon, site), centred on its canvas.
 

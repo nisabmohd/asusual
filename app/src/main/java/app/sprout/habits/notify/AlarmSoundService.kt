@@ -22,7 +22,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.IntentCompat
 
 /**
- * Plays the ringing alarm: the chosen alarm sound (Weft's tone by default, More → Alarms → Alarm
+ * Plays the ringing alarm: the chosen alarm sound (Asusual's tone by default, More → Alarms → Alarm
  * sound) on the alarm stream, looped, and vibration (unless turned off), until it is answered. Its foreground notification is the alarm notification itself, so
  * nothing extra shows. The sound used to come from the notification channel, but some phones
  * mute a channel's sound (Android's cooldown on notifications in a row, ColorOS), and the alarm
@@ -70,8 +70,8 @@ class AlarmSoundService : Service() {
 
     private fun play() {
         if (player == null) {
-            // A sound picked from the phone may be gone or unreadable: Weft's tone plays instead.
-            player = listOfNotNull(sound, AlarmSounds.weft(this)).firstNotNullOfOrNull { uri -> loop(this, uri) }
+            // A sound picked from the phone may be gone or unreadable: Asusual's tone plays instead.
+            player = listOfNotNull(sound, AlarmSounds.asusual(this)).firstNotNullOfOrNull { uri -> loop(this, uri) }
             // In a call it rings quietly, near in-call volume, so it doesn't blast the ear (design 2026-11-08, 12).
             if (AlarmScreenFallback.inCall(this)) player?.setVolume(IN_CALL_VOLUME, IN_CALL_VOLUME)
         }
@@ -178,7 +178,7 @@ class AlarmSoundService : Service() {
 
         /**
          * Rings with [notification] (posted under [id]) as the service's own notification, playing
-         * [sound] (Weft's tone if it can't be played), vibrating if [vibrate].
+         * [sound] (Asusual's tone if it can't be played), vibrating if [vibrate].
          */
         fun start(context: Context, id: Int, notification: Notification, sound: Uri, vibrate: Boolean) {
             holdFocus(context)

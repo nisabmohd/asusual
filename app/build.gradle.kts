@@ -16,17 +16,17 @@ android {
         applicationId = "app.sprout.habits"
         minSdk = 26
         targetSdk = 36
-        versionCode = 30
-        versionName = "1.6.3"
+        versionCode = 31
+        versionName = "1.6.4"
         // Component tests (app/src/androidTest): ./gradlew :app:connectedFossDebugAndroidTest
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         // Where the About screen's links point. Set once the GitHub repo exists.
-        buildConfigField("String", "REPO_URL", "\"https://github.com/nisabmohd/weft\"")
+        buildConfigField("String", "REPO_URL", "\"https://github.com/nisabmohd/asusual\"")
         buildConfigField("String", "SPONSOR_URL", "\"https://github.com/sponsors/nisabmohd\"")
         // The developer, mid apps: About's contact row and the store listings use this address.
         buildConfigField("String", "CONTACT_EMAIL", "\"hello.midapps@gmail.com\"")
-        // Weft's privacy policy on the developer's site (also the OAuth consent screen's and Play's link).
-        buildConfigField("String", "PRIVACY_URL", "\"https://nisabmohd.com/weft/privacy\"")
+        // Asusual's privacy policy on the developer's site (also the OAuth consent screen's and Play's link).
+        buildConfigField("String", "PRIVACY_URL", "\"https://nisabmohd.com/asusual/privacy\"")
         buildConfigField("String", "PLAY_STORE_URL", "\"https://play.google.com/store/apps/details?id=app.sprout.habits\"")
     }
 
@@ -39,7 +39,7 @@ android {
             // where src/drive and src/play aren't part of the project and show as unresolved.
             isDefault = true
             buildConfigField("boolean", "PLAY_STORE", "true")
-            // True since 1.4.0: the app is live on Google Play (as Sprout, renamed Weft 2026-11-01). It turns on "Rate on Play Store"
+            // True since 1.4.0: the app is live on Google Play (as Sprout, then Weft; renamed Asusual 2026-11-16). It turns on "Rate on Play Store"
             // (About and the support prompt) and About's "Check for updates", which both open
             // the store listing. The other builds never link to Google Play.
             buildConfigField("boolean", "PLAY_LISTED", "true")

@@ -14,7 +14,7 @@ import kotlinx.coroutines.runBlocking
 class DriveStateActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val settings = (application as WeftApp).container.settings
+        val settings = (application as AsusualApp).container.settings
         val account = intent.getStringExtra("account")
         runBlocking {
             settings.setDriveAccount(account)

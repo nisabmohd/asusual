@@ -169,14 +169,14 @@
     <string name="week_starts_on">Woche beginnt am</string>
     <string name="default_reminder">Standard-Erinnerung</string>
     <string name="default_reminder_desc">Für neue Gewohnheiten</string>
-    <string name="about_weft">Über Weft</string>
+    <string name="about_asusual">Über Asusual</string>
     <string name="version_open_source">Version %1$s · quelloffen</string>
     <string name="accent">Akzentfarbe</string>
     <string name="text_size">Textgröße</string>
     <string name="language">Sprache</string>
     <string name="backup_error_damaged">Diese Sicherung ist beschädigt und kann nicht importiert werden.</string>
-    <string name="backup_error_not_weft">Das ist keine Weft-Sicherungsdatei.</string>
-    <string name="backup_error_newer">Diese Sicherung stammt aus einer neueren Weft-Version. Aktualisiere die App und versuch es noch einmal.</string>
+    <string name="backup_error_not_asusual">Das ist keine Asusual-Sicherungsdatei.</string>
+    <string name="backup_error_newer">Diese Sicherung stammt aus einer neueren Asusual-Version. Aktualisiere die App und versuch es noch einmal.</string>
     <string name="backup_error_date">Die Sicherung enthält ein unlesbares Datum: %1$s</string>
     <string name="save_failed">Die Datei konnte nicht gespeichert werden.</string>
     <string name="backup_saved">Sicherung gespeichert</string>
@@ -218,18 +218,18 @@
     <string name="drive_disconnected">Von Google Drive getrennt. Deine Sicherungen bleiben in Drive.</string>
     <string name="drive_delete_backups">Sicherungen in Drive löschen</string>
     <string name="drive_delete_title">Sicherungen in Drive löschen?</string>
-    <string name="drive_delete_text">Damit werden alle Weft-Sicherungen in %1$s gelöscht. Deine Daten auf diesem Gerät bleiben.</string>
+    <string name="drive_delete_text">Damit werden alle Asusual-Sicherungen in %1$s gelöscht. Deine Daten auf diesem Gerät bleiben.</string>
     <string name="drive_deleted">Sicherungen in Drive gelöscht</string>
     <string name="drive_connected_to">Verbunden mit %1$s</string>
     <string name="drive_backed_up">In Google Drive gesichert</string>
     <string name="drive_failed">Google Drive ist nicht erreichbar. Versuch es noch einmal</string>
-    <string name="drive_refused">Weft braucht Google Drive für deine Sicherungen. Verbinde dich noch einmal und hake Google Drive an</string>
-    <string name="drive_no_backup">In diesem Google Drive gibt es noch keine Weft-Sicherung</string>
+    <string name="drive_refused">Asusual braucht Google Drive für deine Sicherungen. Verbinde dich noch einmal und hake Google Drive an</string>
+    <string name="drive_no_backup">In diesem Google Drive gibt es noch keine Asusual-Sicherung</string>
     <string name="drive_offline">Keine Internetverbindung. Versuch es noch einmal, wenn du online bist</string>
     <string name="drive_full">Dein Google Drive ist voll. Mach Platz frei und versuch es noch einmal</string>
     <string name="csv">CSV</string>
     <string name="replace_data_title">Deine Daten ersetzen?</string>
-    <string name="replace_data_text">Diese Sicherung enthält %1$s, %2$s und %3$s. Beim Import wird alles in Weft ersetzt.</string>
+    <string name="replace_data_text">Diese Sicherung enthält %1$s, %2$s und %3$s. Beim Import wird alles in Asusual ersetzt.</string>
     <string name="backup_restored">Sicherung wiederhergestellt</string>
     <string name="restore_failed">Die Sicherung konnte nicht wiederhergestellt werden.</string>
     <string name="replace">Ersetzen</string>
@@ -244,11 +244,11 @@
     <string name="contribute">Mitmachen</string>
     <string name="contribute_desc">Code, Design und Übersetzungen willkommen</string>
     <string name="privacy_policy">Datenschutzerklärung</string>
-    <string name="privacy_policy_desc">Was Weft speichert und was es nie erfasst</string>
+    <string name="privacy_policy_desc">Was Asusual speichert und was es nie erfasst</string>
     <string name="licences">Open-Source-Lizenzen</string>
     <string name="licences_desc">Bibliotheken und Schriften, die diese App nutzt</string>
     <string name="made_by">Gemacht von Nisab Mohd &amp; Mitwirkenden</string>
-    <string name="support_weft">Weft unterstützen</string>
+    <string name="support_asusual">Asusual unterstützen</string>
     <string name="support_desc">Für immer kostenlos, getragen von Sponsoren</string>
     <string name="sponsor">Sponsern</string>
     <string name="name">Name</string>
@@ -373,10 +373,10 @@
     <string name="edit">Bearbeiten</string>
     <string name="archived">Archiviert</string>
     <string name="drag_to_reorder">Ziehen zum Sortieren</string>
-    <string name="support_title">Gefällt dir Weft?</string>
-    <string name="support_text_play">Weft ist frei und quelloffen. Eine Bewertung oder ein Stern hilft anderen, es zu finden.</string>
-    <string name="support_text_star">Weft ist frei und quelloffen. Ein Stern hilft anderen, es zu finden.</string>
-    <string name="support_text">Weft ist frei und quelloffen. Ein Stern hilft anderen, es zu finden, und Sponsoring hält es am Wachsen.</string>
+    <string name="support_title">Gefällt dir Asusual?</string>
+    <string name="support_text_play">Asusual ist frei und quelloffen. Eine Bewertung oder ein Stern hilft anderen, es zu finden.</string>
+    <string name="support_text_star">Asusual ist frei und quelloffen. Ein Stern hilft anderen, es zu finden.</string>
+    <string name="support_text">Asusual ist frei und quelloffen. Ein Stern hilft anderen, es zu finden, und Sponsoring hält es am Wachsen.</string>
     <string name="star_github">Stern auf GitHub</string>
     <string name="maybe_later">Vielleicht später</string>
     <string name="channel_reminders">Gewohnheits-Erinnerungen</string>
@@ -406,7 +406,7 @@
     <string name="last_7_days">Letzte 7 Tage</string>
     <string name="pick_a_habit">Gewohnheit wählen</string>
     <string name="language_system">Systemstandard</string>
-    <string name="help_translate">Hilf, Weft zu übersetzen</string>
+    <string name="help_translate">Hilf, Asusual zu übersetzen</string>
     <string name="help_translate_desc">Eine Sprache hinzufügen oder verbessern</string>
     <string name="nav_habits">Routinen</string>
     <string name="nav_insights">Statistik</string>
@@ -423,7 +423,7 @@
     <string name="downloading">Wird geladen…</string>
     <string name="downloading_percent">Wird geladen… %1$d %%</string>
     <string name="install">Installieren</string>
-    <string name="allow_installs_hint">Erlaube Weft, Apps zu installieren, und tippe dann auf Installieren.</string>
+    <string name="allow_installs_hint">Erlaube Asusual, Apps zu installieren, und tippe dann auf Installieren.</string>
     <string name="update_failed">Der Download wurde nicht fertig. Du findest ihn auf der Release-Seite.</string>
     <string name="open_release_page">Release-Seite öffnen</string>
     <plurals name="count_done">
@@ -597,7 +597,7 @@
     <string name="drive_account_line">Google Drive · %1$s</string>
     <string name="drive_reason_offline">Keine Verbindung</string>
     <string name="drive_reason_full">Drive ist voll</string>
-    <string name="drive_reason_consent">Google möchte, dass du Weft erneut erlaubst</string>
+    <string name="drive_reason_consent">Google möchte, dass du Asusual erneut erlaubst</string>
     <string name="drive_reason_failed">Google Drive nicht erreichbar</string>
     <string name="automatic_backup">Automatische Sicherung</string>
     <string name="drive_frequency_short">Häufigkeit</string>
@@ -606,7 +606,7 @@
     <string name="google_account">Google-Konto</string>
     <string name="google_account_desc">Konto wechseln oder trennen</string>
     <string name="drive_connect_title">In Google Drive sichern</string>
-    <string name="drive_connect_text">Jede Nacht in deinem eigenen Drive gespeichert. Nur Weft sieht diese Dateien.</string>
+    <string name="drive_connect_text">Jede Nacht in deinem eigenen Drive gespeichert. Nur Asusual sieht diese Dateien.</string>
     <string name="drive_connect_button">Google Drive verbinden</string>
     <string name="file_backup_text">Deine Daten bleiben auf diesem Handy. Exportiere eine Datei und bewahre sie sicher auf.</string>
     <string name="export_now">Jetzt exportieren</string>
@@ -628,7 +628,7 @@
         <item quantity="other">%d Sicherungen</item>
     </plurals>
     <string name="support_rate_line">Dauert nur ein paar Sekunden</string>
-    <string name="support_star_line">Hilft anderen, Weft zu finden</string>
+    <string name="support_star_line">Hilft anderen, Asusual zu finden</string>
     <string name="support_sponsor_line">Hält es am Wachsen</string>
     <string name="notify_snooze">Schlummern</string>
     <string name="notify_snooze_minutes">%1$d Min. schlummern</string>
@@ -646,7 +646,7 @@
     <string name="alarm_missed">%1$s · verpasst um %2$s</string>
     <string name="channel_alarms">Wecker</string>
     <string name="channel_alarms_desc">Gewohnheits-Erinnerungen, die im Vollbild klingeln</string>
-    <string name="alarm_open_weft">Weft öffnen</string>
+    <string name="alarm_open_asusual">Asusual öffnen</string>
     <string name="alarm_goal">Ziel %1$s</string>
     <string name="alarm_skip_today">Heute auslassen</string>
     <string name="alarm_position">%1$d von %2$d</string>
@@ -664,7 +664,7 @@
     <string name="alarm_overlay">Über anderen Apps anzeigen</string>
     <string name="alarm_overlay_desc">Optional · der Wecker kann sich über anderen Apps öffnen</string>
     <string name="alarm_lock_screen">Sperrbildschirm &amp; Pop-ups</string>
-    <string name="alarm_lock_screen_desc">Beides in den App-Infos von Weft einschalten</string>
+    <string name="alarm_lock_screen_desc">Beides in den App-Infos von Asusual einschalten</string>
     <string name="alarm_battery">Akku</string>
     <string name="alarm_battery_desc">Auf „Nicht einschränken“ stellen, damit Wecker nicht gestoppt werden</string>
     <string name="alarm_use_notification">Stattdessen Benachrichtigung</string>
@@ -672,10 +672,10 @@
     <string name="alarm_sound">Weckton</string>
     <string name="alarm_vibrate">Vibrieren</string>
     <string name="alarm_vibrate_desc">Wenn ein Wecker klingelt</string>
-    <string name="alarm_sound_weft">Weft</string>
-    <string name="alarm_sound_weft_desc">Standard</string>
-    <string name="alarm_sound_weft_soft">Weft · Sanft</string>
-    <string name="alarm_sound_weft_soft_desc">Ein sanfterer Ton</string>
+    <string name="alarm_sound_asusual">Asusual</string>
+    <string name="alarm_sound_asusual_desc">Standard</string>
+    <string name="alarm_sound_asusual_soft">Asusual · Sanft</string>
+    <string name="alarm_sound_asusual_soft_desc">Ein sanfterer Ton</string>
     <string name="alarm_sound_phone">Weckton des Handys</string>
     <string name="alarm_sound_picked_desc">Von deinem Handy</string>
     <string name="alarm_sound_playing">Wird abgespielt</string>
@@ -689,7 +689,7 @@
     <!-- 1.6.2: More → Reminders & alarms (design 2026-11-09) -->
     <string name="reminders_alarms">Erinnerungen &amp; Wecker</string>
     <string name="reminders_section">Erinnerungen</string>
-    <string name="allow_weft_to">Weft erlauben</string>
+    <string name="allow_asusual_to">Asusual erlauben</string>
     <string name="extra_phone_settings">Weitere Handy-Einstellungen</string>
     <string name="extra_phone_settings_desc">Nur auf manchen Handys nötig</string>
     <string name="extra_phone_settings_text">Manche Handys stoppen Wecker von selbst. Android kann nicht sagen, ob diese an sind – prüfe sie also einmal.</string>

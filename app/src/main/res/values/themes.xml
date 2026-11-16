@@ -1,6 +1,6 @@
 <resources>
-    <style name="Theme.Weft" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:windowBackground">@color/weft_bg</item>
+    <style name="Theme.Asusual" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/asusual_bg</item>
         <!-- Transparent bars for edge-to-edge on Android 8–14 (see ui/EdgeToEdge.kt). Android 15+
              ignores these and is always edge-to-edge. -->
         <item name="android:statusBarColor">@android:color/transparent</item>
@@ -9,7 +9,7 @@
     <!-- The alarm ringing screen. Opaque: Android won't let a see-through window cover the lock
          screen. No starting window, and the habit's colour is painted before the first frame
          (AlarmActivity), so it doesn't flash. Android 11+ uses values-v30. -->
-    <style name="Theme.Weft.Alarm">
+    <style name="Theme.Asusual.Alarm">
         <item name="android:windowDisablePreview">true</item>
         <item name="android:windowAnimationStyle">@null</item>
     </style>

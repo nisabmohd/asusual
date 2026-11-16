@@ -36,7 +36,7 @@ def scheme(dark):
     if dark:
         return dict(bg=hsl(h, 14, 15), primary=hsl(h, 86, 82), track=hsl(h, 12, 18), text=hsl(h, 10, 93),
                     muted=hsl(h, 8, 68), outline=hsl(h, 8, 45), skip=hsl(h, 8, 28), skip_ink=hsl(h, 8, 68))
-    return dict(bg=hsl(h, 34, 92), primary="#2A6F52", track=hsl(h, 28, 91), text=hsl(h, 15, 11),
+    return dict(bg=hsl(h, 34, 92), primary="#2B6F52", track=hsl(h, 28, 91), text=hsl(h, 15, 11),
                 muted=hsl(h, 8, 36), outline=hsl(h, 8, 60), skip=hsl(h, 14, 84), skip_ink=hsl(h, 8, 36))
 
 

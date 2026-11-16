@@ -229,7 +229,7 @@ class AlarmRinger(
             .setOngoing(true)
             .setOnlyAlertOnce(!loud)
             // The next alarm's card while the ringing screen already shows it ("2 of 2"): no pop-up
-            // banner over that screen (it hid Open Weft); it waits in the shade.
+            // banner over that screen (it hid Open Asusual); it waits in the shade.
             .setSilent(!loud && AlarmActivity.showing)
             .setContentIntent(screen)
         if (loud) builder.setFullScreenIntent(screen, true)
@@ -312,7 +312,7 @@ class AlarmRinger(
     }
 
     /**
-     * Open Weft: the alarm on screen stops; the others stay as quiet notifications, unanswered
+     * Open Asusual: the alarm on screen stops; the others stay as quiet notifications, unanswered
      * (design 2026-11-08), and leave the screen.
      */
     fun leave(habitId: Long) {

@@ -9,12 +9,12 @@ import android.net.Uri
 import android.provider.Settings
 
 /**
- * Opens Android's settings pages for Weft, the same way on every phone.
+ * Opens Android's settings pages for Asusual, the same way on every phone.
  *
- * A page opens inside Weft's own task, never with FLAG_ACTIVITY_NEW_TASK: with that flag, a
+ * A page opens inside Asusual's own task, never with FLAG_ACTIVITY_NEW_TASK: with that flag, a
  * Settings task already in the background (left on, say, the lock screen notifications page) can be
  * brought back as it was instead of opening the page asked for. Phones whose Settings routes every
- * page through one screen do this every time (OnePlus 13s, 2026-11-11). Back then returns to Weft.
+ * page through one screen do this every time (OnePlus 13s, 2026-11-11). Back then returns to Asusual.
  *
  * Each call lists pages from the most exact to the most general; the first one this phone has opens.
  */
@@ -48,7 +48,7 @@ object SystemPages {
 
     /**
      * "Display over other apps". Since Android 11 the public page ignores the app and lists every
-     * app, so Weft's own page (AOSP's action, not public) is tried first.
+     * app, so Asusual's own page (AOSP's action, not public) is tried first.
      */
     fun overlay(context: Context) = open(
         context,
@@ -59,7 +59,7 @@ object SystemPages {
     )
 
     /**
-     * Weft's battery page ("Unrestricted" / "Don't restrict"), the one AOSP and most makers keep
+     * Asusual's battery page ("Unrestricted" / "Don't restrict"), the one AOSP and most makers keep
      * (not public, so it falls back to Android's battery optimization list, then app info).
      */
     fun battery(context: Context) = open(
@@ -69,7 +69,7 @@ object SystemPages {
         appDetailsIntent(context),
     )
 
-    /** Weft's app info page: where phone makers keep their own lock screen and pop-up switches. */
+    /** Asusual's app info page: where phone makers keep their own lock screen and pop-up switches. */
     fun appDetails(context: Context) = open(context, appDetailsIntent(context), Intent(Settings.ACTION_SETTINGS))
 
     private fun packageUri(context: Context) = Uri.parse("package:${context.packageName}")

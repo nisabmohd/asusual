@@ -13,9 +13,9 @@ import app.sprout.habits.ui.components.confirm
 import app.sprout.habits.ui.components.stepTick
 import app.sprout.habits.ui.components.tick
 import androidx.compose.ui.platform.LocalHapticFeedback
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 import androidx.compose.ui.res.stringResource
-import app.sprout.habits.ui.components.WeftSheet
+import app.sprout.habits.ui.components.AsusualSheet
 import androidx.compose.foundation.background
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.contentDescription
@@ -121,7 +121,7 @@ fun LogSheet(
         status = if (amount >= sheet.target) EntryStatus.DONE else EntryStatus.PARTIAL
     }
 
-    WeftSheet(onDismissRequest = onDismiss) {
+    AsusualSheet(onDismissRequest = onDismiss) {
         Column(
             Modifier
                 .fillMaxWidth()
@@ -135,8 +135,8 @@ fun LogSheet(
                 // The same 44 dp tile as every habit card.
                 HabitTile(sheet.icon, hc.soft, hc.ink)
                 Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(TitleLineGap)) {
-                    Text(sheet.name, style = WeftType.title, color = colors.onSurface)
-                    Text(sheet.subtitle, style = WeftType.supporting, color = colors.onSurfaceVariant)
+                    Text(sheet.name, style = AsusualType.title, color = colors.onSurface)
+                    Text(sheet.subtitle, style = AsusualType.supporting, color = colors.onSurfaceVariant)
                 }
                 // Clears the day back to not logged; only useful when something is logged.
                 if (sheet.hasEntry) {
@@ -149,7 +149,7 @@ fun LogSheet(
                     ) {
                         Icon(painterResource(R.drawable.ic_undo), contentDescription = null, modifier = Modifier.size(IconSizeChip))
                         Spacer(Modifier.width(IconLabelGap))
-                        Text(stringResource(R.string.action_undo), style = WeftType.label)
+                        Text(stringResource(R.string.action_undo), style = AsusualType.label)
                     }
                 }
             }
@@ -178,7 +178,7 @@ fun LogSheet(
                             activeContentColor = hc.ink,
                             inactiveContainerColor = colors.surfaceContainerLowest,
                         ),
-                    ) { Text(label, style = WeftType.label) }
+                    ) { Text(label, style = AsusualType.label) }
                 }
             }
             }
@@ -191,15 +191,15 @@ fun LogSheet(
                             Text(
                                 buildAnnotatedString {
                                     append(TodayViewModel.formatNumber(amount))
-                                    withStyle(SpanStyle(fontSize = WeftType.title.fontSize, color = colors.onSurfaceVariant)) {
+                                    withStyle(SpanStyle(fontSize = AsusualType.title.fontSize, color = colors.onSurfaceVariant)) {
                                         append(" / ${TodayViewModel.formatNumber(sheet.target)}")
                                     }
                                 },
-                                style = WeftType.displayNumber,
+                                style = AsusualType.displayNumber,
                                 color = colors.onSurface,
                             )
                             val pct = if (sheet.target > 0) (amount / sheet.target * 100).roundToInt() else 0
-                            Text(if (sheet.unit.isEmpty()) stringResource(R.string.percent, pct) else stringResource(R.string.unit_percent, sheet.unit, pct), style = WeftType.label, color = colors.onSurfaceVariant)
+                            Text(if (sheet.unit.isEmpty()) stringResource(R.string.percent, pct) else stringResource(R.string.unit_percent, sheet.unit, pct), style = AsusualType.label, color = colors.onSurfaceVariant)
                         }
                         StepButton(R.drawable.ic_plus, stringResource(R.string.more)) { setAmount(amount + step) }
                     }

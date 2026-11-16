@@ -11,7 +11,7 @@ import app.sprout.habits.ui.theme.HabitCardPadding
 import app.sprout.habits.ui.theme.TileTextGap
 import app.sprout.habits.ui.components.HabitTile
 import androidx.compose.foundation.layout.heightIn
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 import android.appwidget.AppWidgetManager
 import android.content.Intent
 import android.os.Bundle
@@ -51,7 +51,7 @@ import androidx.lifecycle.lifecycleScope
 import app.sprout.habits.R
 import app.sprout.habits.data.Habit
 import app.sprout.habits.data.HabitIcon
-import app.sprout.habits.ui.theme.WeftTheme
+import app.sprout.habits.ui.theme.AsusualTheme
 import app.sprout.habits.ui.theme.habitColors
 import kotlinx.coroutines.launch
 
@@ -73,7 +73,7 @@ class StreakWidgetConfigActivity : ComponentActivity() {
         }
         drawEdgeToEdge(dark = (resources.configuration.uiMode and android.content.res.Configuration.UI_MODE_NIGHT_MASK) == android.content.res.Configuration.UI_MODE_NIGHT_YES)
         setContent {
-            WeftTheme {
+            AsusualTheme {
                 val habits by produceState<List<Habit>?>(null) {
                     value = WidgetDataSource(container.repository, container.settings).habitsForPicker()
                 }
@@ -83,7 +83,7 @@ class StreakWidgetConfigActivity : ComponentActivity() {
                     verticalArrangement = Arrangement.spacedBy(CardGap),
                 ) {
                     item {
-                        Text(stringResource(R.string.pick_a_habit), style = WeftType.title, modifier = Modifier.padding(SectionHeaderInset, Space8, SectionHeaderInset, Space12))
+                        Text(stringResource(R.string.pick_a_habit), style = AsusualType.title, modifier = Modifier.padding(SectionHeaderInset, Space8, SectionHeaderInset, Space12))
                     }
                     items(habits.orEmpty(), key = { it.id }) { habit -> HabitRow(habit) { pick(appWidgetId, habit.id) } }
                 }
@@ -119,6 +119,6 @@ private fun HabitRow(habit: Habit, onClick: () -> Unit) {
     ) {
         // The same habit row as everywhere: the 44 dp tile, 12 dp to the name.
         HabitTile(HabitIcon.fromKey(habit.icon).drawable, hc.soft, hc.ink)
-        Text(habit.name, style = WeftType.cardTitle, modifier = Modifier.padding(start = TileTextGap))
+        Text(habit.name, style = AsusualType.cardTitle, modifier = Modifier.padding(start = TileTextGap))
     }
 }

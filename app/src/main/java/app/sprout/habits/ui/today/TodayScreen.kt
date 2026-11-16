@@ -26,7 +26,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.TextButton
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -160,7 +160,7 @@ fun TodayScreen(
                 // New note picks the habit, the same way as the Journal's Add note.
                 onClick = { onAddNote(state.selectedDate.toEpochDay()) },
                 icon = { Icon(painterResource(R.drawable.ic_habit_pen), contentDescription = null, modifier = Modifier.size(IconSize)) },
-                text = { Text(stringResource(R.string.add_note), style = WeftType.label) },
+                text = { Text(stringResource(R.string.add_note), style = AsusualType.label) },
                 containerColor = MaterialTheme.colorScheme.primaryContainer,
                 contentColor = MaterialTheme.colorScheme.onPrimaryContainer,
                 shape = FabShape,
@@ -247,11 +247,11 @@ private fun ScoreCard(state: TodayUiState) {
         verticalArrangement = Arrangement.spacedBy(CardContentGap),
     ) {
         Row(verticalAlignment = Alignment.Bottom) {
-            Text(stringResource(R.string.percent, state.scorePercent), style = WeftType.screenTitleNumber, color = colors.onSurface)
+            Text(stringResource(R.string.percent, state.scorePercent), style = AsusualType.screenTitleNumber, color = colors.onSurface)
             Spacer(Modifier.width(Space8))
             Text(
                 stringResource(if (state.isToday) R.string.of_today else R.string.of_the_day),
-                style = WeftType.supporting,
+                style = AsusualType.supporting,
                 color = colors.onSurfaceVariant,
                 modifier = Modifier.padding(bottom = Space4),
             )
@@ -259,7 +259,7 @@ private fun ScoreCard(state: TodayUiState) {
             // Takes the rest of the row and wraps at large text sizes.
             Text(
                 summary(state),
-                style = WeftType.label,
+                style = AsusualType.label,
                 color = colors.onSurfaceVariant,
                 textAlign = androidx.compose.ui.text.style.TextAlign.End,
                 modifier = Modifier.weight(1f).padding(bottom = Space4),
@@ -301,8 +301,8 @@ private fun EmptyState() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(TitleLineGap),
     ) {
-        Text(stringResource(R.string.today_empty), style = WeftType.cardTitle, color = MaterialTheme.colorScheme.onSurface)
-        Text(stringResource(R.string.today_empty_hint), style = WeftType.supporting, color = MaterialTheme.colorScheme.onSurfaceVariant)
+        Text(stringResource(R.string.today_empty), style = AsusualType.cardTitle, color = MaterialTheme.colorScheme.onSurface)
+        Text(stringResource(R.string.today_empty_hint), style = AsusualType.supporting, color = MaterialTheme.colorScheme.onSurfaceVariant)
     }
 }
 

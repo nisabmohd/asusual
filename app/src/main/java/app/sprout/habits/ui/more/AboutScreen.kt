@@ -15,7 +15,7 @@ import app.sprout.habits.ui.components.TitleLineGap
 import app.sprout.habits.ui.theme.TopBarHeight
 import app.sprout.habits.ui.theme.TopBarTitleGap
 import app.sprout.habits.ui.components.HabitTileSize
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 import androidx.compose.foundation.layout.Spacer
 import app.sprout.habits.ui.update.CheckForUpdates
 import app.sprout.habits.data.update.PlayUpdates
@@ -66,11 +66,11 @@ fun AboutScreen(updates: UpdateManager, playUpdates: PlayUpdates, onBack: () -> 
             verticalArrangement = Arrangement.spacedBy(SectionGap),
         ) {
             Box(Modifier.padding(top = Space16).size(AboutLogoSize).background(colors.primaryContainer, CardShape), contentAlignment = Alignment.Center) {
-                Icon(painterResource(R.drawable.ic_weft), contentDescription = null, tint = colors.onPrimaryContainer, modifier = Modifier.size(AboutLogoIconSize))
+                Icon(painterResource(R.drawable.ic_asusual), contentDescription = null, tint = colors.onPrimaryContainer, modifier = Modifier.size(AboutLogoIconSize))
             }
             Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                Text(stringResource(R.string.app_name), style = WeftType.screenTitle, color = colors.onBackground)
-                Text(stringResource(R.string.version_build, BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE), style = WeftType.supporting, color = colors.onSurfaceVariant)
+                Text(stringResource(R.string.app_name), style = AsusualType.screenTitle, color = colors.onBackground)
+                Text(stringResource(R.string.version_build, BuildConfig.VERSION_NAME, BuildConfig.VERSION_CODE), style = AsusualType.supporting, color = colors.onSurfaceVariant)
                 Spacer(Modifier.height(Space12))
                 CheckForUpdates(updates, playUpdates)
             }
@@ -95,19 +95,19 @@ fun AboutScreen(updates: UpdateManager, playUpdates: PlayUpdates, onBack: () -> 
             )
             // The developer, mid apps, with the contact address; tapping writes an email.
             SettingsCard { MidAppsRow { openEmail(context, BuildConfig.CONTACT_EMAIL, context.getString(R.string.app_name)) } }
-            Text(stringResource(R.string.made_by), style = WeftType.supporting, color = colors.onSurfaceVariant, textAlign = TextAlign.Center, modifier = Modifier.padding(bottom = Space24))
+            Text(stringResource(R.string.made_by), style = AsusualType.supporting, color = colors.onSurfaceVariant, textAlign = TextAlign.Center, modifier = Modifier.padding(bottom = Space24))
         }
     }
 }
 
-/** "Support Weft" with a pink heart and a small Sponsor pill. */
+/** "Support Asusual" with a pink heart and a small Sponsor pill. */
 @Composable
 private fun SupportRow(onClick: () -> Unit) {
     val pink = habitColors(330f)
-    SettingsRow(stringResource(R.string.support_weft), stringResource(R.string.support_desc), onClick = onClick) {
+    SettingsRow(stringResource(R.string.support_asusual), stringResource(R.string.support_desc), onClick = onClick) {
         Text(
             stringResource(R.string.sponsor),
-            style = WeftType.label,
+            style = AsusualType.label,
             color = pink.ink,
             modifier = Modifier.background(pink.soft, PillShape).padding(horizontal = Space12, vertical = Space8),
         )
@@ -125,8 +125,8 @@ private fun MidAppsRow(onClick: () -> Unit) {
     ) {
         Image(painterResource(R.drawable.ic_mid_apps), contentDescription = null, modifier = Modifier.size(HabitTileSize))
         Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(app.sprout.habits.ui.components.TitleLineGap)) {
-            Text(stringResource(R.string.mid_apps), style = WeftType.cardTitle, color = colors.onSurface)
-            Text(stringResource(R.string.about_contact, BuildConfig.CONTACT_EMAIL), style = WeftType.supporting, color = colors.onSurfaceVariant)
+            Text(stringResource(R.string.mid_apps), style = AsusualType.cardTitle, color = colors.onSurface)
+            Text(stringResource(R.string.about_contact, BuildConfig.CONTACT_EMAIL), style = AsusualType.supporting, color = colors.onSurfaceVariant)
         }
         Icon(painterResource(R.drawable.ic_sym_mail), contentDescription = null, tint = colors.onSurfaceVariant, modifier = Modifier.size(IconSizeSmall))
     }
@@ -142,6 +142,6 @@ private fun LinkRow(title: String, subtitle: String, onClick: () -> Unit) =
 fun TopBar(title: String, onBack: () -> Unit) {
     Row(Modifier.fillMaxWidth().height(TopBarHeight).padding(start = Space16, top = Space8), verticalAlignment = Alignment.CenterVertically) {
         HeaderIconButton(R.drawable.ic_arrow_back, stringResource(R.string.action_back), onClick = onBack)
-        Text(title, style = WeftType.title, color = MaterialTheme.colorScheme.onBackground, modifier = Modifier.padding(start = TopBarTitleGap))
+        Text(title, style = AsusualType.title, color = MaterialTheme.colorScheme.onBackground, modifier = Modifier.padding(start = TopBarTitleGap))
     }
 }

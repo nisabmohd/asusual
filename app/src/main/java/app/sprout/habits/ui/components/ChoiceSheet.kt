@@ -6,7 +6,7 @@ import app.sprout.habits.ui.theme.RowMinHeight
 import app.sprout.habits.ui.theme.Space8
 import app.sprout.habits.ui.theme.TrailingGap
 import androidx.compose.ui.text.font.FontFamily
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -47,7 +47,7 @@ fun ChoiceSheet(
     footer: (@Composable () -> Unit)? = null,
     rows: @Composable ColumnScope.() -> Unit,
 ) {
-    WeftSheet(onDismissRequest = onDismiss) {
+    AsusualSheet(onDismissRequest = onDismiss) {
         SheetHeader(title, subtitle)
         Column(Modifier.weight(1f, fill = false).verticalScroll(rememberScrollState()).selectableGroup(), content = rows)
         if (footer != null) footer() else Spacer(Modifier.sheetBottomPadding())
@@ -83,12 +83,12 @@ fun ChoiceRow(
         horizontalArrangement = Arrangement.spacedBy(TrailingGap),
     ) {
         Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(TitleLineGap)) {
-            Text(title, style = WeftType.cardTitle.copy(fontFamily = fontFamily ?: WeftType.cardTitle.fontFamily), color = colors.onSurface)
+            Text(title, style = AsusualType.cardTitle.copy(fontFamily = fontFamily ?: AsusualType.cardTitle.fontFamily), color = colors.onSurface)
             subtitle?.let {
                 val color = subtitleColor.takeOrElse { colors.onSurfaceVariant }
                 Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(IconLabelGap)) {
                     subtitleIcon?.let { icon -> Icon(painterResource(icon), contentDescription = null, tint = color, modifier = Modifier.size(IconSizeTiny)) }
-                    Text(it, style = WeftType.supporting.copy(fontFamily = fontFamily ?: WeftType.supporting.fontFamily), color = color)
+                    Text(it, style = AsusualType.supporting.copy(fontFamily = fontFamily ?: AsusualType.supporting.fontFamily), color = color)
                 }
             }
         }

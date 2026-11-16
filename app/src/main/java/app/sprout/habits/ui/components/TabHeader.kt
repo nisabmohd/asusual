@@ -8,7 +8,7 @@ import app.sprout.habits.ui.theme.SectionHeaderInset
 import app.sprout.habits.ui.theme.Space16
 import app.sprout.habits.ui.theme.Space8
 import app.sprout.habits.ui.theme.TouchTarget
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.requiredSize
@@ -59,10 +59,10 @@ fun TabHeader(
     ) {
         Column(Modifier.weight(1f)) {
             Box(Modifier.heightIn(min = HeaderButtonSize), contentAlignment = Alignment.CenterStart) {
-                Text(title, style = WeftType.screenTitle, color = colors.onBackground)
+                Text(title, style = AsusualType.screenTitle, color = colors.onBackground)
             }
             if (subtitle != null) {
-                Text(subtitle, style = WeftType.label, color = colors.onSurfaceVariant)
+                Text(subtitle, style = AsusualType.label, color = colors.onSurfaceVariant)
             }
         }
         Row(horizontalArrangement = Arrangement.spacedBy(ItemGap), content = actions)

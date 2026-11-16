@@ -57,7 +57,7 @@ sealed interface DownloadState {
 }
 
 /**
- * Checks GitHub Releases for a newer Weft and installs it: download the APK, check it against
+ * Checks GitHub Releases for a newer Asusual and installs it: download the APK, check it against
  * the release's SHA256SUMS.txt, then hand it to Android's installer (which also checks it is
  * signed with the same key). Only the github build does this ([enabled]); the F-Droid and Play
  * builds are updated by their stores and never touch the network for it.
@@ -97,7 +97,7 @@ class UpdateManager(private val context: Context, private val settings: Settings
         val url = update.apkUrl ?: run { emit(DownloadState.Failed); return@flow }
         val dir = File(context.cacheDir, "updates").apply { mkdirs() }
         dir.listFiles()?.forEach { it.delete() }
-        val apk = File(dir, "weft-${update.version}.apk")
+        val apk = File(dir, "asusual-${update.version}.apk")
         val digest = MessageDigest.getInstance("SHA-256")
         try {
             emit(DownloadState.Progress(null))
@@ -136,14 +136,14 @@ class UpdateManager(private val context: Context, private val settings: Settings
     }.flowOn(Dispatchers.IO)
 
     /**
-     * False on Android 8+ until the user allows Weft to install apps; see [openInstallPermission].
+     * False on Android 8+ until the user allows Asusual to install apps; see [openInstallPermission].
      * Always false in builds without GitHub updates: they don't declare REQUEST_INSTALL_PACKAGES, and
      * asking without it throws.
      */
     fun canInstall(): Boolean =
         enabled && (Build.VERSION.SDK_INT < Build.VERSION_CODES.O || context.packageManager.canRequestPackageInstalls())
 
-    /** Opens "Install unknown apps" for Weft. */
+    /** Opens "Install unknown apps" for Asusual. */
     fun openInstallPermission() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             start(Intent(Settings.ACTION_MANAGE_UNKNOWN_APP_SOURCES, Uri.parse("package:${context.packageName}")))
@@ -202,7 +202,7 @@ class UpdateManager(private val context: Context, private val settings: Settings
         c.connectTimeout = 10_000
         c.readTimeout = 30_000
         c.setRequestProperty("Accept", "application/vnd.github+json")
-        c.setRequestProperty("User-Agent", "Weft/${BuildConfig.VERSION_NAME}")
+        c.setRequestProperty("User-Agent", "Asusual/${BuildConfig.VERSION_NAME}")
         if (c.responseCode !in 200..299) {
             c.disconnect()
             throw IOException("HTTP ${c.responseCode} for $url")

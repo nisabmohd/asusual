@@ -2,10 +2,10 @@
     <!-- The launch screen and the widgets' loading screen can't know the user's accent, so they follow the
          system (user, 2026-11-02): Android 12+ takes the system colours (values-v31). Below 12 there are none,
          so they use the logo's hue (155, LOGO_HUE; the logo is green since 2026-11-08), like the widgets there:
-         weft_bg the page hsl(155 30% 96%), widget_bg the widget background (secondaryContainer) hsl(155 34% 87%).
-         weft_primary: the launcher icon's green (weft-icon.zip), also its adaptive background. -->
-    <color name="weft_bg">#FFF2F8F5</color>
-    <color name="weft_primary">#FF2A6F52</color>
+         asusual_bg the page hsl(155 30% 96%), widget_bg the widget background (secondaryContainer) hsl(155 34% 87%).
+         asusual_primary: the launcher icon's green (asusual-logo.zip), also its adaptive background. -->
+    <color name="asusual_bg">#FFF2F8F5</color>
+    <color name="asusual_primary">#FF2B6F52</color>
     <color name="widget_bg">#FFD3E9E0</color>
     <!-- Launcher shortcuts (fixed, any accent): the logo's hue, primaryContainer hsl(155 88% 91%) and onPrimaryContainer hsl(155 62% 19%). -->
     <color name="shortcut_background">#FFD4FCEB</color>
@@ -15,6 +15,6 @@
          for the pill and the logo green for the text buttons; Android 12+ in values-v31. -->
     <color name="notification_pill">#FFD4FCEB</color>
     <color name="notification_pill_text">#FF124E35</color>
-    <color name="notification_accent">#FF2A6F52</color>
+    <color name="notification_accent">#FF2B6F52</color>
     <color name="notification_ripple">#33124E35</color>
 </resources>

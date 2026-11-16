@@ -113,8 +113,8 @@ fun rememberFileBackup(backup: BackupManager, repository: SettingsRepository, on
         FileBackupActions(
             export = { format ->
                 when (format) {
-                    ExportFormat.JSON -> exportJson.launch("weft-backup-${LocalDate.now()}.json")
-                    ExportFormat.CSV -> exportCsv.launch("weft-${LocalDate.now()}.csv")
+                    ExportFormat.JSON -> exportJson.launch("asusual-backup-${LocalDate.now()}.json")
+                    ExportFormat.CSV -> exportCsv.launch("asusual-${LocalDate.now()}.csv")
                 }
             },
             import = { import.launch(arrayOf("application/json", "application/octet-stream", "text/plain")) },
@@ -144,7 +144,7 @@ private fun formatDesc(format: ExportFormat) = when (format) {
 
 internal fun android.content.Context.backupError(e: BackupException): String = when (e.reason) {
     BackupException.Reason.DAMAGED -> getString(R.string.backup_error_damaged)
-    BackupException.Reason.NOT_WEFT -> getString(R.string.backup_error_not_weft)
+    BackupException.Reason.NOT_ASUSUAL -> getString(R.string.backup_error_not_asusual)
     BackupException.Reason.NEWER -> getString(R.string.backup_error_newer)
     BackupException.Reason.BAD_DATE -> getString(R.string.backup_error_date, e.detail)
 }

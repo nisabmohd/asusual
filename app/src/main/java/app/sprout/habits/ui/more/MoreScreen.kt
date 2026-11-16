@@ -18,7 +18,7 @@ import app.sprout.habits.ui.alarm.rememberAlarmSetup
 import app.sprout.habits.ui.components.SectionGapAbove
 import app.sprout.habits.ui.components.tick
 import androidx.compose.ui.platform.LocalHapticFeedback
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 import app.sprout.habits.ui.today.UndoSnackbarHost
 import app.sprout.habits.ui.update.UpdateBadge
 import app.sprout.habits.domain.isNewerVersion
@@ -151,7 +151,7 @@ fun MoreScreen(
                 SettingsGroup(
                     {
                         Column(Modifier.padding(Space16), verticalArrangement = Arrangement.spacedBy(Space12)) {
-                            Text(stringResource(R.string.theme), style = WeftType.cardTitle)
+                            Text(stringResource(R.string.theme), style = AsusualType.cardTitle)
                             // Each segment is a fixed share of the row, so labels stop scaling at 1.3x.
                             CappedFontScale {
                             SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
@@ -167,7 +167,7 @@ fun MoreScreen(
                                             activeContainerColor = MaterialTheme.colorScheme.primaryContainer,
                                             activeContentColor = MaterialTheme.colorScheme.onPrimaryContainer,
                                         ),
-                                    ) { Text(label, style = WeftType.label) }
+                                    ) { Text(label, style = AsusualType.label) }
                                 }
                             }
                             }
@@ -241,9 +241,9 @@ fun MoreScreen(
                     SettingsCard {
                         val update = settings.availableUpdate?.takeIf { isNewerVersion(it, BuildConfig.VERSION_NAME) }
                         SettingsRow(
-                            stringResource(R.string.about_weft),
+                            stringResource(R.string.about_asusual),
                             stringResource(R.string.version_open_source, BuildConfig.VERSION_NAME),
-                            icon = R.drawable.ic_weft,
+                            icon = R.drawable.ic_asusual,
                             onClick = onOpenAbout,
                             badge = if (update != null) { { UpdateBadge() } } else null,
                         ) {
@@ -302,7 +302,7 @@ fun MoreScreen(
 @Composable
 private fun AccentPicker(selectedHue: Float, onSelect: (Float) -> Unit) {
     Column(Modifier.padding(horizontal = Space8, vertical = Space8), verticalArrangement = Arrangement.spacedBy(Space4)) {
-        Text(stringResource(R.string.accent), style = WeftType.cardTitle, modifier = Modifier.padding(start = Space8))
+        Text(stringResource(R.string.accent), style = AsusualType.cardTitle, modifier = Modifier.padding(start = Space8))
         ColorSwatchRow(
             swatches = ACCENT_HUES.map { hue ->
                 val scheme = seedColorScheme(hue, false)
@@ -321,8 +321,8 @@ private fun TextSizeRow(scale: Float, onChange: (Float) -> Unit) {
     val label = stringResource(TEXT_SCALES[index].second)
     Column(Modifier.padding(RowPadding)) {
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Text(stringResource(R.string.text_size), style = WeftType.cardTitle, modifier = Modifier.weight(1f))
-            Text(label, style = WeftType.supporting, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text(stringResource(R.string.text_size), style = AsusualType.cardTitle, modifier = Modifier.weight(1f))
+            Text(label, style = AsusualType.supporting, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
         Slider(
             value = index.toFloat(),

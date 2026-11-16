@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Weft"
+rootProject.name = "Asusual"
 include(":app")
 include(":baselineprofile")

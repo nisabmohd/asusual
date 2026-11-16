@@ -1,4 +1,4 @@
-# Contributing to Weft
+# Contributing to Asusual
 
 Thanks for helping. Bug reports, fixes, design work and translations are all welcome.
 
@@ -9,8 +9,8 @@ Before you start, read [`AGENTS.md`](AGENTS.md). It lists the rules every change
 You need JDK 17 or later (Android Studio's bundled JDK works) and the Android SDK with API 36.
 
 ```sh
-git clone https://github.com/nisabmohd/weft.git
-cd weft
+git clone https://github.com/nisabmohd/asusual.git
+cd asusual
 ./gradlew :app:assemblePlayDebug
 ```
 
@@ -56,7 +56,7 @@ adb shell settings put system font_scale 2.0
 
 ## Translations
 
-Weft ships in English, Hindi, Spanish, German, French, Portuguese (Brazil) and Japanese. All UI text is in `app/src/main/res/values/strings.xml`; each language has its own `values-xx/strings.xml` with the same keys.
+Asusual ships in English, Hindi, Spanish, German, French, Portuguese (Brazil) and Japanese. All UI text is in `app/src/main/res/values/strings.xml`; each language has its own `values-xx/strings.xml` with the same keys.
 
 - **Improve a language:** edit its `values-xx/strings.xml` and open a pull request.
 - **Add a language:** copy `values/strings.xml` to `values-xx/` (for example `values-ta` for Tamil), translate every string, then add the tag to `localeFilters` in `app/build.gradle.kts` and to `AppLanguage.LANGUAGES` (native name and English name) so it shows in the Language sheet.

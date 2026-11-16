@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.6.4
+
+Changed:
+
+- Weft is now called Asusual, with a new icon: a wave, white on green. It's the same app: it updates in place and keeps your habits, notes, settings and backups. Backups made by Weft or Sprout still import, and `weft://` and `sprout://` links still work next to `asusual://`.
+- The logo's green is now `#2B6F52`, and everything that follows the logo uses it: the icon, the Green accent, the store images and the website.
+
+For contributors:
+
+- The rename keeps every stored name, so Weft and Sprout installs update in place: the package `app.sprout.habits`, `sprout.db`, the backup file's `"app":"sprout"` tag, Drive's `sprout-backup-*` files, the `app.sprout.habits.action.*` actions, the `SPROUT_KEYSTORE_*` variables and the alarm sound setting's keys `"weft"` / `"weft_soft"`. Class names say Asusual (`AsusualApp`, `AsusualDatabase`, `AsusualType`, `AsusualTheme`, `AsusualSheet`, `AsusualNavHost`); the Room schema folder moved with `AsusualDatabase`. Release APKs are `asusual-<tag>-github.apk` / `-play.apk`; the update check still finds them by the `-github.apk` ending.
+- The mark is drawn by `tools/asusual_mark.py`. Links point to github.com/nisabmohd/asusual (GitHub redirects the old repo URLs once the repo is renamed).
+
 ## 1.6.3
 
 Fixed:

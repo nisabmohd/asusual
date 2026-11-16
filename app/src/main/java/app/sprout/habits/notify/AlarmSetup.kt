@@ -18,7 +18,7 @@ enum class AlarmNeed { NOTIFICATIONS, EXACT_ALARMS, FULL_SCREEN }
 
 object AlarmSetup {
     /**
-     * The rows this phone shows: notifications on every phone (the row also opens Weft's
+     * The rows this phone shows: notifications on every phone (the row also opens Asusual's
      * notification settings, where banners and sound are chosen), exact alarms on 12+, full screen on 14+.
      */
     fun needs(context: Context): List<AlarmNeed> = buildList {
@@ -43,19 +43,19 @@ object AlarmSetup {
         AlarmNeed.FULL_SCREEN -> Notifications.openFullScreenSettings(context)
     }
 
-    /** The optional "Show over other apps" (never counted as missing): Weft may open the ringing screen itself. */
+    /** The optional "Show over other apps" (never counted as missing): Asusual may open the ringing screen itself. */
     fun canShowOverApps(context: Context): Boolean = Settings.canDrawOverlays(context)
 
     fun openShowOverApps(context: Context) = SystemPages.overlay(context)
 
     /**
-     * The phone's maker. Debug builds can pretend to be another (`adb shell setprop debug.weft.maker
-     * oneplus`, then restart Weft) so the phone-maker rows can be seen and captured on an emulator.
+     * The phone's maker. Debug builds can pretend to be another (`adb shell setprop debug.asusual.maker
+     * oneplus`, then restart Asusual) so the phone-maker rows can be seen and captured on an emulator.
      */
     private val maker: String = (debugMaker() ?: Build.MANUFACTURER).lowercase()
 
     private fun debugMaker(): String? = if (!BuildConfig.DEBUG) null else runCatching {
-        Class.forName("android.os.SystemProperties").getMethod("get", String::class.java).invoke(null, "debug.weft.maker") as String
+        Class.forName("android.os.SystemProperties").getMethod("get", String::class.java).invoke(null, "debug.asusual.maker") as String
     }.getOrNull()?.takeIf { it.isNotBlank() }
 
     /** Makers known to hold back plain exact alarms (ColorOS, MIUI / HyperOS, Funtouch, EMUI): a head start for [delaysExactAlarms]. */
@@ -84,7 +84,7 @@ object AlarmSetup {
     }
 
     /**
-     * What Weft learned about this phone: a fact about the device, read while scheduling, so a
+     * What Asusual learned about this phone: a fact about the device, read while scheduling, so a
      * plain SharedPreferences, not the settings DataStore (and never in a backup, which may be
      * restored on another phone).
      */
@@ -95,7 +95,7 @@ object AlarmSetup {
     private const val MAX_LATE_MS = 6 * 60 * 60_000L
 
     /**
-     * Weft's app info page, where phone makers keep their own lock screen, pop-up and battery
+     * Asusual's app info page, where phone makers keep their own lock screen, pop-up and battery
      * switches. Android can't tell whether they are on, so these rows never get a tick.
      */
     fun openAppDetails(context: Context) = SystemPages.appDetails(context)
@@ -111,18 +111,18 @@ object AlarmSounds {
             ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALARM)
             ?: RingtoneManager.getDefaultUri(RingtoneManager.TYPE_RINGTONE)
 
-    /** Weft's own tone: what plays by default, and when a picked sound can't be played. */
-    fun weft(context: Context): Uri = raw(context, R.raw.alarm_weft)
+    /** Asusual's own tone: what plays by default, and when a picked sound can't be played. */
+    fun asusual(context: Context): Uri = raw(context, R.raw.alarm_asusual)
 
     fun uri(context: Context, sound: String): Uri = when (sound) {
-        AlarmSound.WEFT -> weft(context)
-        AlarmSound.WEFT_SOFT -> raw(context, R.raw.alarm_weft_soft)
-        AlarmSound.SYSTEM -> phoneAlarm(context) ?: weft(context)
-        else -> runCatching { Uri.parse(sound) }.getOrNull() ?: weft(context)
+        AlarmSound.ASUSUAL -> asusual(context)
+        AlarmSound.ASUSUAL_SOFT -> raw(context, R.raw.alarm_asusual_soft)
+        AlarmSound.SYSTEM -> phoneAlarm(context) ?: asusual(context)
+        else -> runCatching { Uri.parse(sound) }.getOrNull() ?: asusual(context)
     }
 
     /** True for a sound picked from the phone (stored as its URI). */
-    fun isPicked(sound: String): Boolean = sound !in setOf(AlarmSound.WEFT, AlarmSound.WEFT_SOFT, AlarmSound.SYSTEM)
+    fun isPicked(sound: String): Boolean = sound !in setOf(AlarmSound.ASUSUAL, AlarmSound.ASUSUAL_SOFT, AlarmSound.SYSTEM)
 
     /** The name Android gives [uri] ("Oxygen"), or null when it can't be read. */
     fun title(context: Context, uri: Uri?): String? = uri?.let {
