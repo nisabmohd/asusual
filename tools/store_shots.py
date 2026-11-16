@@ -3,12 +3,13 @@
 The same look as Burrow's store shots (tools/store_shots.py there; both apps are by mid apps and sit
 side by side on Play, user 2026-11-08): a title and a one-line subtitle, then a phone frame with a soft
 shadow, sized to fit under the tallest caption with 72 px left below it, so the navigation bar and
-the bezel are never cut. The last shot (dark theme) sits on a dark page. Weft's colours: a rose-brown
-page #733626 (Rust, the default accent, user 2026-11-09) with pale pink text.
+the bezel are never cut. The last shot (dark theme) sits on a dark page. Weft's colours: the logo's
+green #2A6F52 as the page, like Burrow's shots follow its logo (user, 2026-11-16; Rust #733626 before),
+with pale green text; the app inside is on the Green accent.
 
 usage: python3 tools/store_shots.py <folder with the raw shots> [out folder]
 Raw shots are 1080 x 2400, named today.png, alarm.png (the ringing screen), amount-sheet.png, habits-week.png,
-journal.png, insights.png, w-week.png (all four widgets, WidgetBoardActivity) and today-dark.png;
+journal.png, insights.png, w-week.png (the four widget previews on a green page) and today-dark.png;
 made by `python3 tools/verify/capture_docs.py store <folder>`. A missing one is skipped.
 Needs Pillow."""
 import os
@@ -44,11 +45,11 @@ BEZEL, OUTER_R, INNER_R = 14, 62, 48
 RAW_W, RAW_H = 1080, 2400                             # emulator screenshot size
 TITLE_SIZE, TITLE_LINE, SUB_SIZE, SUB_LINE = 68, 82, 36, 48
 
-PAGE = (0x73, 0x36, 0x26)                             # Rust, the default accent (2026-11-09; rose-brown #77453F before)
-PAGE_DARK = (0x2B, 0x15, 0x10)                        # the same hue, dark, for the dark-theme shot
-TITLE = (0xFF, 0xDA, 0xD4)                            # pale pink
-SUB = (0xE2, 0xBC, 0xB6)                              # pale pink, quieter
-SHADOW = (0x2A, 0x10, 0x0E)
+PAGE = (0x2A, 0x6F, 0x52)                             # the logo's green (2026-11-16; Rust #733626 before)
+PAGE_DARK = (0x10, 0x2B, 0x20)                        # the same hue, dark, for the dark-theme shot
+TITLE = (0xE6, 0xF4, 0xEC)                            # pale green
+SUB = (0xBF, 0xDD, 0xCE)                              # pale green, quieter
+SHADOW = (0x0E, 0x2A, 0x1E)
 
 
 def font(size, weight):
@@ -131,7 +132,7 @@ for n, (raw, out, title, sub, dark) in enumerate(shots, start=1):
     d = ImageDraw.Draw(img)
     d.rounded_rectangle((FX, FY, FX + FW - 1, FY + FH - 1), OUTER_R, fill=(58, 54, 50) if dark else (22, 20, 18))
     if dark:  # a thin light rim so the dark phone reads on the dark page
-        d.rounded_rectangle((FX, FY, FX + FW - 1, FY + FH - 1), OUTER_R, outline=(84, 62, 58), width=2)
+        d.rounded_rectangle((FX, FY, FX + FW - 1, FY + FH - 1), OUTER_R, outline=(58, 84, 72), width=2)
         d.rounded_rectangle((FX + 2, FY + 2, FX + FW - 3, FY + FH - 3), OUTER_R - 2, fill=(14, 13, 12))
 
     scr = screen(f"{RAW}/{raw}.png", SW, SH)

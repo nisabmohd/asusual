@@ -50,11 +50,11 @@ class WidgetBoardActivity : Activity() {
         val column = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
             setPadding(dp(16f), dp(56f), dp(16f), dp(16f))
-            // A calm wallpaper of its own (the emulator's default one is busy): warm rose-brown,
-            // dark at the bottom, so the pale widgets stand out (user, 2026-11-08).
+            // A calm wallpaper of its own (the emulator's default one is busy): the logo's green,
+            // dark at the bottom, so the pale widgets stand out (rose-brown until 2026-11-16).
             background = GradientDrawable(
                 GradientDrawable.Orientation.TOP_BOTTOM,
-                intArrayOf(0xFF9C6B62.toInt(), 0xFF6A3B35.toInt(), 0xFF2B1715.toInt()),
+                intArrayOf(0xFF5E9C82.toInt(), 0xFF2A6F52.toInt(), 0xFF10291F.toInt()),
             )
         }
         val streakIds = mutableListOf<Int>()
