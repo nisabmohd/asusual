@@ -1,6 +1,6 @@
 package app.sprout.habits.ui.more
 
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -34,7 +34,7 @@ import app.sprout.habits.ui.openUrl
 /**
  * "Language": the phone's language first, then every shipped language in its own script with the
  * English name under it. Picking one applies it at once; the card at the bottom links to
- * translating Weft.
+ * translating Asusual.
  */
 @Composable
 fun LanguageSheet(current: String?, onPick: (String?) -> Unit, onDismiss: () -> Unit) {

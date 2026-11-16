@@ -47,7 +47,7 @@ import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.unit.LayoutDirection
 import app.sprout.habits.ui.components.CustomRangeChip
 import app.sprout.habits.ui.components.DefaultRangeChip
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -212,12 +212,12 @@ private fun SummaryCard(ui: InsightsUi) {
         verticalArrangement = Arrangement.spacedBy(CardContentGap),
     ) {
         Row(verticalAlignment = Alignment.Bottom) {
-            Text(stringResource(R.string.percent, ui.scorePercent), style = WeftType.screenTitleNumber, color = colors.onSurface, softWrap = false)
+            Text(stringResource(R.string.percent, ui.scorePercent), style = AsusualType.screenTitleNumber, color = colors.onSurface, softWrap = false)
             Spacer(Modifier.width(Space8))
-            Text(stringResource(R.string.insights_average), style = WeftType.supporting, color = colors.onSurfaceVariant, modifier = Modifier.padding(bottom = Space4))
+            Text(stringResource(R.string.insights_average), style = AsusualType.supporting, color = colors.onSurfaceVariant, modifier = Modifier.padding(bottom = Space4))
             Spacer(Modifier.width(Space12))
             // Takes the rest of the row and wraps at large text sizes.
-            Text(summary, style = WeftType.label, color = colors.onSurfaceVariant, textAlign = TextAlign.End, modifier = Modifier.weight(1f).padding(bottom = Space4))
+            Text(summary, style = AsusualType.label, color = colors.onSurfaceVariant, textAlign = TextAlign.End, modifier = Modifier.weight(1f).padding(bottom = Space4))
         }
         // One segment per habit, filled up to that habit's score for the range.
         SegmentBar(ui.rates.map { BarSegment(it.hue, it.percent / 100f) }, Modifier.clearAndSetSemantics {})
@@ -318,11 +318,11 @@ private fun RowScope.PatternTile(
         Box(Modifier.size(ActionTileSize).background(tile, HabitTileShape), contentAlignment = Alignment.Center) {
             Icon(painterResource(icon), contentDescription = null, tint = tileContent, modifier = Modifier.size(IconSize))
         }
-        Text(label, style = WeftType.caption, color = colors.onSurfaceVariant, modifier = Modifier.padding(top = Space12))
-        Text(value, style = WeftType.patternValue, color = colors.onSurface, maxLines = 2, overflow = TextOverflow.Ellipsis, modifier = Modifier.padding(top = TitleLineGap))
+        Text(label, style = AsusualType.caption, color = colors.onSurfaceVariant, modifier = Modifier.padding(top = Space12))
+        Text(value, style = AsusualType.patternValue, color = colors.onSurface, maxLines = 2, overflow = TextOverflow.Ellipsis, modifier = Modifier.padding(top = TitleLineGap))
         // One line at normal text sizes; with large text it wraps rather than clips, and the row's
         // IntrinsicSize.Min keeps both cards the same height.
-        Text(detail, style = WeftType.supporting, color = detailColor, modifier = Modifier.padding(top = TitleLineGap))
+        Text(detail, style = AsusualType.supporting, color = detailColor, modifier = Modifier.padding(top = TitleLineGap))
     }
 }
 
@@ -360,7 +360,7 @@ private fun ChartTooltip(text: String, at: IntOffset?, onDismiss: () -> Unit) {
     Popup(popupPositionProvider = position, onDismissRequest = onDismiss) {
         Text(
             text,
-            style = WeftType.caption,
+            style = AsusualType.caption,
             color = colors.inverseOnSurface,
             modifier = Modifier.background(colors.inverseSurface, ChipShape).padding(horizontal = Space8, vertical = Space4),
         )
@@ -421,7 +421,7 @@ private fun WeeklyRhythm(ui: InsightsUi) {
                     ui.columns.forEach { column ->
                         Text(
                             column.label,
-                            style = if (column.isBest) WeftType.captionStrong else WeftType.caption,
+                            style = if (column.isBest) AsusualType.captionStrong else AsusualType.caption,
                             color = if (column.isBest) colors.onSurface else colors.onSurfaceVariant,
                             textAlign = TextAlign.Center,
                             maxLines = 1,
@@ -446,7 +446,7 @@ private const val BAR_HEIGHT = 128
 private fun LegendSquare(label: String, color: Color) {
     Row(verticalAlignment = Alignment.CenterVertically) {
         Box(Modifier.size(LegendSwatchSize).background(color, RoundedCornerShape(Space4)))
-        Text(label, style = WeftType.supporting, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(start = IconLabelGap))
+        Text(label, style = AsusualType.supporting, color = MaterialTheme.colorScheme.onSurfaceVariant, modifier = Modifier.padding(start = IconLabelGap))
     }
 }
 
@@ -479,7 +479,7 @@ private fun HabitBreakdown(rates: List<HabitRateUi>, byStreak: Boolean, onSort: 
                 ) {
                     HabitTile(r.icon, hc.soft, hc.ink)
                     Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(TitleLineGap)) {
-                        Text(r.name, style = WeftType.cardTitle, color = colors.onSurface, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                        Text(r.name, style = AsusualType.cardTitle, color = colors.onSurface, maxLines = 1, overflow = TextOverflow.Ellipsis)
                         // "5 done · 1 partial", or "7 of 7 days" when nothing was partial. The streak has its own toggle.
                         Text(
                             if (r.partialDays > 0) {
@@ -488,7 +488,7 @@ private fun HabitBreakdown(rates: List<HabitRateUi>, byStreak: Boolean, onSort: 
                             } else {
                                 pluralStringResource(R.plurals.days_kept, r.scheduledDays, r.doneDays, r.scheduledDays)
                             },
-                            style = WeftType.supporting,
+                            style = AsusualType.supporting,
                             color = colors.onSurfaceVariant,
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis,
@@ -544,7 +544,7 @@ private fun SortToggle(byStreak: Boolean, onChange: (Boolean) -> Unit) {
                 ) {
                     Text(
                         label,
-                        style = WeftType.label,
+                        style = AsusualType.label,
                         color = if (selected) colors.onSurface else colors.onSurfaceVariant,
                         softWrap = false,
                     )

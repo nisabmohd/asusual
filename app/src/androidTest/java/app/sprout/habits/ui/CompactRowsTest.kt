@@ -18,7 +18,7 @@ import app.sprout.habits.ui.components.InfoRow
 import app.sprout.habits.ui.components.MarkKind
 import app.sprout.habits.ui.components.NoteCard
 import app.sprout.habits.ui.components.NoteCardUi
-import app.sprout.habits.ui.theme.WeftTheme
+import app.sprout.habits.ui.theme.AsusualTheme
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
@@ -38,7 +38,7 @@ class CompactRowsTest {
     @Test fun infoRowShowsTitleLineAndItsButtonWorks() {
         var removed = 0
         rule.setContent {
-            WeftTheme {
+            AsusualTheme {
                 InfoRow(R.drawable.ic_test_tube, "Sample habits", "Swipe or hold to try them", Modifier.testTag("row"), button = "Remove", onButton = { removed++ })
             }
         }
@@ -50,24 +50,24 @@ class CompactRowsTest {
     }
 
     @Test fun infoRowWithoutAButton() {
-        rule.setContent { WeftTheme { InfoRow(R.drawable.ic_code, "Free and open source", "No ads · no tracking · GPL v3") } }
+        rule.setContent { AsusualTheme { InfoRow(R.drawable.ic_code, "Free and open source", "No ads · no tracking · GPL v3") } }
         rule.onNodeWithText("Free and open source").assertIsDisplayed()
     }
 
     @Test fun noteCardReadsNameOutcomeNoteAndTime() {
-        rule.setContent { WeftTheme { NoteCard(read, onOpen = {}) } }
+        rule.setContent { AsusualTheme { NoteCard(read, onOpen = {}) } }
         // The habit row (name, outcome · time) and the note, read as one item.
         rule.onNodeWithContentDescription("Read, 8 of 20 pages, 11:40 PM. Only 8 pages, fell asleep.", useUnmergedTree = true).assertIsDisplayed()
         rule.onNodeWithTag(ComponentTags.HABIT_TILE, useUnmergedTree = true).assertIsDisplayed()
     }
 
     @Test fun aLateNoteSaysWhenItWasWritten() {
-        rule.setContent { WeftTheme { NoteCard(read.copy(mark = DayMark(MarkKind.SKIP), outcome = "Skipped", time = "written Tue, 12:23 AM"), onOpen = {}) } }
+        rule.setContent { AsusualTheme { NoteCard(read.copy(mark = DayMark(MarkKind.SKIP), outcome = "Skipped", time = "written Tue, 12:23 AM"), onOpen = {}) } }
         rule.onNodeWithContentDescription("Read, Skipped, written Tue, 12:23 AM. Only 8 pages, fell asleep.", useUnmergedTree = true).assertIsDisplayed()
     }
 
     @Test fun noteCardOnAHabitsPageHasNoTileAndNamesTheDay() {
-        rule.setContent { WeftTheme { NoteCard(read.copy(mark = DayMark(MarkKind.SKIP), outcome = "Skipped"), onOpen = null, showHabit = false, dateLabel = "Yesterday") } }
+        rule.setContent { AsusualTheme { NoteCard(read.copy(mark = DayMark(MarkKind.SKIP), outcome = "Skipped"), onOpen = null, showHabit = false, dateLabel = "Yesterday") } }
         rule.onNodeWithContentDescription("Skipped, Yesterday, 11:40 PM. Only 8 pages, fell asleep.", useUnmergedTree = true).assertIsDisplayed()
         rule.onNodeWithTag(ComponentTags.HABIT_TILE, useUnmergedTree = true).assertDoesNotExist()
     }

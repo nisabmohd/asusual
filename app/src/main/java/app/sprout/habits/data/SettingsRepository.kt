@@ -77,15 +77,18 @@ data class Settings(
     /** Epoch millis of "Clear suggestion history": notes last written before it aren't learned from. */
     val suggestionsClearedAt: Long = 0,
     /** What an alarm plays: an [AlarmSound] key ("weft", "weft_soft", "system") or a picked sound's URI. */
-    val alarmSound: String = AlarmSound.WEFT,
+    val alarmSound: String = AlarmSound.ASUSUAL,
     /** Alarms vibrate along with the sound (More → Alarms). */
     val alarmVibrate: Boolean = true,
 )
 
-/** The alarm sound choices besides a sound picked from the phone (stored as its URI). */
+/**
+ * The alarm sound choices besides a sound picked from the phone (stored as its URI). The stored keys
+ * are from before the Asusual rename (settings and backups hold them), so they stay "weft".
+ */
 object AlarmSound {
-    const val WEFT = "weft"
-    const val WEFT_SOFT = "weft_soft"
+    const val ASUSUAL = "weft"
+    const val ASUSUAL_SOFT = "weft_soft"
     const val SYSTEM = "system"
 }
 

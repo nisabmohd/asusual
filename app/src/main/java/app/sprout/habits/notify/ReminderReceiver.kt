@@ -4,7 +4,7 @@ import android.app.AlarmManager
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import app.sprout.habits.WeftApp
+import app.sprout.habits.AsusualApp
 import app.sprout.habits.widget.WidgetDayReceiver
 import java.time.LocalDate
 import kotlinx.coroutines.CoroutineScope
@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
  */
 class ReminderReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        val container = (context.applicationContext as WeftApp).container
+        val container = (context.applicationContext as AsusualApp).container
         val pending = goAsync()
         CoroutineScope(Dispatchers.IO).launch {
             try {
@@ -83,7 +83,7 @@ class RescheduleReceiver : BroadcastReceiver() {
             -> Unit
             else -> return
         }
-        val container = (context.applicationContext as WeftApp).container
+        val container = (context.applicationContext as AsusualApp).container
         val pending = goAsync()
         CoroutineScope(Dispatchers.IO).launch {
             try {

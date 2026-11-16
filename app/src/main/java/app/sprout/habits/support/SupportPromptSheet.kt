@@ -11,14 +11,14 @@ import app.sprout.habits.ui.components.sheetBottomPadding
 import app.sprout.habits.ui.components.ActionGroup
 import app.sprout.habits.ui.components.ActionRow
 import app.sprout.habits.ui.components.ButtonRole
-import app.sprout.habits.ui.components.WeftButton
+import app.sprout.habits.ui.components.AsusualButton
 import app.sprout.habits.ui.components.SheetHeader
 import app.sprout.habits.ui.components.SheetSidePadding
-import app.sprout.habits.ui.components.WeftSheet
+import app.sprout.habits.ui.components.AsusualSheet
 import app.sprout.habits.ui.theme.habitColors
 
 /**
- * "Enjoying Weft?" (`support-prompt-sheet.png`): rate (play build, once listed), star on GitHub,
+ * "Enjoying Asusual?" (`support-prompt-sheet.png`): rate (play build, once listed), star on GitHub,
  * sponsor (not in the play build: Google Play doesn't allow asking for money outside its own
  * billing) as grouped action rows, then "Maybe later".
  */
@@ -32,7 +32,7 @@ fun SupportPromptSheet(
     onLater: () -> Unit,
 ) {
     val pink = habitColors(330f)
-    WeftSheet(onDismissRequest = onLater) {
+    AsusualSheet(onDismissRequest = onLater) {
         SheetHeader(
             stringResource(R.string.support_title),
             stringResource(
@@ -56,7 +56,7 @@ fun SupportPromptSheet(
                 )
             }
         }
-        WeftButton(
+        AsusualButton(
             stringResource(R.string.maybe_later),
             ButtonRole.Secondary,
             onClick = onLater,

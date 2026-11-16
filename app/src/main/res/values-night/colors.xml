@@ -1,7 +1,7 @@
 <resources>
     <!-- Below Android 12, dark: the logo's hue (155), page hsl(155 14% 7%), widget background hsl(155 14% 25%). -->
-    <color name="weft_bg">#FF0F1412</color>
-    <color name="weft_primary">#FF2A6F52</color>
+    <color name="asusual_bg">#FF0F1412</color>
+    <color name="asusual_primary">#FF2B6F52</color>
     <color name="widget_bg">#FF374941</color>
     <!-- Alarm notification buttons, dark: primaryContainer hsl(155 40% 27%), its text hsl(155 90% 92%), primary hsl(155 86% 82%). -->
     <color name="notification_pill">#FF29604A</color>

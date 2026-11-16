@@ -1,6 +1,6 @@
 <resources>
-    <style name="Theme.Weft" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:windowBackground">@color/weft_bg</item>
+    <style name="Theme.Asusual" parent="android:Theme.Material.Light.NoActionBar">
+        <item name="android:windowBackground">@color/asusual_bg</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <!-- Draw into the camera cutout too, as Android 15+ always does. -->
@@ -11,7 +11,7 @@
          white. AlarmActivity then makes it opaque at once (setTranslucent(false)): only an opaque
          screen covers the lock screen (1.6.2 stayed see-through, and locked phones never showed
          it). The habit's colour is painted before the first frame. -->
-    <style name="Theme.Weft.Alarm">
+    <style name="Theme.Asusual.Alarm">
         <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowBackground">@android:color/transparent</item>
         <item name="android:windowAnimationStyle">@null</item>

@@ -74,7 +74,7 @@ object Notifications {
     }
 
     /**
-     * True when Weft's notifications pop up on screen. Android only opens an alarm full screen
+     * True when Asusual's notifications pop up on screen. Android only opens an alarm full screen
      * from a channel that pops up; ColorOS sets every new channel below that (2026-11-09). Not a
      * row of its own (user, 2026-11-11): the notifications row's line asks for banners while off.
      */

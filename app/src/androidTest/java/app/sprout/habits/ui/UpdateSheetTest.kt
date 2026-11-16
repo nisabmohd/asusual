@@ -9,7 +9,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import app.sprout.habits.data.SettingsRepository
 import app.sprout.habits.data.update.AppUpdate
 import app.sprout.habits.data.update.UpdateManager
-import app.sprout.habits.ui.theme.WeftTheme
+import app.sprout.habits.ui.theme.AsusualTheme
 import app.sprout.habits.ui.update.UpdateSheet
 import org.junit.Rule
 import org.junit.Test
@@ -27,7 +27,7 @@ class UpdateSheetTest {
         val context = InstrumentationRegistry.getInstrumentation().targetContext
         val updates = UpdateManager(context, SettingsRepository(context))
         val update = AppUpdate("9.9.9", notes, "https://example.com/a.apk", "a.apk", null, "https://example.com")
-        rule.setContent { WeftTheme { UpdateSheet(update, updates, onLater = {}, onDismiss = {}) } }
+        rule.setContent { AsusualTheme { UpdateSheet(update, updates, onLater = {}, onDismiss = {}) } }
 
         rule.onNodeWithText("Later").assertIsDisplayed()
         rule.onNodeWithText("Update").assertIsDisplayed()

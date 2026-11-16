@@ -7,7 +7,7 @@ import androidx.compose.runtime.Immutable
 import androidx.compose.ui.graphics.Color
 
 /** The logo's green tile, and the mint of its themed icon: the green accent's primary and primaryContainer (light). */
-private val LOGO_GREEN = Color(0xFF2A6F52)
+private val LOGO_GREEN = Color(0xFF2B6F52)
 private val LOGO_MINT = Color(0xFFD9EDE3)
 
 /** `hsl(hue s% l%)`, the notation used in design/TOKENS.md. */
@@ -16,7 +16,7 @@ private fun tone(hue: Float, saturation: Int, lightness: Number): Color =
 
 /**
  * App chrome when dynamic color is off (see `pal()` in design/TOKENS.md).
- * Surfaces, background and outlines are the original Weft ones, so screens look as before 1.5.1
+ * Surfaces, background and outlines are the original Asusual ones, so screens look as before 1.5.1
  * (cards on surfaceContainerLowest, tiles on surfaceContainerHigh). Primary, containers, error and
  * scrim are the richer 1.5.1 Material tones (user, 2026-11-02).
  */

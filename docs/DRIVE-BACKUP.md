@@ -14,26 +14,26 @@ The first section, **"Backup & restore"**, holds one row, **Backups** (›), whi
 
 **Connected** (`DriveSection.kt`, `DriveBackupContent`):
 
-- Status: ✓ on secondaryContainer, "Backed up today, 9:12 AM" (or "No backups yet" with `cloud` on surfaceContainerHigh), "Google Drive · email", tonal **Back up now** (`cloud_upload`); while uploading "Backing up…" with a spinner, disabled. After a failure: `error` on errorContainer, "Last backup failed", the reason ("No connection", "Drive is full", "Google needs you to allow Weft again", "Couldn't reach Google Drive") and **Try again**.
+- Status: ✓ on secondaryContainer, "Backed up today, 9:12 AM" (or "No backups yet" with `cloud` on surfaceContainerHigh), "Google Drive · email", tonal **Back up now** (`cloud_upload`); while uploading "Backing up…" with a spinner, disabled. After a failure: `error` on errorContainer, "Last backup failed", the reason ("No connection", "Drive is full", "Google needs you to allow Asusual again", "Couldn't reach Google Drive") and **Try again**.
 - **Automatic backup:** Frequency ("Daily" ›, opens the frequency sheet) and Wi-Fi only · "Don't use mobile data" (switch, on by default).
 - **Restore:** Restore from Drive · "7 backups, newest today" (the count is saved after each backup or listing; "Pick a backup to bring back" until then) and Import from file · "JSON backup".
 - **Other:** Export to file · "Save a copy anywhere, no account needed" (opens the File format sheet: JSON / CSV) and Google account · "Switch account or disconnect" (the account sheet).
 
-**Not connected:** status "Back up to Google Drive" / "Saved to your own Drive every night. Only Weft can see these files." with a filled **Connect Google Drive**; Connect runs a first backup straight away. Then **Backup to a file**: Export to file, Import from file.
+**Not connected:** status "Back up to Google Drive" / "Saved to your own Drive every night. Only Asusual can see these files." with a filled **Connect Google Drive**; Connect runs a first backup straight away. Then **Backup to a file**: Export to file, Import from file.
 
 **foss** (`FileBackupContent`): status `smartphone` on secondaryContainer, "Last exported today, 9:12 AM" (or "No backups yet"), "Your data stays on this phone. Export a file and keep it somewhere safe.", tonal **Export now** (`download`) in the chosen format. **Restore:** Import from file. **Export:** File format ("JSON" ›, a sheet: JSON / CSV, saved as `exportFormat`). The spec's "Include notes" switch is left out: Export always includes notes (the spec says to leave it out in that case).
 
-**Account sheet** (the spec's "menu"; the app never uses menus, every choice is a sheet), built like the Journal's note actions sheet (`ActionRow`s: 22dp icon + `body` label, full width): title "Google account", the email, then **Switch account** (Google's account picker; the old account's access to Weft is removed), **Disconnect** (access removed, schedule cancelled, backups stay in Drive; the snackbar says so) and **Delete backups from Drive** (red; a "Delete backups from Drive?" dialog, then every Weft file in that account is deleted).
+**Account sheet** (the spec's "menu"; the app never uses menus, every choice is a sheet), built like the Journal's note actions sheet (`ActionRow`s: 22dp icon + `body` label, full width): title "Google account", the email, then **Switch account** (Google's account picker; the old account's access to Asusual is removed), **Disconnect** (access removed, schedule cancelled, backups stay in Drive; the snackbar says so) and **Delete backups from Drive** (red; a "Delete backups from Drive?" dialog, then every Asusual file in that account is deleted).
 
 **Backup frequency sheet:** the app's `ChoiceSheet` (as Language and Week starts on): Daily · Every night while charging (default), Weekly · Sunday night, Monthly · On the 1st, Off · Only when you tap Back up now. Tapping saves and closes.
 
-**Restore from Drive sheet:** `ChoiceSheet` with "Your current habits and notes will be replaced by the backup you pick.", up to 10 backups newest first (title "Today, 9:12 AM" / "Yesterday, 2:04 AM" / "27 Oct, 2:01 AM"; supporting "Pixel 8 · 7 habits · 48 KB"), the newest preselected, and a full-width 48dp **Restore** button (as the filter sheet's Show button; the spec's 56dp was bigger than every other sheet button). Restore downloads the backup, then "Replace current data?" / "This can't be undone. Export a file first if you want to keep it." (Cancel / Replace), then the snackbar "Restored backup from 27 Oct". A spinner shows while the list loads; "No Weft backup in this Google Drive yet" when there's none.
+**Restore from Drive sheet:** `ChoiceSheet` with "Your current habits and notes will be replaced by the backup you pick.", up to 10 backups newest first (title "Today, 9:12 AM" / "Yesterday, 2:04 AM" / "27 Oct, 2:01 AM"; supporting "Pixel 8 · 7 habits · 48 KB"), the newest preselected, and a full-width 48dp **Restore** button (as the filter sheet's Show button; the spec's 56dp was bigger than every other sheet button). Restore downloads the backup, then "Replace current data?" / "This can't be undone. Export a file first if you want to keep it." (Cancel / Replace), then the snackbar "Restored backup from 27 Oct". A spinner shows while the list loads; "No Asusual backup in this Google Drive yet" when there's none.
 
 **Not followed from the spec:** WorkManager (JobScheduler is used, see Scheduling); "Import from file · JSON or CSV backup" (Import only reads JSON, so the line says "JSON backup"); the account menu (a sheet).
 
 ## Data
 
-- Scope `drive.appdata` (the hidden app folder; Weft can't see any other file) plus `email` (to show the account). Google's `AuthorizationClient` (play-services-auth) picks the account and asks for consent; Drive v3 is called with plain `HttpURLConnection`.
+- Scope `drive.appdata` (the hidden app folder; Asusual can't see any other file) plus `email` (to show the account). Google's `AuthorizationClient` (play-services-auth) picks the account and asks for consent; Drive v3 is called with plain `HttpURLConnection`.
 - Each backup is the Export JSON, gzipped, named `sprout-backup-<ISO time>.json.gz`, with `appProperties` `device` (the phone's name, else its model) and `habits`. The newest **10** are kept; older ones are deleted after each upload.
 - Settings: `driveAccount`, `driveFrequency` (DAILY), `driveWifiOnly` (true), `lastBackupAt`, `lastBackupError` (a `DriveResult` name, null when the last one worked), `driveBackupCount`; for files `lastExportAt` and `exportFormat` (JSON). Restoring a backup doesn't change them.
 
@@ -41,7 +41,7 @@ The first section, **"Backup & restore"**, holds one row, **Backups** (›), whi
 
 **JobScheduler, not WorkManager** (WorkManager would be a new library; JobScheduler is part of Android and has the same constraints). One persisted job (`DriveBackupJob`, id 2000003101: far above the ids WorkManager, which Glance uses, hands out): minimum latency until the next slot (`domain/BackupSchedule.kt`: 1 AM daily, Monday 1 AM for "Sunday night", 1 AM on the 1st), requires charging, network `UNMETERED` when Wi-Fi only is on, else any. A missed slot runs at the next chance. After a run the next slot is scheduled; a dropped connection retries with backoff. Rescheduled on connect, frequency and Wi-Fi only changes, boot, clock and time zone changes; on app start only if nothing is pending (re-scheduling would stop a running job). A run within 6 hours of a manual backup is skipped.
 
-The job never shows a screen. If Google wants the user to allow Weft again, the backup is marked failed ("Google needs you to allow Weft again") and Try again opens Google's screen.
+The job never shows a screen. If Google wants the user to allow Asusual again, the backup is marked failed ("Google needs you to allow Asusual again") and Try again opens Google's screen.
 
 ## Edge cases
 
@@ -54,7 +54,7 @@ The job never shows a screen. If Google wants the user to allow Weft again, the 
 - **Rate limits and server errors** (429, 5xx, rateLimitExceeded): two retries, 2 s and 4 s apart.
 - **One at a time:** a second tap while one runs does nothing; uploads, downloads and deletes are behind one lock, so the job and a manual backup never overlap.
 - **Damaged, foreign or newer backups:** the same messages as Import from file.
-- **No Google Play services, or no OAuth client:** "Couldn't reach Google Drive. Try again" Also when Google's account or consent screen ends with an error (no OAuth client gives status 8, `UNREGISTERED_ON_API_CONSOLE`); backing out of it (status 16, `CANCELED`) says nothing. If the user unticks Google Drive on Google's permission screen (it starts unticked), Google returns a token without `drive.appdata`: Weft doesn't connect and says "Weft needs Google Drive to keep your backups. Connect again and tick Google Drive". Every failure is logged under the `WeftDrive` tag: `adb logcat -s WeftDrive Auth`.
+- **No Google Play services, or no OAuth client:** "Couldn't reach Google Drive. Try again" Also when Google's account or consent screen ends with an error (no OAuth client gives status 8, `UNREGISTERED_ON_API_CONSOLE`); backing out of it (status 16, `CANCELED`) says nothing. If the user unticks Google Drive on Google's permission screen (it starts unticked), Google returns a token without `drive.appdata`: Asusual doesn't connect and says "Asusual needs Google Drive to keep your backups. Connect again and tick Google Drive". Every failure is logged under the `AsusualDrive` tag: `adb logcat -s AsusualDrive Auth`.
 
 ## Setup (owner)
 
@@ -62,7 +62,7 @@ Google Cloud: OAuth clients of type **Android** for `app.sprout.habits` with the
 
 ## Testing
 
-`python3 tools/verify/smoke.py drive` (play debug): More's Backups row and the screen in each state, the failed card, frequency sheet and the scheduled job, account sheet, format sheet, offline, no Google, foss without Drive code. The debug build's `DriveStateActivity` sets the state without an account (it closes Weft's task, so open Weft again after it):
+`python3 tools/verify/smoke.py drive` (play debug): More's Backups row and the screen in each state, the failed card, frequency sheet and the scheduled job, account sheet, format sheet, offline, no Google, foss without Drive code. The debug build's `DriveStateActivity` sets the state without an account (it closes Asusual's task, so open Asusual again after it):
 
 ```sh
 adb shell am start -W -f 0x10008000 -n app.sprout.habits/.DriveStateActivity --es account you@gmail.com --el lastBackupAt 1790000000000 --ei count 7

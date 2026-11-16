@@ -6,7 +6,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.ui.unit.dp
 
 /*
- * Weft's spacing and size tokens, one name per job (docs/SPACING.md). Screens use these, never a raw
+ * Asusual's spacing and size tokens, one name per job (docs/SPACING.md). Screens use these, never a raw
  * number (user, 2026-11-11: "smallest detail matters"). Everything is on the 4 dp grid; the few
  * documented exceptions (22 dp icons, 14 dp tile corners, 2 dp hairlines) are named too.
  * Component-specific sizes live next to their component (HabitTileSize, ButtonHeight, Sheet*,

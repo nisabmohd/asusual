@@ -23,7 +23,7 @@ import app.sprout.habits.ui.components.GroupGap
 import app.sprout.habits.ui.components.SectionGapBelow
 import app.sprout.habits.ui.components.SectionGapAbove
 import app.sprout.habits.ui.components.SectionHeader
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.contentDescription
@@ -71,7 +71,7 @@ import app.sprout.habits.ui.components.TabHeader
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.ui.graphics.Color
 import app.sprout.habits.ui.today.UndoSnackbarHost
-import app.sprout.habits.ui.components.WeftSheet
+import app.sprout.habits.ui.components.AsusualSheet
 import app.sprout.habits.ui.components.NoteCardUi
 import kotlinx.coroutines.flow.collectLatest
 import androidx.compose.material3.SnackbarResult
@@ -89,7 +89,7 @@ import app.sprout.habits.ui.components.HabitFilterSheet
 import app.sprout.habits.ui.theme.habitColors
 import app.sprout.habits.ui.components.HabitFilterOption
 import app.sprout.habits.ui.components.ButtonRole
-import app.sprout.habits.ui.components.WeftButton
+import app.sprout.habits.ui.components.AsusualButton
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.draw.alpha
@@ -219,7 +219,7 @@ fun JournalScreen(
             ExtendedFloatingActionButton(
                 onClick = onAddNote,
                 icon = { Icon(painterResource(R.drawable.ic_habit_pen), contentDescription = null, modifier = Modifier.size(IconSize)) },
-                text = { Text(stringResource(R.string.add_note), style = WeftType.label) },
+                text = { Text(stringResource(R.string.add_note), style = AsusualType.label) },
                 containerColor = colors.primaryContainer,
                 contentColor = colors.onPrimaryContainer,
                 shape = FabShape,
@@ -286,10 +286,10 @@ private fun EmptyJournal(habit: HabitFilterOption?, title: String, text: String,
     // About as wide as the mockup's text block, so lines break evenly on wide phones too.
     Column(Modifier.widthIn(max = EmptyTextWidth).padding(horizontal = Space24), horizontalAlignment = Alignment.CenterHorizontally) {
         EmptyNotesPicture(habit)
-        Text(title, style = WeftType.title, color = colors.onSurface, textAlign = TextAlign.Center, modifier = Modifier.padding(top = Space32))
-        Text(text, style = WeftType.supporting, color = colors.onSurfaceVariant, textAlign = TextAlign.Center, modifier = Modifier.padding(top = Space8))
+        Text(title, style = AsusualType.title, color = colors.onSurface, textAlign = TextAlign.Center, modifier = Modifier.padding(top = Space32))
+        Text(text, style = AsusualType.supporting, color = colors.onSurfaceVariant, textAlign = TextAlign.Center, modifier = Modifier.padding(top = Space8))
         if (action != null) {
-            WeftButton(action, ButtonRole.Secondary, onClick = onAction, modifier = Modifier.padding(top = Space24))
+            AsusualButton(action, ButtonRole.Secondary, onClick = onAction, modifier = Modifier.padding(top = Space24))
         }
     }
 }
@@ -359,7 +359,7 @@ private fun NoteActionsSheet(note: NoteCardUi, onEdit: (() -> Unit)?, onDelete: 
     val context = LocalContext.current
     val shareTitle = stringResource(R.string.action_share)
     // Grouped action rows (`note-actions-sheet.png`): the habit and the note on top, Delete last in red.
-    WeftSheet(onDismissRequest = onDismiss) {
+    AsusualSheet(onDismissRequest = onDismiss) {
         SheetHeader(note.habitName, note.text)
         val count = if (onEdit != null) 3 else 2
         var i = 0

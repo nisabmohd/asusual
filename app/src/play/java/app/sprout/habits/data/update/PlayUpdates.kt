@@ -17,7 +17,7 @@ import kotlinx.coroutines.withTimeoutOrNull
 
 /**
  * The play build's updates, through Google Play's In-App Updates: Play says whether it has a newer
- * Weft, and its own full-screen update (immediate type) downloads, installs and restarts the app.
+ * Asusual, and its own full-screen update (immediate type) downloads, installs and restarts the app.
  * No network from the app itself; Play does it. Installs that didn't come from Play get FAILED.
  */
 class PlayUpdates(context: Context, private val settings: SettingsRepository) {

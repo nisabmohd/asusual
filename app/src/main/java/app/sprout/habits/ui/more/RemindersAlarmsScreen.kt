@@ -43,7 +43,7 @@ import kotlinx.coroutines.launch
 
 /**
  * More → Reminders & alarms (more-reminders-alarms-screen.png), built like Backup & restore:
- * Reminders (Default reminder), Allow Weft to (the switches with the real state, then Extra
+ * Reminders (Default reminder), Allow Asusual to (the switches with the real state, then Extra
  * phone settings) and Sound (Alarm sound, Vibrate, Notification sound ↗).
  * No status card: the switches show the state.
  */
@@ -71,7 +71,7 @@ fun RemindersAlarmsScreen(settings: Settings, repository: SettingsRepository, on
                 }
             }
 
-            SectionLabel(stringResource(R.string.allow_weft_to))
+            SectionLabel(stringResource(R.string.allow_asusual_to))
             val allow = permissionRows(state, CardRowPadding) + listOf(@Composable { ExtraPhoneSettingsRow(CardRowPadding) { extra = true } })
             SettingsGroup(*allow.asCardRows())
 

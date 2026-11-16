@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- GitHub build only: check GitHub Releases for a newer Weft, download it and install it, and
+<!-- GitHub build only: check GitHub Releases for a newer Asusual, download it and install it, and
      Google Drive backup (src/drive). The F-Droid (foss) build has no network access, no update
      checker and no Drive. -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">

@@ -9,7 +9,7 @@ import app.sprout.habits.notify.Notifications
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class WeftApp : Application() {
+class AsusualApp : Application() {
     private var lastUiMode = 0
     private var lastLocales = ""
     override fun attachBaseContext(base: Context) {

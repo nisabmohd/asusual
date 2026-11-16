@@ -19,7 +19,7 @@ import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 
 /** Corners of a filled note field: the same 24 dp as a card. */
 val NoteFieldCorner = 24.dp
@@ -39,7 +39,7 @@ fun NoteField(
     minHeight: Dp = NoteFieldMinHeight,
 ) {
     val colors = MaterialTheme.colorScheme
-    val style = WeftType.body.copy(color = colors.onSurface)
+    val style = AsusualType.body.copy(color = colors.onSurface)
     BasicTextField(
         value = value,
         onValueChange = onValueChange,

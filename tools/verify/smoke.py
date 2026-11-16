@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""End-to-end smoke check of every Weft feature on a connected emulator or phone.
+"""End-to-end smoke check of every Asusual feature on a connected emulator or phone.
 
 Installs a fresh debug build (which seeds the sample habits from SampleData on first launch), then runs one short
 check per feature and prints PASS/FAIL. Exit code is the number of failures.
@@ -584,7 +584,7 @@ def more_settings_and_about():
     w, h = d.screen_size()
     for _ in range(3):
         d.swipe(w // 2, int(h * 0.8), w // 2, int(h * 0.3))
-    d.tap("About Weft")
+    d.tap("About Asusual")
     assert d.scroll_to("Open-source licences"), "About screen incomplete"
     # The developer row (1.3.8): mid apps and the contact address.
     assert d.scroll_to("mid apps"), "mid apps row missing"
@@ -598,7 +598,7 @@ def more_language_sheet():
     d.nav("More")
     assert d.scroll_to("Language"), "Language row missing"
     d.tap("Language")
-    assert d.exists("Help translate Weft"), "Language sheet missing"
+    assert d.exists("Help translate Asusual"), "Language sheet missing"
     assert d.scroll_to("日本語"), "Japanese not listed"
     d.tap("Español")
     assert d.exists("Más", timeout=8), "app did not switch to Spanish"
@@ -760,7 +760,7 @@ def widget_circle_works_after_process_death():
 def widget_comes_back_after_force_stop():
     """
     Force stop (Settings → app → Force stop) makes Android put widgets back to their loading
-    layout, and nothing of a stopped app may run until it is opened. Opening Weft must redraw
+    layout, and nothing of a stopped app may run until it is opened. Opening Asusual must redraw
     every widget at once.
     """
     done, total = today_ratio(today_widget())
@@ -1039,7 +1039,7 @@ def widget_follows_dark_mode():
 
 @check
 def widget_follows_language():
-    """A language picked in Weft reaches the widgets at once."""
+    """A language picked in Asusual reaches the widgets at once."""
     d.pin_widget("today")
     today_widget()
     d.open_app()
@@ -1066,7 +1066,7 @@ def widget_follows_language():
 # --- Backup & restore and Google Drive backup (play and github builds). A real backup needs Play
 # services, a Google account and the OAuth client; these check the screens and what fails without
 # them. The debug build's DriveStateActivity sets the Drive state without an account (it closes
-# Weft's task, so every check opens Weft again after it). ------------------------------------
+# Asusual's task, so every check opens Asusual again after it). ------------------------------------
 
 def drive_state(account=None, last_backup_ms=None, failed=None, count=None):
     extras = ""
@@ -1083,7 +1083,7 @@ def drive_state(account=None, last_backup_ms=None, failed=None, count=None):
 
 
 def backup_screen():
-    """More → Backups → Backup & restore (or stays there, if Weft is already on it)."""
+    """More → Backups → Backup & restore (or stays there, if Asusual is already on it)."""
     d.open_app()
     if d.exists("Backup & restore", timeout=1) and not d.exists("Appearance", timeout=0.5):
         d.scroll_to_top()
@@ -1146,7 +1146,7 @@ def drive_connected_rows():
 
 @check
 def drive_failed_card():
-    for reason, text in [("FULL", "Drive is full"), ("NEEDS_CONSENT", "Google needs you to allow Weft again"),
+    for reason, text in [("FULL", "Drive is full"), ("NEEDS_CONSENT", "Google needs you to allow Asusual again"),
                          ("FAILED", "Couldn't reach Google Drive")]:
         drive_state("tester@example.com", failed=reason)
         backup_screen()
@@ -1267,7 +1267,7 @@ def drive_absent_in_foss():
     assert b"googleapis.com/drive" not in dex and b"com/google/android/gms/auth" not in dex, "foss APK contains Drive code"
 
 
-# --- Launcher shortcuts and weft:// links ---------------------------------------------------
+# --- Launcher shortcuts and asusual:// links ---------------------------------------------------
 
 def open_link(uri):
     d.shell(f"am start -W -a android.intent.action.VIEW -d {uri} {d.PACKAGE}")
@@ -1276,45 +1276,47 @@ def open_link(uri):
 
 @check
 def links_open_each_screen():
-    cases = [("weft://journal", "Filter by habit"), ("weft://insights", "Change date range"),
-             ("weft://habits", "Manage habits"), ("weft://more", "Backups"), ("weft://today", "of today")]
+    cases = [("asusual://journal", "Filter by habit"), ("asusual://insights", "Change date range"),
+             ("asusual://habits", "Manage habits"), ("asusual://more", "Backups"), ("asusual://today", "of today")]
     for uri, marker in cases:
         open_link(uri)
         assert d.exists(marker, contains=True, timeout=4), f"{uri} didn't open its tab"
-    open_link("weft://note/new")
-    assert d.exists("New note", timeout=4), "weft://note/new didn't open New note"
+    open_link("asusual://note/new")
+    assert d.exists("New note", timeout=4), "asusual://note/new didn't open New note"
     d.tap("Close")
-    open_link("weft://habit/new")
-    assert d.exists("New habit", timeout=4), "weft://habit/new didn't open New habit"
+    open_link("asusual://habit/new")
+    assert d.exists("New habit", timeout=4), "asusual://habit/new didn't open New habit"
     d.tap("Close")
-    open_link("sprout://journal")  # the name before the rename to Weft still works
+    open_link("sprout://journal")  # the app's earlier names still work
     assert d.exists("Filter by habit", contains=True, timeout=4), "sprout://journal didn't open the Journal"
+    open_link("weft://insights")
+    assert d.exists("Change date range", contains=True, timeout=4), "weft://insights didn't open Insights"
 
 
 @check
 def links_ignore_bad_input():
-    open_link("weft://today")
-    for uri in ["weft://habit/999999", "weft://habit/abc", "weft://nothing", "weft://habit/-1"]:
+    open_link("asusual://today")
+    for uri in ["asusual://habit/999999", "asusual://habit/abc", "asusual://nothing", "asusual://habit/-1"]:
         open_link(uri)
         assert d.exists("of today", contains=True, timeout=3) and not d.exists("Edit habit", timeout=1), f"{uri} opened something"
 
 
 @check
 def link_opens_a_habit():
-    open_link("weft://habit/1")
-    assert d.exists("Edit habit", timeout=4), "weft://habit/1 didn't open the habit page"
+    open_link("asusual://habit/1")
+    assert d.exists("Edit habit", timeout=4), "asusual://habit/1 didn't open the habit page"
     d.back()
 
 
 @check
 def launcher_shortcuts():
-    """Long-press Weft's icon: Add note and New habit, each opening its screen."""
+    """Long-press Asusual's icon: Add note and New habit, each opening its screen."""
     for name, screen in [("Add note", "New note"), ("New habit", "New habit")]:
         d.home()
         w, h = d.screen_size()
         d.swipe(w // 2, int(h * 0.85), w // 2, int(h * 0.2), 300)
-        icon = d.find("Weft", timeout=4)
-        assert icon, "Weft not in the launcher's app list"
+        icon = d.find("Asusual", timeout=4)
+        assert icon, "Asusual not in the launcher's app list"
         x, y = icon.center
         d.swipe(x, y, x, y, 1200)
         assert d.exists(name, timeout=4), f"long-press menu has no {name!r}"
@@ -1325,12 +1327,12 @@ def launcher_shortcuts():
 
 @check
 def launcher_long_press_lists_widgets():
-    """Long-press Weft's icon in the app list: the launcher's Widgets entry lists all four."""
+    """Long-press Asusual's icon in the app list: the launcher's Widgets entry lists all four."""
     d.home()
     w, h = d.screen_size()
     d.swipe(w // 2, int(h * 0.85), w // 2, int(h * 0.2), 300)  # open all apps
-    icon = d.find("Weft", timeout=4)
-    assert icon, "Weft not in the launcher's app list"
+    icon = d.find("Asusual", timeout=4)
+    assert icon, "Asusual not in the launcher's app list"
     x, y = icon.center
     d.swipe(x, y, x, y, 1200)
     shortcut = d.find("Widgets", timeout=4)
@@ -1381,7 +1383,7 @@ def root():
     if "root" not in d.shell("whoami"):
         raise Skip("needs a rootable emulator")
     # Alarms fired here by broadcast aren't alarm-clock alarms, so Android wouldn't let them start
-    # AlarmSoundService (a real one may) and would freeze the app; allow-listing Weft behaves like the real thing.
+    # AlarmSoundService (a real one may) and would freeze the app; allow-listing Asusual behaves like the real thing.
     d.shell(f"dumpsys deviceidle whitelist +{d.PACKAGE}")
 
 
@@ -1502,7 +1504,7 @@ def alarm_heads_up_while_phone_in_use():
 
 @check
 def alarm_holds_audio_focus_so_music_pauses():
-    """User, 2026-11-15: music and the alarm took turns in headphones. Weft holds audio focus while
+    """User, 2026-11-15: music and the alarm took turns in headphones. Asusual holds audio focus while
     it rings (so music pauses) and gives it back after. Android 15+ gives it only to the app on top,
     so this is the full-screen case (screen off)."""
     h = make_alarm()
@@ -1731,24 +1733,24 @@ def alarm_without_exact_alarms_opens_setup():
 
 @check
 def more_reminders_alarms_screen():
-    """More → Reminders & alarms (design 2026-11-09): one row, then Reminders, Allow Weft to and Sound."""
+    """More → Reminders & alarms (design 2026-11-09): one row, then Reminders, Allow Asusual to and Sound."""
     d.open_app()
     d.nav("More")
     assert not d.exists("Default reminder", timeout=1), "Default reminder is still in More → General"
     assert d.scroll_to("Reminders & alarms"), "no Reminders & alarms row in More"
     d.tap("Reminders & alarms")
-    for label in ("Reminders", "Default reminder", "Allow Weft to", "Send notifications", "Ring alarms on time",
+    for label in ("Reminders", "Default reminder", "Allow Asusual to", "Send notifications", "Ring alarms on time",
                   "Show alarms full screen", "Sound", "Alarm sound", "Vibrate", "Notification sound"):
         assert d.scroll_to(label), f"Reminders & alarms is missing {label!r}"
     d.tap("Alarm sound")
-    for label in ("Weft", "Weft · Soft", "Phone’s alarm sound", "Choose from phone"):
+    for label in ("Asusual", "Asusual · Soft", "Phone’s alarm sound", "Choose from phone"):
         assert d.exists(label, timeout=3), f"Alarm sound sheet is missing {label!r}"
-    d.tap("Weft · Soft")
+    d.tap("Asusual · Soft")
     assert d.exists("Playing", timeout=2), "tapping a sound doesn't preview it"
     d.back()
-    assert d.exists("Weft · Soft", timeout=2), "the Alarm sound row doesn't show the pick"
-    d.tap("Weft · Soft")
-    d.tap("Weft")
+    assert d.exists("Asusual · Soft", timeout=2), "the Alarm sound row doesn't show the pick"
+    d.tap("Asusual · Soft")
+    d.tap("Asusual")
     d.back()
     d.back()
 
@@ -1761,7 +1763,7 @@ def alarm_is_an_alarm_clock_and_survives_reboot():
     d.shell(f"am broadcast -a android.intent.action.BOOT_COMPLETED -n {d.PACKAGE}/.notify.RescheduleReceiver")
     time.sleep(3)
     alarms = d.shell("dumpsys alarm")
-    # An alarm clock carries a showIntent (what the status bar's clock opens): Weft's.
+    # An alarm clock carries a showIntent (what the status bar's clock opens): Asusual's.
     assert f"{d.PACKAGE} startActivity" in alarms, "the alarm reminder isn't scheduled as an alarm clock"
 
 
@@ -1857,7 +1859,7 @@ def alarm_check_off_skip_today():
     fire(h)
     assert d.exists("Skip today", timeout=5), "no Skip today on a check-off alarm"
     assert not d.exists("Log amount", timeout=1), "Log amount on a check-off alarm"
-    assert d.exists("Open Weft"), "no Open Weft"
+    assert d.exists("Open Asusual"), "no Open Asusual"
     d.tap("Skip today")
     time.sleep(2)
     assert entry(h).startswith("SKIP"), f"Skip today didn't log Skip: {entry(h)!r}"
@@ -1893,17 +1895,17 @@ def alarm_measured_log_amount():
 
 
 @check
-def alarm_open_weft():
+def alarm_open_asusual():
     h = make_alarm("Read")
     screen(False)
     fire(h)
-    assert d.exists("Open Weft", timeout=5)
-    d.tap("Open Weft")
+    assert d.exists("Open Asusual", timeout=5)
+    d.tap("Open Asusual")
     time.sleep(3)
-    assert not ringing(), "Open Weft didn't stop the alarm"
-    assert "MainActivity" in top_activity(), "Open Weft didn't open the app"
+    assert not ringing(), "Open Asusual didn't stop the alarm"
+    assert "MainActivity" in top_activity(), "Open Asusual didn't open the app"
     assert d.exists("Every day · 20 pages", timeout=5) or d.exists("Read", timeout=1), "the app didn't open on the habit"
-    assert entry(h) == "", "Open Weft logged something"
+    assert entry(h) == "", "Open Asusual logged something"
     d.back()
 
 

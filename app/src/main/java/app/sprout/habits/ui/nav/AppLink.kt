@@ -5,12 +5,12 @@ import android.net.Uri
 
 /**
  * Where an outside tap should land: a widget, a notification, a launcher shortcut (long-press
- * the icon) or a `weft://` link. One path for all of them, so they behave the same.
+ * the icon) or a `asusual://` link. One path for all of them, so they behave the same.
  *
- * Links: `weft://today`, `weft://habits`, `weft://journal`, `weft://insights`,
- * `weft://more`, `weft://note/new`, `weft://habit/new`, `weft://habit/<id>`.
- * They only open screens; nothing is changed until the user saves. `sprout://` (the name before
- * the Weft rename) still works the same.
+ * Links: `asusual://today`, `asusual://habits`, `asusual://journal`, `asusual://insights`,
+ * `asusual://more`, `asusual://note/new`, `asusual://habit/new`, `asusual://habit/<id>`.
+ * They only open screens; nothing is changed until the user saves. `weft://` and `sprout://` (the
+ * app's earlier names) still work the same.
  */
 sealed interface AppLink {
     data class Habit(val id: Long) : AppLink
@@ -21,8 +21,8 @@ sealed interface AppLink {
     data class OpenTab(val tab: String) : AppLink
 
     companion object {
-        const val SCHEME = "weft"
-        private val SCHEMES = setOf(SCHEME, "sprout")
+        const val SCHEME = "asusual"
+        private val SCHEMES = setOf(SCHEME, "weft", "sprout")
         const val ACTION_OPEN_HABIT = "app.sprout.habits.action.OPEN_HABIT"
         const val EXTRA_HABIT_ID = "habitId"
         const val ACTION_ADD_NOTE = "app.sprout.habits.action.ADD_NOTE"

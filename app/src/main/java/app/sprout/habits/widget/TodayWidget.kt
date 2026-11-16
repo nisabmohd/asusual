@@ -51,7 +51,7 @@ class TodayWidget : GlanceAppWidget() {
         val bitmaps = WidgetBitmaps(context)
         provideContent {
             val live by liveWidgetData(context, data) { it.today() }
-            WeftGlanceTheme { TodayContent(live, bitmaps) }
+            AsusualGlanceTheme { TodayContent(live, bitmaps) }
         }
     }
 }

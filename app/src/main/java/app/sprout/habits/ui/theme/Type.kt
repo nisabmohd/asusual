@@ -44,10 +44,10 @@ fun BodyFont.family(): FontFamily = when (this) {
 
 /**
  * The type scale from TYPOGRAPHY.md, as Material slots so Material components pick it up too.
- * Screens never read these slots or set a size or weight themselves: they use [WeftType].
+ * Screens never read these slots or set a size or weight themselves: they use [AsusualType].
  * Every style, headings included, uses [body], the font chosen in More.
  */
-fun weftTypography(body: BodyFont, scale: Float): Typography {
+fun asusualTypography(body: BodyFont, scale: Float): Typography {
     val bodyFamily = body.family()
     fun style(family: FontFamily, size: Int, weight: FontWeight, lineHeight: Float = 1.3f) = TextStyle(
         fontFamily = family,
@@ -93,7 +93,7 @@ fun weftTypography(body: BodyFont, scale: Float): Typography {
 /** How far text that doesn't fit shrinks at a time (buttons, nav labels, stat values). */
 val AutoSizeStep = 0.5.sp
 
-object WeftType {
+object AsusualType {
     /** 40 SemiBold: big input numbers, the Welcome headline. */
     val display: TextStyle @Composable @ReadOnlyComposable get() = MaterialTheme.typography.displayLarge
 
@@ -157,7 +157,7 @@ val StatValueMinSize = 16.sp
 /** The smallest a button label may shrink to when its button is too narrow ("Snooze 10 min" at a large text size). */
 val ButtonLabelMinSize = 12.sp
 
-/** Sizes for the Glance widgets, which can't use Compose text styles. Same scale as [WeftType]. */
+/** Sizes for the Glance widgets, which can't use Compose text styles. Same scale as [AsusualType]. */
 object WidgetType {
     val display = 40.sp
     val screenTitle = 28.sp

@@ -6,7 +6,7 @@ Graphics and listing text for the Play Store.
 
 | Asset | Play requirement | File | Status |
 | --- | --- | --- | --- |
-| App icon | 512 × 512 PNG, 32-bit, up to 1 MB. Full square, Play applies the rounded mask | `icon-512.png` (source `icon.svg`, written by `tools/weft_mark.py`: the yarn-ball mark in white on green #2A6F52, 284px and exactly centred; render with headless Chrome) | Ready |
+| App icon | 512 × 512 PNG, 32-bit, up to 1 MB. Full square, Play applies the rounded mask | `icon-512.png` (source `icon.svg`, written by `tools/asusual_mark.py`: the wave mark in white on green #2B6F52, 404px wide and exactly centred; render with headless Chrome) | Ready |
 | Feature graphic | 1024 × 500 JPEG or 24-bit PNG, no transparency | `feature-graphic-1024x500.png` | Ready |
 | Phone screenshots | 2–8 images, PNG or JPEG, 16:9 or 9:16, each side 320–3840 px, long side at most 2× the short side. At least 4 at 1080 px or wider to be eligible for promotion | `phone-screenshots/01–08` (1080 × 1920) | Ready |
 | 7-inch tablet screenshots | Optional (needed only to show as tablet-ready) | – | Not made |
@@ -19,11 +19,11 @@ How they were taken: Pixel-size emulator (API 36), gesture navigation, status ba
 
 **2026-11-09 (1.6.2): all eight shots retaken in Rust**, the app's new default accent: the app in its default Rust (Dynamic color off), the page #733626, pale pink captions. The feature graphic stays the logo's green (user: it goes with the logo). Raw shots: `python3 tools/verify/capture_docs.py store <dir>`.
 
-**2026-11-16 (1.6.3): all eight shots retaken in Green**, the logo's colour, the way Burrow's shots follow its logo (user): the app on the Green accent (hue 155, picked in More; the app's default stays Rust), the page the logo's green #2A6F52, pale green captions (#E6F4EC, #BFDDCE), the dark shot on #102B20. Shot 6 (Insights) is scrolled so Patterns sits under the chip row, with the whole chart and the first habit rows (from the top it looked empty). Shot 7 is the four widget picker previews (`res/drawable-nodpi/widget_preview_*.webp`, in Lexend) on the widget board's green page, not the real widgets (they draw in the system font). Use the `Weft_Capture_API_35` emulator, and check its date holds at 27 Sep before the run.
+**2026-11-16 (1.6.3): all eight shots retaken in Green**, the logo's colour, the way Burrow's shots follow its logo (user): the app on the Green accent (hue 155, picked in More; the app's default stays Rust), the page the logo's green #2B6F52, pale green captions (#E6F4EC, #BFDDCE), the dark shot on #102B20. Shot 6 (Insights) is scrolled so Patterns sits under the chip row, with the whole chart and the first habit rows (from the top it looked empty). Shot 7 is the four widget picker previews (`res/drawable-nodpi/widget_preview_*.webp`, in Lexend) on the widget board's green page, not the real widgets (they draw in the system font). Use the `Asusual_Capture_API_35` emulator, and check its date holds at 27 Sep before the run.
 
 The store shots are made by `python3 tools/store_shots.py <folder of raw shots>`, which writes all eight files here (copy them to `fastlane/metadata/android/en-US/images/phoneScreenshots/1–8.png`). Style (2026-11-01, colours 2026-11-08): a rose-brown (#77453F) flat page, a two-line pale pink (#FFDAD4) caption in Lexend SemiBold, and a plain phone with a thin rim; the feature graphic shows the green logo tile. Kept plain on purpose: the owner found the earlier flat set childish, and the tries with lifted-out cards, woven-thread patterns, a glow, gold text and small labels looked overdone and AI-made. The status bar is redrawn a little lower and pulled in from the sides, so the frame's rounded corners never cut the clock or the battery. Shot 7 is the home screen with the This week widget. History: retaken on 2026-10-19 from 1.3.7; 1, 3, 5, 6 and 8 rebuilt on 2026-10-29 (1.4.0) for the nav bar fix; all eight retaken from 1.5.0 in Blue on 2026-11-01, then redrawn in the style above the same day with `--reframe` (no raw shots were kept); all eight and the feature graphic retaken from 1.5.1 in Blue on 2026-11-02 (new Solar icons, the 1.5.1 palette); 1–6, 8 and the feature graphic retaken again the same day after the old look came back (shot 7 kept). For Blue from the first screen on a fresh install, write `accentHue` = 215 into `files/datastore/settings.preferences_pb` with `run-as` before the first launch (debug build); the emulator date is set with `adb shell cmd alarm set-time <ms>` after `settings put global auto_time 0`. `python3 tools/store_shots.py --reframe` redraws the page around the screens already in these files.
 
-The feature graphic is made by `python3 tools/feature_graphic.py <folder of raw shots>` from the same `today.png`, or `--reframe` (from `01-today.png` here): the same flat navy, the white Weft tile and name with "Habit tracker and journal" under it on the left, and one upright Today phone running off the bottom on the right. Nothing else (a slogan, extra lines and a second phone were tried on 2026-11-01 and looked cluttered). It writes both copies (here and fastlane). The store icon is `icon.svg` rendered with headless Chrome.
+The feature graphic is made by `python3 tools/feature_graphic.py <folder of raw shots>` from the same `today.png`, or `--reframe` (from `01-today.png` here): the same flat navy, the white Asusual tile and name with "Habit tracker and journal" under it on the left, and one upright Today phone running off the bottom on the right. Nothing else (a slogan, extra lines and a second phone were tried on 2026-11-01 and looked cluttered). It writes both copies (here and fastlane). The store icon is `icon.svg` rendered with headless Chrome.
 
 **2026-11-11 (1.6.2): the alarm is shot 2** (user: highlight the alarm feature). Play takes 8 phone shots at most, so habit detail made room for it. All eight retaken from the final 1.6.2 build.
 
@@ -40,6 +40,12 @@ The feature graphic is made by `python3 tools/feature_graphic.py <folder of raw 
 
 ## What's new (Play Console, 500 characters max)
 
+1.6.4 (versionCode 31):
+
+```
+Weft is now called Asusual, with a new icon. Same app: your habits, notes, settings and backups stay.
+```
+
 1.5.0 (versionCode 23), 457 characters:
 
 ```
@@ -54,7 +60,7 @@ Sprout is now Weft, with a new icon. Same app: your habits, notes and settings s
 
 ## Listing text (draft)
 
-**App name** (30 chars max): `Weft: Habit Tracker`
+**App name** (30 chars max): `Asusual: Habit Tracker`
 
 **Short description** (80 chars max):
 
@@ -62,7 +68,7 @@ Sprout is now Weft, with a new icon. Same app: your habits, notes and settings s
 
 **Full description** (4000 chars max):
 
-> Weft is a small habit tracker that keeps your habits and notes on your phone.
+> Asusual is a small habit tracker that keeps your habits and notes on your phone.
 >
 > Each day, every habit is Done, Partial or Skipped. Swipe right to mark it done, swipe left to skip it, or press and hold to log an amount, like 15 of 20 pages or 30 of 45 minutes. Every change can be undone.
 >
@@ -79,7 +85,7 @@ Sprout is now Weft, with a new icon. Same app: your habits, notes and settings s
 >
 > Skipped days are left out of your score, so one bad day doesn't sink the week.
 >
-> Weft is free and open source under the GNU GPL v3. No ads, no tracking, and it works without an account.
+> Asusual is free and open source under the GNU GPL v3. No ads, no tracking, and it works without an account.
 
 **Category:** Productivity. **Tags:** Habit tracker, Journal.
 

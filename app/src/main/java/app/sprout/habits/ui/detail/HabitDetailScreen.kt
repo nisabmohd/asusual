@@ -36,7 +36,7 @@ import app.sprout.habits.ui.components.GroupGap
 import app.sprout.habits.ui.components.SectionGapBelow
 import app.sprout.habits.ui.components.SectionGapAbove
 import app.sprout.habits.ui.components.SectionHeader
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 import app.sprout.habits.ui.datePattern
 import androidx.compose.ui.res.pluralStringResource
 import androidx.compose.ui.res.stringResource
@@ -149,8 +149,8 @@ fun HabitDetailScreen(
                         Icon(painterResource(ui.icon), contentDescription = null, tint = hc.ink, modifier = Modifier.size(DetailTileIconSize))
                     }
                     Column(Modifier.padding(start = TileTextGap), verticalArrangement = Arrangement.spacedBy(TitleLineGap)) {
-                        Text(ui.habit.name, style = WeftType.screenTitle, color = colors.onBackground)
-                        Text(ui.subtitle, style = WeftType.supporting, color = colors.onSurfaceVariant)
+                        Text(ui.habit.name, style = AsusualType.screenTitle, color = colors.onBackground)
+                        Text(ui.subtitle, style = AsusualType.supporting, color = colors.onSurfaceVariant)
                     }
                 }
             }
@@ -172,13 +172,13 @@ fun HabitDetailScreen(
                             // header is as tall as its text and the group sits the usual 8 dp under it.
                             Box(Modifier.height(Space20), contentAlignment = Alignment.CenterEnd) {
                                 TextButton(onClick = onSeeAllNotes, modifier = Modifier.wrapContentHeight(unbounded = true)) {
-                                    Text(stringResource(R.string.see_all), style = WeftType.label)
+                                    Text(stringResource(R.string.see_all), style = AsusualType.label)
                                 }
                             }
                         }
                     }
                     if (ui.notes.isEmpty()) {
-                        Text(stringResource(R.string.no_notes_yet), style = WeftType.supporting, color = colors.onSurfaceVariant, modifier = Modifier.padding(start = SectionHeaderInset))
+                        Text(stringResource(R.string.no_notes_yet), style = AsusualType.supporting, color = colors.onSurfaceVariant, modifier = Modifier.padding(start = SectionHeaderInset))
                     } else {
                         val shown = ui.notes.take(5)
                         Column(verticalArrangement = Arrangement.spacedBy(GroupGap)) {
@@ -200,7 +200,7 @@ fun HabitDetailScreen(
             ExtendedFloatingActionButton(
                 onClick = onAddNote,
                 icon = { Icon(painterResource(R.drawable.ic_habit_pen), contentDescription = null, modifier = Modifier.size(IconSize)) },
-                text = { Text(stringResource(R.string.add_note), style = WeftType.label) },
+                text = { Text(stringResource(R.string.add_note), style = AsusualType.label) },
                 containerColor = colors.primaryContainer,
                 contentColor = colors.onPrimaryContainer,
                 shape = FabShape,
@@ -232,14 +232,14 @@ private fun StatTile(value: String, label: String, hc: HabitColors, modifier: Mo
         verticalArrangement = Arrangement.SpaceBetween,
     ) {
         // On a narrow phone "11 days" shrinks to fit instead of losing "days".
-        val style = WeftType.titleNumber
+        val style = AsusualType.titleNumber
         BasicText(
             value,
             maxLines = 1,
             style = style.copy(color = hc.ink),
             autoSize = TextAutoSize.StepBased(minFontSize = StatValueMinSize, maxFontSize = style.fontSize, stepSize = AutoSizeStep),
         )
-        Text(label, style = WeftType.supporting, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 2, modifier = Modifier.padding(top = TitleLineGap))
+        Text(label, style = AsusualType.supporting, color = MaterialTheme.colorScheme.onSurfaceVariant, maxLines = 2, modifier = Modifier.padding(top = TitleLineGap))
     }
 }
 
@@ -254,7 +254,7 @@ private fun MonthCalendar(ui: HabitDetailUi, hc: HabitColors, onPrevious: () -> 
         verticalArrangement = Arrangement.spacedBy(Space4),
     ) {
         Row(Modifier.fillMaxWidth().padding(start = Space8), verticalAlignment = Alignment.CenterVertically) {
-            Text(ui.monthLabel, style = WeftType.cardTitle, color = colors.onSurface, modifier = Modifier.weight(1f))
+            Text(ui.monthLabel, style = AsusualType.cardTitle, color = colors.onSurface, modifier = Modifier.weight(1f))
             IconButton(onClick = onPrevious) {
                 Icon(painterResource(R.drawable.ic_chevron_left), contentDescription = stringResource(R.string.previous_month), modifier = Modifier.size(IconSizeSmall))
             }
@@ -269,7 +269,7 @@ private fun MonthCalendar(ui: HabitDetailUi, hc: HabitColors, onPrevious: () -> 
                     ui.weekdayLabels.forEach { label ->
                         Text(
                             label,
-                            style = WeftType.tiny,
+                            style = AsusualType.tiny,
                             color = colors.onSurfaceVariant,
                             textAlign = androidx.compose.ui.text.style.TextAlign.Center,
                             modifier = Modifier.weight(1f),
@@ -330,7 +330,7 @@ private fun CalendarDay(day: CalendarDayUi, hc: HabitColors, editable: Boolean, 
             },
         contentAlignment = Alignment.Center,
     ) {
-        Text("${day.day}", style = WeftType.label, color = fg)
+        Text("${day.day}", style = AsusualType.label, color = fg)
     }
 }
 

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Long-press Weft's icon. Each opens a weft:// link (ui/nav/AppLink.kt). -->
+<!-- Long-press Asusual's icon. Each opens a asusual:// link (ui/nav/AppLink.kt). -->
 <shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
     <shortcut
         android:shortcutId="add_note"
@@ -9,7 +9,7 @@
         android:shortcutLongLabel="@string/add_note">
         <intent
             android:action="android.intent.action.VIEW"
-            android:data="weft://note/new"
+            android:data="asusual://note/new"
             android:targetClass="app.sprout.habits.MainActivity"
             android:targetPackage="app.sprout.habits" />
     </shortcut>
@@ -21,7 +21,7 @@
         android:shortcutLongLabel="@string/new_habit">
         <intent
             android:action="android.intent.action.VIEW"
-            android:data="weft://habit/new"
+            android:data="asusual://habit/new"
             android:targetClass="app.sprout.habits.MainActivity"
             android:targetPackage="app.sprout.habits" />
     </shortcut>

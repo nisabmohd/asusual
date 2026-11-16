@@ -27,7 +27,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.material3.Text
 import androidx.compose.ui.text.style.TextOverflow
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 import androidx.compose.runtime.remember
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.input.nestedscroll.NestedScrollConnection
@@ -52,7 +52,7 @@ private val DRAG_HANDLE = 48.dp
  */
 @OptIn(ExperimentalMaterial3Api::class, ExperimentalLayoutApi::class)
 @Composable
-fun WeftSheet(onDismissRequest: () -> Unit, content: @Composable ColumnScope.() -> Unit) {
+fun AsusualSheet(onDismissRequest: () -> Unit, content: @Composable ColumnScope.() -> Unit) {
     val density = LocalDensity.current
     val screen = with(density) { LocalWindowInfo.current.containerSize.height.toDp() }
     val navBar = with(density) { WindowInsets.navigationBars.getBottom(density).toDp() }
@@ -131,11 +131,11 @@ fun Modifier.sheetBottomPadding(): Modifier = this.padding(bottom = SheetBottomG
 fun SheetHeader(title: String, subtitle: String? = null, modifier: Modifier = Modifier) {
     val colors = MaterialTheme.colorScheme
     Column(modifier.fillMaxWidth().padding(horizontal = SheetTitleInset).padding(top = Space8, bottom = Space16)) {
-        Text(title, style = WeftType.title, color = colors.onSurface)
+        Text(title, style = AsusualType.title, color = colors.onSurface)
         if (subtitle != null) {
             Text(
                 subtitle,
-                style = WeftType.supporting,
+                style = AsusualType.supporting,
                 color = colors.onSurfaceVariant,
                 maxLines = 3,
                 overflow = TextOverflow.Ellipsis,

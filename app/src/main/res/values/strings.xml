@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name" translatable="false">Weft</string>
+    <string name="app_name" translatable="false">Asusual</string>
     <!-- For small fixed-size rings, where "75 %" would not fit. -->
     <string name="widget_week_description">Every habit and its week</string>
     <string name="widget_today_description">Today\'s progress and what\'s next</string>
@@ -173,14 +173,14 @@
     <string name="week_starts_on">Week starts on</string>
     <string name="default_reminder">Default reminder</string>
     <string name="default_reminder_desc">For new habits</string>
-    <string name="about_weft">About Weft</string>
+    <string name="about_asusual">About Asusual</string>
     <string name="version_open_source">Version %1$s · open source</string>
     <string name="accent">Accent</string>
     <string name="text_size">Text size</string>
     <string name="language">Language</string>
     <string name="backup_error_damaged">This backup is damaged and can\'t be imported.</string>
-    <string name="backup_error_not_weft">This isn\'t a Weft backup file.</string>
-    <string name="backup_error_newer">This backup was made by a newer version of Weft. Update the app, then try again.</string>
+    <string name="backup_error_not_asusual">This isn\'t an Asusual backup file.</string>
+    <string name="backup_error_newer">This backup was made by a newer version of Asusual. Update the app, then try again.</string>
     <string name="backup_error_date">The backup has a date that can\'t be read: %1$s</string>
     <string name="save_failed">Couldn\'t save the file.</string>
     <string name="backup_saved">Backup saved</string>
@@ -222,18 +222,18 @@
     <string name="drive_disconnected">Disconnected from Google Drive. Your backups stay in Drive.</string>
     <string name="drive_delete_backups">Delete backups from Drive</string>
     <string name="drive_delete_title">Delete backups from Drive?</string>
-    <string name="drive_delete_text">This deletes every Weft backup in %1$s. Your data on this phone stays.</string>
+    <string name="drive_delete_text">This deletes every Asusual backup in %1$s. Your data on this phone stays.</string>
     <string name="drive_deleted">Backups deleted from Drive</string>
     <string name="drive_connected_to">Connected to %1$s</string>
     <string name="drive_backed_up">Backed up to Google Drive</string>
     <string name="drive_failed">Couldn\'t reach Google Drive. Try again</string>
-    <string name="drive_refused">Weft needs Google Drive to keep your backups. Connect again and tick Google Drive</string>
-    <string name="drive_no_backup">No Weft backup in this Google Drive yet</string>
+    <string name="drive_refused">Asusual needs Google Drive to keep your backups. Connect again and tick Google Drive</string>
+    <string name="drive_no_backup">No Asusual backup in this Google Drive yet</string>
     <string name="drive_offline">No internet connection. Try again when you\'re online</string>
     <string name="drive_full">Your Google Drive is full. Free up space, then try again</string>
     <string name="csv">CSV</string>
     <string name="replace_data_title">Replace your data?</string>
-    <string name="replace_data_text">This backup has %1$s, %2$s and %3$s. Importing it replaces everything in Weft.</string>
+    <string name="replace_data_text">This backup has %1$s, %2$s and %3$s. Importing it replaces everything in Asusual.</string>
     <string name="backup_restored">Backup restored</string>
     <string name="restore_failed">Couldn\'t restore the backup.</string>
     <string name="replace">Replace</string>
@@ -248,11 +248,11 @@
     <string name="contribute">Contribute</string>
     <string name="contribute_desc">Code, design and translations welcome</string>
     <string name="privacy_policy">Privacy policy</string>
-    <string name="privacy_policy_desc">What Weft stores, and what it never collects</string>
+    <string name="privacy_policy_desc">What Asusual stores, and what it never collects</string>
     <string name="licences">Open-source licences</string>
     <string name="licences_desc">Libraries and fonts this app uses</string>
     <string name="made_by">Made by Nisab Mohd &amp; Contributors</string>
-    <string name="support_weft">Support Weft</string>
+    <string name="support_asusual">Support Asusual</string>
     <string name="support_desc">Free forever, kept alive by sponsors</string>
     <string name="sponsor">Sponsor</string>
     <string name="name">Name</string>
@@ -377,10 +377,10 @@
     <string name="edit">Edit</string>
     <string name="archived">Archived</string>
     <string name="drag_to_reorder">Drag to reorder</string>
-    <string name="support_title">Enjoying Weft?</string>
-    <string name="support_text_play">Weft is free and open source. A rating or a star helps others find it.</string>
-    <string name="support_text_star">Weft is free and open source. A star helps others find it.</string>
-    <string name="support_text">Weft is free and open source. A star helps others find it, and sponsoring keeps it growing.</string>
+    <string name="support_title">Enjoying Asusual?</string>
+    <string name="support_text_play">Asusual is free and open source. A rating or a star helps others find it.</string>
+    <string name="support_text_star">Asusual is free and open source. A star helps others find it.</string>
+    <string name="support_text">Asusual is free and open source. A star helps others find it, and sponsoring keeps it growing.</string>
     <string name="star_github">Star on GitHub</string>
     <string name="maybe_later">Maybe later</string>
     <string name="channel_reminders">Habit reminders</string>
@@ -411,7 +411,7 @@
     <string name="last_7_days">Last 7 days</string>
     <string name="pick_a_habit">Pick a habit</string>
     <string name="language_system">System default</string>
-    <string name="help_translate">Help translate Weft</string>
+    <string name="help_translate">Help translate Asusual</string>
     <string name="help_translate_desc">Add or improve a language</string>
     <string name="nav_habits">Habits</string>
     <string name="nav_insights">Insights</string>
@@ -428,7 +428,7 @@
     <string name="downloading">Downloading…</string>
     <string name="downloading_percent">Downloading… %1$d%%</string>
     <string name="install">Install</string>
-    <string name="allow_installs_hint">Allow Weft to install apps, then tap Install.</string>
+    <string name="allow_installs_hint">Allow Asusual to install apps, then tap Install.</string>
     <string name="update_failed">The download didn\'t finish. You can get it from the release page.</string>
     <string name="open_release_page">Open release page</string>
     <plurals name="journal_show_for_habits">
@@ -604,7 +604,7 @@
     <string name="drive_account_line">Google Drive · %1$s</string>
     <string name="drive_reason_offline">No connection</string>
     <string name="drive_reason_full">Drive is full</string>
-    <string name="drive_reason_consent">Google needs you to allow Weft again</string>
+    <string name="drive_reason_consent">Google needs you to allow Asusual again</string>
     <string name="drive_reason_failed">Couldn\'t reach Google Drive</string>
     <string name="automatic_backup">Automatic backup</string>
     <string name="drive_frequency_short">Frequency</string>
@@ -613,7 +613,7 @@
     <string name="google_account">Google account</string>
     <string name="google_account_desc">Switch account or disconnect</string>
     <string name="drive_connect_title">Back up to Google Drive</string>
-    <string name="drive_connect_text">Saved to your own Drive every night. Only Weft can see these files.</string>
+    <string name="drive_connect_text">Saved to your own Drive every night. Only Asusual can see these files.</string>
     <string name="drive_connect_button">Connect Google Drive</string>
     <string name="file_backup_text">Your data stays on this phone. Export a file and keep it somewhere safe.</string>
     <string name="export_now">Export now</string>
@@ -637,7 +637,7 @@
         <item quantity="other">%d backups</item>
     </plurals>
     <string name="support_rate_line">Takes a few seconds</string>
-    <string name="support_star_line">Helps others find Weft</string>
+    <string name="support_star_line">Helps others find Asusual</string>
     <string name="support_sponsor_line">Keeps it growing</string>
     <string name="notify_snooze">Snooze</string>
     <string name="notify_snooze_minutes">Snooze %1$d min</string>
@@ -655,7 +655,7 @@
     <string name="alarm_missed">%1$s · missed at %2$s</string>
     <string name="channel_alarms">Alarms</string>
     <string name="channel_alarms_desc">Habit reminders that ring full screen</string>
-    <string name="alarm_open_weft">Open Weft</string>
+    <string name="alarm_open_asusual">Open Asusual</string>
     <string name="alarm_goal">Goal %1$s</string>
     <string name="alarm_skip_today">Skip today</string>
     <string name="alarm_position">%1$d of %2$d</string>
@@ -673,7 +673,7 @@
     <string name="alarm_overlay">Show over other apps</string>
     <string name="alarm_overlay_desc">Optional · lets an alarm open over other apps</string>
     <string name="alarm_lock_screen">Lock screen &amp; pop-ups</string>
-    <string name="alarm_lock_screen_desc">Turn both on in Weft’s app info</string>
+    <string name="alarm_lock_screen_desc">Turn both on in Asusual’s app info</string>
     <string name="alarm_battery">Battery</string>
     <string name="alarm_battery_desc">Set to “Don’t restrict” so alarms aren’t stopped</string>
     <string name="alarm_use_notification">Use a notification instead</string>
@@ -681,10 +681,10 @@
     <string name="alarm_sound">Alarm sound</string>
     <string name="alarm_vibrate">Vibrate</string>
     <string name="alarm_vibrate_desc">When an alarm rings</string>
-    <string name="alarm_sound_weft">Weft</string>
-    <string name="alarm_sound_weft_desc">Default</string>
-    <string name="alarm_sound_weft_soft">Weft · Soft</string>
-    <string name="alarm_sound_weft_soft_desc">A gentler tone</string>
+    <string name="alarm_sound_asusual">Asusual</string>
+    <string name="alarm_sound_asusual_desc">Default</string>
+    <string name="alarm_sound_asusual_soft">Asusual · Soft</string>
+    <string name="alarm_sound_asusual_soft_desc">A gentler tone</string>
     <string name="alarm_sound_phone">Phone’s alarm sound</string>
     <string name="alarm_sound_picked_desc">From your phone</string>
     <string name="alarm_sound_playing">Playing</string>
@@ -698,7 +698,7 @@
     <!-- 1.6.2: More → Reminders & alarms (design 2026-11-09) -->
     <string name="reminders_alarms">Reminders &amp; alarms</string>
     <string name="reminders_section">Reminders</string>
-    <string name="allow_weft_to">Allow Weft to</string>
+    <string name="allow_asusual_to">Allow Asusual to</string>
     <string name="extra_phone_settings">Extra phone settings</string>
     <string name="extra_phone_settings_desc">Only needed on some phones</string>
     <string name="extra_phone_settings_text">Some phones stop alarms on their own. Android can’t tell us if these are on, so check them once.</string>

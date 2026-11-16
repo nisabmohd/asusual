@@ -56,7 +56,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Velocity
 import androidx.compose.ui.unit.dp
 import app.sprout.habits.R
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 import java.text.DateFormatSymbols
 import kotlinx.coroutines.launch
 import kotlin.math.abs
@@ -112,7 +112,7 @@ fun TimePickerSheet(
     val haptics = LocalHapticFeedback.current
     val colors = MaterialTheme.colorScheme
 
-    WeftSheet(onDismissRequest = onDismiss) {
+    AsusualSheet(onDismissRequest = onDismiss) {
         SheetHeader(title, line)
         Column(Modifier.padding(horizontal = SheetSidePadding)) {
             // Drags in the wheel area belong to the wheels: the sheet must not move or close when a
@@ -131,7 +131,7 @@ fun TimePickerSheet(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     WheelColumn(hours, hourState, stringResource(R.string.time_hour)) { haptics.stepTick() }
-                    Text(":", style = WeftType.screenTitleNumber, color = colors.onSurface)
+                    Text(":", style = AsusualType.screenTitleNumber, color = colors.onSurface)
                     WheelColumn(minutes, minuteState, stringResource(R.string.time_minute)) { haptics.stepTick() }
                     if (!h24) WheelColumn(halves, halfState, stringResource(R.string.time_am_pm)) { haptics.stepTick() }
                 }
@@ -139,7 +139,7 @@ fun TimePickerSheet(
         }
         // Rows under the wheel run edge to edge, like every ChoiceRow.
         below?.invoke()
-        WeftButton(
+        AsusualButton(
             applyLabel ?: stringResource(R.string.set_time),
             ButtonRole.Primary,
             onClick = {
@@ -188,7 +188,7 @@ private fun WheelColumn(items: List<String>, state: LazyListState, label: String
             ) {
                 Text(
                     items[i], textAlign = TextAlign.Center, maxLines = 1,
-                    style = if (on) WeftType.screenTitleNumber else WeftType.titleNumber,
+                    style = if (on) AsusualType.screenTitleNumber else AsusualType.titleNumber,
                     color = if (on) colors.onSurface else colors.onSurfaceVariant,
                 )
             }

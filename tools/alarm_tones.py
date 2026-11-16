@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Draws Weft's two alarm tones and writes them to app/src/main/res/raw (1.6.2).
+"""Draws Asusual's two alarm tones and writes them to app/src/main/res/raw (1.6.2).
 
-They are made here from sine waves, so they are Weft's own (no licence to credit) and can be
+They are made here from sine waves, so they are Asusual's own (no licence to credit) and can be
 remade. Each file is one loop; AlarmSoundService plays it on repeat.
 
-- alarm_weft.m4a      "Weft": a bright three-note chime (C6 E6 G6, then G6 again higher), firm
+- alarm_asusual.m4a      "Asusual": a bright three-note chime (C6 E6 G6, then G6 again higher), firm
                       enough to wake you.
-- alarm_weft_soft.m4a "Weft · Soft": two slow, round notes (A5, E6) that swell in.
+- alarm_asusual_soft.m4a "Asusual · Soft": two slow, round notes (A5, E6) that swell in.
 
 Needs numpy and macOS's afconvert (AAC in .m4a, which every Android version plays).
 Run: python3 tools/alarm_tones.py
@@ -38,7 +38,7 @@ def place(track, sound, at):
     track[start:end] += sound[: end - start]
 
 
-def weft():
+def asusual():
     """2.4 s: C6 E6 G6 (0.15 s apart), C7, then quiet until the loop starts again."""
     track = np.zeros(int(RATE * 2.4))
     for i, f in enumerate((1046.5, 1318.5, 1568.0, 2093.0)):
@@ -46,7 +46,7 @@ def weft():
     return track
 
 
-def weft_soft():
+def asusual_soft():
     """3.2 s: A5 then E6, each swelling in over 0.25 s and fading slowly; pure tones, no bite."""
     track = np.zeros(int(RATE * 3.2))
     round_ = ((1, 1.0), (2, 0.12))
@@ -77,5 +77,5 @@ if __name__ == "__main__":
     if sys.platform != "darwin":
         sys.exit("needs macOS's afconvert")
     os.makedirs(OUT, exist_ok=True)
-    write("alarm_weft", weft(), 0.9)
-    write("alarm_weft_soft", weft_soft(), 0.7)
+    write("alarm_asusual", asusual(), 0.9)
+    write("alarm_asusual_soft", asusual_soft(), 0.7)

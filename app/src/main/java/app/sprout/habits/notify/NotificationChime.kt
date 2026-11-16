@@ -12,9 +12,9 @@ import android.os.Vibrator
 import android.os.VibratorManager
 
 /**
- * The sound and buzz of a reminder when the phone took them off Weft's channel. ColorOS creates
+ * The sound and buzz of a reminder when the phone took them off Asusual's channel. ColorOS creates
  * every new channel with no sound and no vibration (OnePlus 13s, 2026-11-09), so reminders arrived
- * silently. Then Weft plays the phone's notification sound and vibrates itself, like alarms
+ * silently. Then Asusual plays the phone's notification sound and vibrates itself, like alarms
  * ([AlarmSoundService]). It follows the phone: nothing in silent mode, Do Not Disturb or a call,
  * only the buzz in vibrate mode, and nothing for a channel the user made Silent or turned off.
  */

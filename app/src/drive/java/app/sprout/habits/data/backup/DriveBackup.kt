@@ -60,8 +60,8 @@ import kotlinx.serialization.json.putJsonObject
 
 /**
  * Backup to the user's own Google Drive (play and github builds). Each backup is the same JSON as
- * Export to file, gzipped, as `weft-backup-<time>.json.gz` in Drive's hidden app folder
- * (`drive.appdata`, which only Weft can see), with the phone's name and the habit count in its
+ * Export to file, gzipped, as `sprout-backup-<time>.json.gz` in Drive's hidden app folder
+ * (`drive.appdata`, which only Asusual can see), with the phone's name and the habit count in its
  * `appProperties`. The last [KEEP] are kept. Google's AuthorizationClient picks the account and
  * asks for consent; the Drive calls are plain HTTPS, with no Google API client library.
  *
@@ -98,10 +98,10 @@ class DriveBackup(
         return cm.getNetworkCapabilities(cm.activeNetwork)
     }
 
-    /** Connect or Switch account: Google's account picker, then consent if the account hasn't allowed Weft yet. */
+    /** Connect or Switch account: Google's account picker, then consent if the account hasn't allowed Asusual yet. */
     suspend fun connect(): DriveAuth = authorize(pickAccount = true)
 
-    /** A token for the connected account: silently if it still allows Weft, else its consent screen. */
+    /** A token for the connected account: silently if it still allows Asusual, else its consent screen. */
     suspend fun authorize(): DriveAuth = authorize(pickAccount = false)
 
     private suspend fun authorize(pickAccount: Boolean): DriveAuth {
@@ -120,7 +120,7 @@ class DriveBackup(
 
     /**
      * Google's screen ended with a token but Google Drive unticked (it shows Drive as a checkbox,
-     * unticked at first): Weft can see the email but not keep backups.
+     * unticked at first): Asusual can see the email but not keep backups.
      */
     fun driveRefused(data: Intent?): Boolean =
         runCatching { client.getAuthorizationResultFromIntent(data) }.getOrNull()?.let { it.accessToken != null && !it.allowsDrive() } == true
@@ -143,7 +143,7 @@ class DriveBackup(
 
     /**
      * After Connect or Switch account: reads which account was picked, keeps it, and starts the
-     * schedule. A different account than before has its access to Weft removed.
+     * schedule. A different account than before has its access to Asusual removed.
      */
     suspend fun finishConnect(token: String): DriveResult {
         val (result, email) = withDrive(token) { t ->
@@ -203,14 +203,14 @@ class DriveBackup(
         DriveResult.DONE to input.use { BackupManager.parse(it) }
     }
 
-    /** Deletes every Weft backup in the connected account's Drive. */
+    /** Deletes every Asusual backup in the connected account's Drive. */
     suspend fun deleteAll(token: String): DriveResult = oneAtATime.withLock {
         withDrive(token) { t -> listFiles(t).forEach { request("DELETE", "$API/files/${it.id}", t) } }.first
             .also { if (it == DriveResult.DONE) settings.setBackupsDeleted() }
     }
 
     /**
-     * Stops backing up: the schedule is cancelled and Weft's access removed. The backups stay in
+     * Stops backing up: the schedule is cancelled and Asusual's access removed. The backups stay in
      * Drive. The phone forgets the account first, so the screen changes at once; removing the
      * access is a call to Google that can take a few seconds.
      */
@@ -285,7 +285,7 @@ class DriveBackup(
         DriveResult.FAILED to null
     }
 
-    /** Weft's backups in the app folder, newest first. */
+    /** Asusual's backups in the app folder, newest first. */
     private fun listFiles(token: String): List<DriveBackupInfo> {
         val q = URLEncoder.encode("name contains '$FILE_PREFIX' and trashed = false", "UTF-8")
         val fields = URLEncoder.encode("files(id,createdTime,size,appProperties)", "UTF-8")
@@ -315,7 +315,7 @@ class DriveBackup(
                 put(PROP_HABITS, habits.toString())
             }
         }.toString()
-        val boundary = "weft-${System.nanoTime()}"
+        val boundary = "asusual-${System.nanoTime()}"
         val multipart = ByteArrayOutputStream().apply {
             write("--$boundary\r\nContent-Type: application/json; charset=UTF-8\r\n\r\n$metadata\r\n".toByteArray())
             write("--$boundary\r\nContent-Type: application/gzip\r\n\r\n".toByteArray())
@@ -389,14 +389,14 @@ class DriveBackup(
         const val JOB_ID = 2_000_003_101
         /** Backups kept in Drive; older ones are deleted after each upload. */
         const val KEEP = 10
-        private const val TAG = "WeftDrive"
+        private const val TAG = "AsusualDrive"
         private const val SCOPE_APPDATA = "https://www.googleapis.com/auth/drive.appdata"
         private const val SCOPE_EMAIL = "email"
         private const val ACCOUNT_TYPE = "com.google"
         private const val API = "https://www.googleapis.com/drive/v3"
         private const val UPLOAD = "https://www.googleapis.com/upload/drive/v3"
         private const val USERINFO = "https://www.googleapis.com/oauth2/v3/userinfo"
-        private const val FILE_PREFIX = "sprout-backup-" // kept from before the Weft rename: existing Drive backups use it
+        private const val FILE_PREFIX = "sprout-backup-" // kept from the app's first name: existing Drive backups use it
         private const val PROP_DEVICE = "device"
         private const val PROP_HABITS = "habits"
         private const val TIMEOUT_MS = 20_000L

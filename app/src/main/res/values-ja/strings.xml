@@ -169,14 +169,14 @@
     <string name="week_starts_on">週の始まり</string>
     <string name="default_reminder">標準のリマインダー</string>
     <string name="default_reminder_desc">新しい習慣用</string>
-    <string name="about_weft">Weft について</string>
+    <string name="about_asusual">Asusual について</string>
     <string name="version_open_source">バージョン %1$s・オープンソース</string>
     <string name="accent">アクセントカラー</string>
     <string name="text_size">文字サイズ</string>
     <string name="language">言語</string>
     <string name="backup_error_damaged">このバックアップは壊れているため読み込めません。</string>
-    <string name="backup_error_not_weft">Weft のバックアップファイルではありません。</string>
-    <string name="backup_error_newer">このバックアップは新しいバージョンの Weft で作成されています。アプリを更新してから、もう一度お試しください。</string>
+    <string name="backup_error_not_asusual">Asusual のバックアップファイルではありません。</string>
+    <string name="backup_error_newer">このバックアップは新しいバージョンの Asusual で作成されています。アプリを更新してから、もう一度お試しください。</string>
     <string name="backup_error_date">読み取れない日付が含まれています：%1$s</string>
     <string name="save_failed">ファイルを保存できませんでした。</string>
     <string name="backup_saved">バックアップを保存しました</string>
@@ -218,18 +218,18 @@
     <string name="drive_disconnected">Google ドライブとの接続を解除しました。バックアップはドライブに残ります。</string>
     <string name="drive_delete_backups">ドライブのバックアップを削除</string>
     <string name="drive_delete_title">ドライブのバックアップを削除しますか？</string>
-    <string name="drive_delete_text">%1$s にある Weft のバックアップをすべて削除します。この端末のデータは残ります。</string>
+    <string name="drive_delete_text">%1$s にある Asusual のバックアップをすべて削除します。この端末のデータは残ります。</string>
     <string name="drive_deleted">ドライブのバックアップを削除しました</string>
     <string name="drive_connected_to">%1$s に接続しました</string>
     <string name="drive_backed_up">Google ドライブにバックアップしました</string>
     <string name="drive_failed">Google ドライブにつながりません。もう一度お試しください</string>
     <string name="drive_refused">バックアップの保存には Google ドライブが必要です。もう一度接続して Google ドライブにチェックを入れてください</string>
-    <string name="drive_no_backup">この Google ドライブにはまだ Weft のバックアップがありません</string>
+    <string name="drive_no_backup">この Google ドライブにはまだ Asusual のバックアップがありません</string>
     <string name="drive_offline">インターネットに接続していません。オンラインになってからもう一度お試しください</string>
     <string name="drive_full">Google ドライブの容量がいっぱいです。空きを作ってからもう一度お試しください</string>
     <string name="csv">CSV</string>
     <string name="replace_data_title">データを置き換えますか？</string>
-    <string name="replace_data_text">このバックアップには %1$s、%2$s、%3$s が含まれています。読み込むと Weft のデータがすべて置き換わります。</string>
+    <string name="replace_data_text">このバックアップには %1$s、%2$s、%3$s が含まれています。読み込むと Asusual のデータがすべて置き換わります。</string>
     <string name="backup_restored">バックアップを復元しました</string>
     <string name="restore_failed">バックアップを復元できませんでした。</string>
     <string name="replace">置き換える</string>
@@ -244,11 +244,11 @@
     <string name="contribute">貢献する</string>
     <string name="contribute_desc">コード、デザイン、翻訳を歓迎します</string>
     <string name="privacy_policy">プライバシーポリシー</string>
-    <string name="privacy_policy_desc">Weft が保存するもの、決して集めないもの</string>
+    <string name="privacy_policy_desc">Asusual が保存するもの、決して集めないもの</string>
     <string name="licences">オープンソースライセンス</string>
     <string name="licences_desc">このアプリが使うライブラリとフォント</string>
     <string name="made_by">Nisab Mohd とコントリビューターが作りました</string>
-    <string name="support_weft">Weft を支援する</string>
+    <string name="support_asusual">Asusual を支援する</string>
     <string name="support_desc">ずっと無料。スポンサーに支えられています</string>
     <string name="sponsor">スポンサー</string>
     <string name="name">名前</string>
@@ -373,10 +373,10 @@
     <string name="edit">編集</string>
     <string name="archived">アーカイブ済み</string>
     <string name="drag_to_reorder">ドラッグして並べ替え</string>
-    <string name="support_title">Weft を気に入っていただけましたか？</string>
-    <string name="support_text_play">Weft は無料のオープンソースです。評価やスターは他の人が見つける助けになります。</string>
-    <string name="support_text_star">Weft は無料のオープンソースです。スターは他の人が見つける助けになります。</string>
-    <string name="support_text">Weft は無料のオープンソースです。スターは他の人が見つける助けになり、スポンサーは開発を支えます。</string>
+    <string name="support_title">Asusual を気に入っていただけましたか？</string>
+    <string name="support_text_play">Asusual は無料のオープンソースです。評価やスターは他の人が見つける助けになります。</string>
+    <string name="support_text_star">Asusual は無料のオープンソースです。スターは他の人が見つける助けになります。</string>
+    <string name="support_text">Asusual は無料のオープンソースです。スターは他の人が見つける助けになり、スポンサーは開発を支えます。</string>
     <string name="star_github">GitHub でスター</string>
     <string name="maybe_later">あとで</string>
     <string name="channel_reminders">習慣のリマインダー</string>
@@ -406,7 +406,7 @@
     <string name="last_7_days">過去 7 日間</string>
     <string name="pick_a_habit">習慣を選ぶ</string>
     <string name="language_system">システムのデフォルト</string>
-    <string name="help_translate">Weft の翻訳に協力する</string>
+    <string name="help_translate">Asusual の翻訳に協力する</string>
     <string name="help_translate_desc">言語を追加・改善する</string>
     <string name="nav_habits">習慣</string>
     <string name="nav_insights">統計</string>
@@ -423,7 +423,7 @@
     <string name="downloading">ダウンロード中…</string>
     <string name="downloading_percent">ダウンロード中… %1$d%%</string>
     <string name="install">インストール</string>
-    <string name="allow_installs_hint">Weft にアプリのインストールを許可してから、インストールをタップしてください。</string>
+    <string name="allow_installs_hint">Asusual にアプリのインストールを許可してから、インストールをタップしてください。</string>
     <string name="update_failed">ダウンロードが完了しませんでした。リリースページから入手できます。</string>
     <string name="open_release_page">リリースページを開く</string>
     <plurals name="count_done">
@@ -580,7 +580,7 @@
     <string name="drive_account_line">Google ドライブ · %1$s</string>
     <string name="drive_reason_offline">接続なし</string>
     <string name="drive_reason_full">ドライブの容量がいっぱいです</string>
-    <string name="drive_reason_consent">Weft をもう一度許可してください</string>
+    <string name="drive_reason_consent">Asusual をもう一度許可してください</string>
     <string name="drive_reason_failed">Google ドライブに接続できませんでした</string>
     <string name="automatic_backup">自動バックアップ</string>
     <string name="drive_frequency_short">頻度</string>
@@ -589,7 +589,7 @@
     <string name="google_account">Google アカウント</string>
     <string name="google_account_desc">アカウントの切り替えまたは接続解除</string>
     <string name="drive_connect_title">Google ドライブにバックアップ</string>
-    <string name="drive_connect_text">毎晩あなたのドライブに保存されます。これらのファイルは Weft だけが見られます。</string>
+    <string name="drive_connect_text">毎晩あなたのドライブに保存されます。これらのファイルは Asusual だけが見られます。</string>
     <string name="drive_connect_button">Google ドライブに接続</string>
     <string name="file_backup_text">データはこのスマホに保存されます。ファイルをエクスポートして安全な場所に保管してください。</string>
     <string name="export_now">今すぐエクスポート</string>
@@ -610,7 +610,7 @@
         <item quantity="other">%d 件のバックアップ</item>
     </plurals>
     <string name="support_rate_line">数秒で終わります</string>
-    <string name="support_star_line">ほかの人が Weft を見つけやすくなります</string>
+    <string name="support_star_line">ほかの人が Asusual を見つけやすくなります</string>
     <string name="support_sponsor_line">開発を続ける力になります</string>
     <string name="notify_snooze">スヌーズ</string>
     <string name="notify_snooze_minutes">%1$d分スヌーズ</string>
@@ -628,7 +628,7 @@
     <string name="alarm_missed">%1$s · %2$sに鳴りました（未応答）</string>
     <string name="channel_alarms">アラーム</string>
     <string name="channel_alarms_desc">全画面で鳴る習慣のリマインダー</string>
-    <string name="alarm_open_weft">Weft を開く</string>
+    <string name="alarm_open_asusual">Asusual を開く</string>
     <string name="alarm_goal">目標 %1$s</string>
     <string name="alarm_skip_today">今日はスキップ</string>
     <string name="alarm_position">%1$d / %2$d</string>
@@ -646,7 +646,7 @@
     <string name="alarm_overlay">他のアプリの上に表示</string>
     <string name="alarm_overlay_desc">任意 · アラームを他のアプリの上に表示できます</string>
     <string name="alarm_lock_screen">ロック画面とポップアップ</string>
-    <string name="alarm_lock_screen_desc">Weft のアプリ情報で両方をオンに</string>
+    <string name="alarm_lock_screen_desc">Asusual のアプリ情報で両方をオンに</string>
     <string name="alarm_battery">バッテリー</string>
     <string name="alarm_battery_desc">アラームが止められないよう「制限しない」に設定</string>
     <string name="alarm_use_notification">代わりに通知を使う</string>
@@ -654,10 +654,10 @@
     <string name="alarm_sound">アラーム音</string>
     <string name="alarm_vibrate">バイブレーション</string>
     <string name="alarm_vibrate_desc">アラームが鳴るとき</string>
-    <string name="alarm_sound_weft">Weft</string>
-    <string name="alarm_sound_weft_desc">デフォルト</string>
-    <string name="alarm_sound_weft_soft">Weft · ソフト</string>
-    <string name="alarm_sound_weft_soft_desc">やさしい音</string>
+    <string name="alarm_sound_asusual">Asusual</string>
+    <string name="alarm_sound_asusual_desc">デフォルト</string>
+    <string name="alarm_sound_asusual_soft">Asusual · ソフト</string>
+    <string name="alarm_sound_asusual_soft_desc">やさしい音</string>
     <string name="alarm_sound_phone">スマートフォンのアラーム音</string>
     <string name="alarm_sound_picked_desc">スマートフォンから</string>
     <string name="alarm_sound_playing">再生中</string>
@@ -671,7 +671,7 @@
     <!-- 1.6.2: More → Reminders & alarms (design 2026-11-09) -->
     <string name="reminders_alarms">リマインダーとアラーム</string>
     <string name="reminders_section">リマインダー</string>
-    <string name="allow_weft_to">Weft に許可すること</string>
+    <string name="allow_asusual_to">Asusual に許可すること</string>
     <string name="extra_phone_settings">端末の追加設定</string>
     <string name="extra_phone_settings_desc">一部の端末でのみ必要</string>
     <string name="extra_phone_settings_text">端末によってはアラームを勝手に止めることがあります。Android からはこれらがオンか分からないので、一度確認してください。</string>

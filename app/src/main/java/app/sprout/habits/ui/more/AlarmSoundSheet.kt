@@ -33,7 +33,7 @@ import app.sprout.habits.ui.components.tick
 private const val PREVIEW_MS = 4_000L
 
 /**
- * Alarm sound (alarm-11-sound-sheet.png): Weft, Weft · Soft, the phone's alarm sound, and a sound
+ * Alarm sound (alarm-11-sound-sheet.png): Asusual, Asusual · Soft, the phone's alarm sound, and a sound
  * picked from the phone once there is one; then Choose from phone (Android's sound picker).
  * Tapping a row picks it and plays it for a few seconds on the alarm stream ("Playing"); closing
  * the sheet stops it. No Done button, like the other choice sheets.
@@ -94,8 +94,8 @@ fun AlarmSoundSheet(current: String, onPick: (String) -> Unit, onDismiss: () -> 
             }
         },
     ) {
-        Row(AlarmSound.WEFT, stringResource(R.string.alarm_sound_weft), stringResource(R.string.alarm_sound_weft_desc))
-        Row(AlarmSound.WEFT_SOFT, stringResource(R.string.alarm_sound_weft_soft), stringResource(R.string.alarm_sound_weft_soft_desc))
+        Row(AlarmSound.ASUSUAL, stringResource(R.string.alarm_sound_asusual), stringResource(R.string.alarm_sound_asusual_desc))
+        Row(AlarmSound.ASUSUAL_SOFT, stringResource(R.string.alarm_sound_asusual_soft), stringResource(R.string.alarm_sound_asusual_soft_desc))
         Row(AlarmSound.SYSTEM, stringResource(R.string.alarm_sound_phone), remember { AlarmSounds.title(context, AlarmSounds.phoneAlarm(context)) })
         picked?.let { uri ->
             val name = remember(uri) { AlarmSounds.title(context, Uri.parse(uri)) } ?: stringResource(R.string.alarm_sound_choose)
@@ -109,8 +109,8 @@ fun AlarmSoundSheet(current: String, onPick: (String) -> Unit, onDismiss: () -> 
 fun alarmSoundName(sound: String): String {
     val context = LocalContext.current
     return when (sound) {
-        AlarmSound.WEFT -> stringResource(R.string.alarm_sound_weft)
-        AlarmSound.WEFT_SOFT -> stringResource(R.string.alarm_sound_weft_soft)
+        AlarmSound.ASUSUAL -> stringResource(R.string.alarm_sound_asusual)
+        AlarmSound.ASUSUAL_SOFT -> stringResource(R.string.alarm_sound_asusual_soft)
         AlarmSound.SYSTEM -> stringResource(R.string.alarm_sound_phone)
         else -> remember(sound) { AlarmSounds.title(context, Uri.parse(sound)) } ?: stringResource(R.string.alarm_sound_picked_desc)
     }

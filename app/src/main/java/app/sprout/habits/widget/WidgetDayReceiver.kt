@@ -5,7 +5,7 @@ import android.app.PendingIntent
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
-import app.sprout.habits.WeftApp
+import app.sprout.habits.AsusualApp
 import java.time.LocalDate
 import java.time.ZoneId
 import kotlinx.coroutines.CoroutineScope
@@ -18,7 +18,7 @@ import kotlinx.coroutines.launch
  */
 class WidgetDayReceiver : BroadcastReceiver() {
     override fun onReceive(context: Context, intent: Intent) {
-        val container = (context.applicationContext as WeftApp).container
+        val container = (context.applicationContext as AsusualApp).container
         val pending = goAsync()
         CoroutineScope(Dispatchers.IO).launch {
             try {

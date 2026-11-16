@@ -22,7 +22,7 @@ fun PromptSheet(
     text: String? = null,
     actionRole: ButtonRole = ButtonRole.Primary,
 ) {
-    WeftSheet(onDismissRequest = onDismiss) {
+    AsusualSheet(onDismissRequest = onDismiss) {
         SheetHeader(title, text)
         ButtonPair(
             secondaryLabel = stringResource(R.string.action_cancel),

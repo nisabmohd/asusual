@@ -26,7 +26,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 import app.sprout.habits.ui.theme.SmallButtonHeight
 import app.sprout.habits.ui.theme.Space16
 import app.sprout.habits.ui.theme.Space12
@@ -74,8 +74,8 @@ fun InfoRow(
             Icon(painterResource(icon), contentDescription = null, tint = ink, modifier = Modifier.size(ActionIconSize))
         }
         Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(TitleLineGap)) {
-            Text(title, style = WeftType.cardTitle, color = ink, maxLines = 1, overflow = TextOverflow.Ellipsis)
-            Text(line, style = WeftType.supporting, color = ink.copy(alpha = 0.8f), maxLines = 1, overflow = TextOverflow.Ellipsis)
+            Text(title, style = AsusualType.cardTitle, color = ink, maxLines = 1, overflow = TextOverflow.Ellipsis)
+            Text(line, style = AsusualType.supporting, color = ink.copy(alpha = 0.8f), maxLines = 1, overflow = TextOverflow.Ellipsis)
         }
         if (button != null) {
             Box(
@@ -87,7 +87,7 @@ fun InfoRow(
                     .padding(horizontal = InfoRowButtonSidePadding),
                 contentAlignment = Alignment.Center,
             ) {
-                Text(button, style = WeftType.label, color = ink, maxLines = 1)
+                Text(button, style = AsusualType.label, color = ink, maxLines = 1)
             }
         }
     }

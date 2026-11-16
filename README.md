@@ -1,11 +1,11 @@
-# Weft
+# Asusual
 
-Weft (formerly Sprout) is a small, open-source habit tracker for Android. It keeps your habits and notes on your phone, works without an account, and the APK is about 3 MB.
+Asusual (formerly Weft, and Sprout before that) is a small, open-source habit tracker for Android. It keeps your habits and notes on your phone, works without an account, and the APK is about 3 MB.
 
-**No ads · No tracking · No account · Free and open source (GPL v3)** · [Website](https://nisabmohd.com/weft)
+**No ads · No tracking · No account · Free and open source (GPL v3)** · [Website](https://nisabmohd.com/asusual)
 
-[<img src="docs/badges/github.png" alt="Get it on GitHub" height="80">](https://github.com/nisabmohd/weft/releases/latest)
-[<img src="docs/badges/obtainium.png" alt="Get it on Obtainium" height="80">](https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/nisabmohd/weft)
+[<img src="docs/badges/github.png" alt="Get it on GitHub" height="80">](https://github.com/nisabmohd/asusual/releases/latest)
+[<img src="docs/badges/obtainium.png" alt="Get it on Obtainium" height="80">](https://apps.obtainium.imranr.dev/redirect?r=obtainium://add/https://github.com/nisabmohd/asusual)
 
 | Today | Log an amount | Week | Overall |
 | --- | --- | --- | --- |
@@ -40,7 +40,7 @@ You can also:
 - see each week at a glance, or the last 26 weeks as a heatmap, with scores and streaks
 - keep a Journal of short notes tied to a habit and a day, filtered by habit or by dates
 - look back at any date range in Insights, for all habits or a few, with each habit ranked by score or by streak
-- get a reminder at the time you pick, as a notification with Done / +step / Dismiss buttons or as an alarm that rings full screen until you slide it done, snoozing up to three times (with Weft's own tone or any sound on your phone, and one place to allow what alarms need), and a nudge in the evening to add a note when you skip a habit that asks for one
+- get a reminder at the time you pick, as a notification with Done / +step / Dismiss buttons or as an alarm that rings full screen until you slide it done, snoozing up to three times (with Asusual's own tone or any sound on your phone, and one place to allow what alarms need), and a nudge in the evening to add a note when you skip a habit that asks for one
 - add four home-screen widgets that stay in sync with the app; the Today widget marks habits done from the home screen
 - export everything, including your settings, to a JSON file and import it again, or export a CSV for spreadsheets
 - back up to your own Google Drive, by hand or every night while charging, and restore any of the last 10 backups (Google Play and GitHub builds)
@@ -52,19 +52,19 @@ You can also:
 
 ## Download
 
-Download `weft-vX.Y.Z-github.apk` from the latest [GitHub release](https://github.com/nisabmohd/weft/releases). There are three builds:
+Download `asusual-vX.Y.Z-github.apk` from the latest [GitHub release](https://github.com/nisabmohd/asusual/releases). There are three builds:
 
 - `github` is the one on GitHub Releases. It checks GitHub for new versions (About → Check for updates, or once a day on its own), then downloads and installs the update for you. It has Google Drive backup, which uses Google's sign-in library and needs Google Play services on the phone.
 - `foss` has no Google code, no update check and no network access at all. This is the one for F-Droid, which updates it. Backup is to a file only.
 - `play` is the Google Play build: updates and ratings through Google Play, and Google Drive backup.
 
-**Obtainium:** tap the Obtainium badge above on your phone, or add `https://github.com/nisabmohd/weft` in [Obtainium](https://github.com/ImranR98/Obtainium). When it asks which APK to install, pick the `foss` one; Obtainium keeps it up to date. All GitHub builds are signed with the same key, so you can switch between them without losing your data.
+**Obtainium:** tap the Obtainium badge above on your phone, or add `https://github.com/nisabmohd/asusual` in [Obtainium](https://github.com/ImranR98/Obtainium). When it asks which APK to install, pick the `foss` one; Obtainium keeps it up to date. All GitHub builds are signed with the same key, so you can switch between them without losing your data.
 
-Weft runs on Android 8.0 and later.
+Asusual runs on Android 8.0 and later.
 
 ## Privacy
 
-Weft has no ads, no analytics and no trackers. It asks for notifications, for reminders; "Alarms & reminders" if you want them on the minute (and for alarm reminders); and full-screen notifications, so an alarm reminder can ring over the lock screen. On some phones (OnePlus, Xiaomi and others) it can also ask to display over other apps, which is optional and only used to open a ringing alarm. Your data only leaves the phone when you export it or turn on Google Drive backup, which writes to a hidden folder in your own Drive that only Weft can see. See the [privacy policy](https://nisabmohd.com/weft/privacy) ([`PRIVACY.md`](PRIVACY.md)).
+Asusual has no ads, no analytics and no trackers. It asks for notifications, for reminders; "Alarms & reminders" if you want them on the minute (and for alarm reminders); and full-screen notifications, so an alarm reminder can ring over the lock screen. On some phones (OnePlus, Xiaomi and others) it can also ask to display over other apps, which is optional and only used to open a ringing alarm. Your data only leaves the phone when you export it or turn on Google Drive backup, which writes to a hidden folder in your own Drive that only Asusual can see. See the [privacy policy](https://nisabmohd.com/asusual/privacy) ([`PRIVACY.md`](PRIVACY.md)).
 
 ## Build
 
@@ -83,12 +83,12 @@ See [`CONTRIBUTING.md`](CONTRIBUTING.md) for setup and testing, and [`AGENTS.md`
 
 ## Support
 
-Weft is free and has no ads. I build it because I enjoy it. If it helps you, you can [sponsor me on GitHub](https://github.com/sponsors/nisabmohd) or star the repo.
+Asusual is free and has no ads. I build it because I enjoy it. If it helps you, you can [sponsor me on GitHub](https://github.com/sponsors/nisabmohd) or star the repo.
 
 ## Contact
 
-Weft is made by **mid apps** (Nisab Mohd & contributors). Questions, ideas or press: [hello.midapps@gmail.com](mailto:hello.midapps@gmail.com). Bugs and feature requests: [GitHub Issues](https://github.com/nisabmohd/weft/issues).
+Asusual is made by **mid apps** (Nisab Mohd & contributors). Questions, ideas or press: [hello.midapps@gmail.com](mailto:hello.midapps@gmail.com). Bugs and feature requests: [GitHub Issues](https://github.com/nisabmohd/asusual/issues).
 
 ## License
 
-Weft is licensed under the [GNU General Public License v3.0](LICENSE). The bundled fonts (Space Grotesk, Outfit, Lexend and Atkinson Hyperlegible Next) use the SIL Open Font License 1.1; see [`licenses/fonts`](licenses/fonts). The Weft mark (the ball of yarn in the app icon) is mid apps' own, and the app's icons are [Solar](https://www.figma.com/community/file/1166831539721848736) by 480 Design, CC BY 4.0; see [`licenses/icons`](licenses/icons).
+Asusual is licensed under the [GNU General Public License v3.0](LICENSE). The bundled fonts (Space Grotesk, Outfit, Lexend and Atkinson Hyperlegible Next) use the SIL Open Font License 1.1; see [`licenses/fonts`](licenses/fonts). The Asusual mark (the wave in the app icon) is mid apps' own, and the app's icons are [Solar](https://www.figma.com/community/file/1166831539721848736) by 480 Design, CC BY 4.0; see [`licenses/icons`](licenses/icons).

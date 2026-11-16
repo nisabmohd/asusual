@@ -8,12 +8,12 @@
         <activity
             android:name=".SheetPreviewActivity"
             android:exported="true"
-            android:theme="@style/Theme.Weft.SheetPreview" />
+            android:theme="@style/Theme.Asusual.SheetPreview" />
         <!-- The widgets on one screen with a calm wallpaper of its own, for screenshots. -->
         <activity
             android:name=".WidgetBoardActivity"
             android:exported="true"
-            android:theme="@style/Theme.Weft" />
+            android:theme="@style/Theme.Asusual" />
         <activity
             android:name=".DriveStateActivity"
             android:exported="true"

@@ -1,4 +1,4 @@
-# Publishes the website (https://nisabmohd.github.io/weft/): the home page from site/ and the privacy
+# Publishes the website (https://nisabmohd.github.io/asusual/): the home page from site/ and the privacy
 # policy from PRIVACY.md, built by tools/build_site.py. Google's OAuth consent screen links to both.
 # Needs Settings → Pages → Source: GitHub Actions.
 name: Pages

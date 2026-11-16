@@ -8,7 +8,7 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import app.sprout.habits.data.update.AppUpdate
 import app.sprout.habits.support.SupportPromptSheet
 import app.sprout.habits.ui.drawEdgeToEdge
-import app.sprout.habits.ui.theme.WeftTheme
+import app.sprout.habits.ui.theme.AsusualTheme
 import app.sprout.habits.ui.update.UpdateSheet
 
 /**
@@ -21,12 +21,12 @@ class SheetPreviewActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         drawEdgeToEdge(dark = false)
-        val container = (application as WeftApp).container
+        val container = (application as AsusualApp).container
         val sheet = intent.getStringExtra("sheet")
         setContent {
             val settings by container.settings.settings.collectAsStateWithLifecycle(null)
             val current = settings ?: return@setContent
-            WeftTheme(current.theme) {
+            AsusualTheme(current.theme) {
                 when (sheet) {
                     "update" -> UpdateSheet(
                         update = AppUpdate(

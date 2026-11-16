@@ -8,7 +8,7 @@ import app.sprout.habits.ui.theme.Space4
 import app.sprout.habits.ui.theme.Space8
 import app.sprout.habits.ui.theme.IconLabelGap
 import app.sprout.habits.ui.theme.CardShape
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 import androidx.compose.foundation.background
 import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
@@ -178,14 +178,14 @@ fun NoteCard(
             }
             Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(TitleLineGap)) {
                 if (showHabit) {
-                    Text(note.habitName, style = WeftType.cardTitle, color = colors.onSurface, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                    Text(note.habitName, style = AsusualType.cardTitle, color = colors.onSurface, maxLines = 1, overflow = TextOverflow.Ellipsis)
                 }
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     DayMarkView(note.mark, hc, marks, Modifier.size(NoteMarkSize))
-                    Text(line, style = WeftType.supporting, color = colors.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.padding(start = NoteMarkGap))
+                    Text(line, style = AsusualType.supporting, color = colors.onSurfaceVariant, maxLines = 1, overflow = TextOverflow.Ellipsis, modifier = Modifier.padding(start = NoteMarkGap))
                 }
             }
         }
-        Text(note.text, style = WeftType.body, color = colors.onSurface)
+        Text(note.text, style = AsusualType.body, color = colors.onSurface)
     }
 }

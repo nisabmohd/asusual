@@ -17,7 +17,7 @@ class VersionsTest {
 
     @Test fun highlightsTakeFiveBulletsWithoutMarkdown() {
         val body = """
-            # Weft 1.1.0
+            # Asusual 1.1.0
 
             New:
 

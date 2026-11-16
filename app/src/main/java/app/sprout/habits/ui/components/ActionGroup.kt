@@ -25,7 +25,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import app.sprout.habits.R
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 
 /** An action row: 60 dp tall (68 dp with a second line), with a 40 dp tile and a 20 dp icon. */
 val ActionRowHeight = 60.dp
@@ -84,7 +84,7 @@ fun ActionRow(
             Modifier
                 .size(ActionTileSize)
                 .clip(HabitTileShape)
-                // primaryContainer, like "Help translate Weft": secondaryContainer blended into the row (2026-11-09).
+                // primaryContainer, like "Help translate Asusual": secondaryContainer blended into the row (2026-11-09).
                 .background(tileColor ?: if (destructive) colors.errorContainer else colors.primaryContainer),
             contentAlignment = Alignment.Center,
         ) {
@@ -96,8 +96,8 @@ fun ActionRow(
             )
         }
         Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(TitleLineGap)) {
-            Text(label, style = WeftType.cardTitle, color = content)
-            if (line != null) Text(line, style = WeftType.supporting, color = colors.onSurfaceVariant)
+            Text(label, style = AsusualType.cardTitle, color = content)
+            if (line != null) Text(line, style = AsusualType.supporting, color = colors.onSurfaceVariant)
         }
         if (chevron) {
             Icon(painterResource(R.drawable.ic_chevron_right), contentDescription = null, tint = colors.onSurfaceVariant, modifier = Modifier.size(IconSizeSmall))

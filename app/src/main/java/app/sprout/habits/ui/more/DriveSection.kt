@@ -42,7 +42,7 @@ import androidx.compose.ui.unit.dp
 import app.sprout.habits.R
 import app.sprout.habits.ui.components.SheetTitleInset
 import app.sprout.habits.ui.components.SheetSidePadding
-import app.sprout.habits.ui.components.WeftButton
+import app.sprout.habits.ui.components.AsusualButton
 import app.sprout.habits.ui.components.sheetBottomPadding
 import app.sprout.habits.ui.components.ActionGroup
 import app.sprout.habits.ui.components.ActionRow
@@ -61,8 +61,8 @@ import app.sprout.habits.data.backup.DriveBackupInfo
 import app.sprout.habits.data.backup.DriveResult
 import app.sprout.habits.ui.components.ChoiceRow
 import app.sprout.habits.ui.components.ChoiceSheet
-import app.sprout.habits.ui.components.WeftSheet
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.components.AsusualSheet
+import app.sprout.habits.ui.theme.AsusualType
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
@@ -282,7 +282,7 @@ fun DriveBackupContent(
 
     if (accountSheet) {
         // Grouped action rows like the note actions sheet (`drive-account-sheet.png`).
-        WeftSheet(onDismissRequest = { accountSheet = false }) {
+        AsusualSheet(onDismissRequest = { accountSheet = false }) {
             SheetHeader(stringResource(R.string.google_account), settings.driveAccount.orEmpty())
             ActionGroup(Modifier.sheetBottomPadding()) {
                 ActionRow(R.drawable.ic_switch, stringResource(R.string.drive_switch_account), 0, 3, {
@@ -403,11 +403,11 @@ private fun RestoreSheet(
         onDismiss = onDismiss,
         subtitle = stringResource(R.string.drive_restore_text),
         footer = {
-            WeftButton(
+            AsusualButton(
                 stringResource(R.string.drive_restore),
                 ButtonRole.Primary,
                 onClick = {
-                    val info = chosen ?: return@WeftButton
+                    val info = chosen ?: return@AsusualButton
                     loading = true
                     scope.launch {
                         download(info)?.let { confirming = info to it }
@@ -426,7 +426,7 @@ private fun RestoreSheet(
             }
             backups.isEmpty() -> Text(
                 stringResource(R.string.drive_no_backup),
-                style = WeftType.body,
+                style = AsusualType.body,
                 color = MaterialTheme.colorScheme.onSurface,
                 modifier = Modifier.padding(horizontal = SheetTitleInset, vertical = Space24),
             )

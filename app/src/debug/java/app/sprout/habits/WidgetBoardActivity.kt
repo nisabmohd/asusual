@@ -54,7 +54,7 @@ class WidgetBoardActivity : Activity() {
             // dark at the bottom, so the pale widgets stand out (rose-brown until 2026-11-16).
             background = GradientDrawable(
                 GradientDrawable.Orientation.TOP_BOTTOM,
-                intArrayOf(0xFF5E9C82.toInt(), 0xFF2A6F52.toInt(), 0xFF10291F.toInt()),
+                intArrayOf(0xFF5E9C82.toInt(), 0xFF2B6F52.toInt(), 0xFF10291F.toInt()),
             )
         }
         val streakIds = mutableListOf<Int>()
@@ -106,7 +106,7 @@ class WidgetBoardActivity : Activity() {
         setContentView(column, ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT))
         drawEdgeToEdge(dark = true)
         // Each streak widget on its own habit (the two best streaks), then draw them all with today's data.
-        val app = application as WeftApp
+        val app = application as AsusualApp
         CoroutineScope(Dispatchers.Default).launch {
             val source = WidgetDataSource(app.container.repository, app.container.settings)
             val best = app.container.repository.observeHabits().first()

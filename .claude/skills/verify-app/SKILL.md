@@ -1,6 +1,6 @@
 ---
 name: verify-app
-description: Build Weft and check every feature on the emulator with the smoke suite. Use after any change, before committing, or when asked to verify, test or check the app.
+description: Build Asusual and check every feature on the emulator with the smoke suite. Use after any change, before committing, or when asked to verify, test or check the app.
 ---
 
 # Verify the app
@@ -20,7 +20,7 @@ description: Build Weft and check every feature on the emulator with the smoke s
 5. For UI changes also check dark mode (`adb shell cmd uimode night yes`) and the largest text (`adb shell settings put system font_scale 2.0`, plus More → Text size → Largest). Reset both afterwards.
 
 ## Groups added in 1.5.0
-`alarm_` and `notification_buttons` (1.6.0: need a rootable emulator such as Sprout_API_35 for sqlite3; skipped elsewhere; run with animations off), `widget` and `launcher` (they clear the launcher's home screen; test emulator only; the midnight check needs `adb root`), `drive` (uses the debug `DriveStateActivity`; toggles airplane mode), `link` (weft:// links and the launcher shortcuts). Run one group with `python3 tools/verify/smoke.py drive`.
+`alarm_` and `notification_buttons` (1.6.0: need a rootable emulator such as Sprout_API_35 for sqlite3; skipped elsewhere; run with animations off), `widget` and `launcher` (they clear the launcher's home screen; test emulator only; the midnight check needs `adb root`), `drive` (uses the debug `DriveStateActivity`; toggles airplane mode), `link` (asusual:// links and the launcher shortcuts). Run one group with `python3 tools/verify/smoke.py drive`.
 
 ## Pitfalls
 - Snackbars last about 4 s and a UI dump takes 1–2 s: read the snackbar and tap Undo from one `dump()`.

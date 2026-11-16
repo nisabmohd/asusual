@@ -4,7 +4,7 @@ What to enter in Play Console → Policy and programs → App content → **Data
 
 ## Before you submit
 
-The privacy policy URL is `https://nisabmohd.com/weft/privacy` (on the developer's site, credited to mid apps; keep it in step with `PRIVACY.md`; the GitHub Pages copy at `https://nisabmohd.github.io/weft/privacy/` is built from `PRIVACY.md` on every push to `main`; `https://github.com/nisabmohd/weft/blob/main/PRIVACY.md` shows the same text). Set it in Play Console → App content → Privacy policy.
+The privacy policy URL is `https://nisabmohd.com/asusual/privacy` (on the developer's site, credited to mid apps; keep it in step with `PRIVACY.md`; the GitHub Pages copy at `https://nisabmohd.github.io/asusual/privacy/` is built from `PRIVACY.md` on every push to `main`; `https://github.com/nisabmohd/asusual/blob/main/PRIVACY.md` shows the same text). Set it in Play Console → App content → Privacy policy.
 
 ## Overview
 
@@ -12,8 +12,8 @@ The privacy policy URL is `https://nisabmohd.com/weft/privacy` (on the developer
 | --- | --- |
 | Does your app collect or share any of the required user data types? | **Yes** |
 | Is all of the user data collected by your app encrypted in transit? | **Yes** (HTTPS to Google only) |
-| Which of the following methods of account creation does your app support? | **My app does not allow users to create an account** (Drive uses the Google account already on the phone; Weft has no accounts) |
-| Do you provide a way for users to request that their data is deleted? | **Yes**: in the app (Backup & restore → Google account → Delete backups from Drive; or uninstall), and in Google Drive (Manage apps → Weft → Delete hidden app data) |
+| Which of the following methods of account creation does your app support? | **My app does not allow users to create an account** (Drive uses the Google account already on the phone; Asusual has no accounts) |
+| Do you provide a way for users to request that their data is deleted? | **Yes**: in the app (Backup & restore → Google account → Delete backups from Drive; or uninstall), and in Google Drive (Manage apps → Asusual → Delete hidden app data) |
 
 ## Data types
 
@@ -25,12 +25,12 @@ Tick only these. Give every one of them the same answers:
 | App activity → **Other user-generated content** (habit names, notes) | Yes | No | No | **Optional** | App functionality |
 | App activity → **Other actions** (daily check-ins, settings) | Yes | No | No | **Optional** | App functionality |
 
-The email is read from the Google account the user picks and shown on Backup & restore. It's declared to be safe, even though Weft only stores it on the phone. Each backup also carries the phone's model name (for example "Pixel 8"). That is not an identifier in Play's list, so it needs no tick of its own.
+The email is read from the Google account the user picks and shown on Backup & restore. It's declared to be safe, even though Asusual only stores it on the phone. Each backup also carries the phone's model name (for example "Pixel 8"). That is not an identifier in Play's list, so it needs no tick of its own.
 
 ## Not collected
 
 - Location, financial info, health and fitness, messages, photos and videos, audio, files and docs, calendar, contacts, web browsing, app info and performance (no crash reporting or analytics), and device or other IDs.
-- **In-App Updates and In-App Review** (`app-update`, `review`): these show Google Play's own screens and send nothing for Weft. Play's SDK Index lists nothing for them to declare.
+- **In-App Updates and In-App Review** (`app-update`, `review`): these show Google Play's own screens and send nothing for Asusual. Play's SDK Index lists nothing for them to declare.
 - The **F-Droid** and **GitHub** builds aren't on Play, so this form doesn't apply to them. The GitHub build's update check sends no personal data.
 
 ## Check after saving

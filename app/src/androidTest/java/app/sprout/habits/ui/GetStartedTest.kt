@@ -23,7 +23,7 @@ import androidx.compose.ui.test.swipeRight
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import app.sprout.habits.ResourceStrings
-import app.sprout.habits.ui.theme.WeftTheme
+import app.sprout.habits.ui.theme.AsusualTheme
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
@@ -38,7 +38,7 @@ class GetStartedTest {
     private val suggestions = welcomeSuggestions(strings)
 
     @Test fun pickStepListsFiveSuggestionsAndAddYourOwn() {
-        rule.setContent { WeftTheme { PickStep(suggestions, mutableStateListOf(), mutableStateListOf(), mutableStateListOf()) } }
+        rule.setContent { AsusualTheme { PickStep(suggestions, mutableStateListOf(), mutableStateListOf(), mutableStateListOf()) } }
         listOf("Wake up at 7", "Read", "Drink water", "Workout", "Evening journal", "Add your own habit").forEach {
             rule.onNodeWithText(it).performScrollTo().assertIsDisplayed()
         }
@@ -46,7 +46,7 @@ class GetStartedTest {
 
     @Test fun tappingASuggestionPicksIt() {
         val picked = mutableStateListOf<Int>()
-        rule.setContent { WeftTheme { PickStep(suggestions, picked, mutableStateListOf(), mutableStateListOf()) } }
+        rule.setContent { AsusualTheme { PickStep(suggestions, picked, mutableStateListOf(), mutableStateListOf()) } }
         rule.onNodeWithText("Read").performClick()
         rule.runOnIdle { assertEquals(listOf(1), picked.toList()) }
         rule.onNodeWithText("Read").performClick()
@@ -55,7 +55,7 @@ class GetStartedTest {
 
     @Test fun addYourOwnHabitFromTheSheet() {
         val own = mutableStateListOf<String>()
-        rule.setContent { WeftTheme { PickStep(suggestions, mutableStateListOf(), own, mutableStateListOf()) } }
+        rule.setContent { AsusualTheme { PickStep(suggestions, mutableStateListOf(), own, mutableStateListOf()) } }
         rule.onNodeWithText("Add your own habit").performScrollTo().performClick()
         rule.onNodeWithText("Your own habit").assertIsDisplayed()
         rule.onNode(hasSetTextAction()).performTextInput("Stretch")
@@ -65,7 +65,7 @@ class GetStartedTest {
     }
 
     @Test fun practiceHoldLogsPartial() {
-        rule.setContent { WeftTheme { PracticeStep(suggestions[1], strings) } }
+        rule.setContent { AsusualTheme { PracticeStep(suggestions[1], strings) } }
         rule.onNodeWithText("20 pages").performTouchInput { longClick() }
         rule.onNodeWithText("Save").performClick()
         rule.onNodeWithText("10 / 20 pages").assertIsDisplayed()
@@ -73,7 +73,7 @@ class GetStartedTest {
     }
 
     @Test fun practiceSwipesAndTapTickTheirRows() {
-        rule.setContent { WeftTheme { PracticeStep(suggestions[1], strings) } }
+        rule.setContent { AsusualTheme { PracticeStep(suggestions[1], strings) } }
         rule.onNodeWithText("20 pages").performTouchInput { swipeRight() }
         rule.onNodeWithText("20 / 20 pages").assertIsDisplayed()
         // Left on a done card undoes it; left again skips.
@@ -91,7 +91,7 @@ class GetStartedTest {
     }
 
     @Test fun practiceUndoBarPutsTheCardBackAndTicksUndo() {
-        rule.setContent { WeftTheme { PracticeStep(suggestions[1], strings) } }
+        rule.setContent { AsusualTheme { PracticeStep(suggestions[1], strings) } }
         rule.onNodeWithContentDescription("Mark Read done").performClick()
         rule.onNodeWithText("Read marked done").assertIsDisplayed()
         // The bar's Undo, not the "Undo" row title: the bar comes last.
@@ -102,7 +102,7 @@ class GetStartedTest {
     }
 
     @Test fun practiceNoteShowsInTheJournal() {
-        rule.setContent { WeftTheme { PracticeStep(suggestions[1], strings) } }
+        rule.setContent { AsusualTheme { PracticeStep(suggestions[1], strings) } }
         rule.onNodeWithText("20 pages").performTouchInput { longClick() }
         rule.onNode(hasSetTextAction()).performTextInput("Fell asleep early")
         rule.onNodeWithText("Save").performClick()

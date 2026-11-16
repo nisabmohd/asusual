@@ -51,11 +51,11 @@ import app.sprout.habits.ui.components.ChoiceSheet
 import app.sprout.habits.ui.components.SheetActionGap
 import app.sprout.habits.ui.components.SheetSidePadding
 import app.sprout.habits.ui.components.SheetTitleInset
-import app.sprout.habits.ui.components.WeftButton
+import app.sprout.habits.ui.components.AsusualButton
 import app.sprout.habits.ui.components.sheetBottomPadding
 import app.sprout.habits.ui.components.toggle
 import app.sprout.habits.ui.components.TitleLineGap
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 
 /**
  * What alarms need on this phone, re-read whenever the app comes back to the front (the user may
@@ -156,7 +156,7 @@ fun SetupSwitchRow(title: String, text: String?, allowed: Boolean, padding: Padd
     }
 }
 
-/** A row that opens a page outside Weft (or Extra phone settings): no switch, a muted ↗. */
+/** A row that opens a page outside Asusual (or Extra phone settings): no switch, a muted ↗. */
 @Composable
 fun SetupLinkRow(title: String, text: String?, padding: PaddingValues, onOpen: () -> Unit) {
     Row(
@@ -176,8 +176,8 @@ fun SetupLinkRow(title: String, text: String?, padding: PaddingValues, onOpen: (
 @Composable
 private fun RowText(title: String, text: String?, modifier: Modifier) {
     Column(modifier.padding(end = Space12), verticalArrangement = Arrangement.spacedBy(TitleLineGap)) {
-        Text(title, style = WeftType.cardTitle, color = MaterialTheme.colorScheme.onSurface)
-        text?.let { Text(it, style = WeftType.supporting, color = MaterialTheme.colorScheme.onSurfaceVariant) }
+        Text(title, style = AsusualType.cardTitle, color = MaterialTheme.colorScheme.onSurface)
+        text?.let { Text(it, style = AsusualType.supporting, color = MaterialTheme.colorScheme.onSurfaceVariant) }
     }
 }
 
@@ -218,7 +218,7 @@ fun AlarmSetupSheet(onDismiss: () -> Unit, onUseNotification: (() -> Unit)? = nu
         title = stringResource(R.string.set_up_alarms),
         onDismiss = onDismiss,
         footer = {
-            WeftButton(
+            AsusualButton(
                 stringResource(if (useNotification) R.string.alarm_use_notification else R.string.action_done),
                 if (useNotification) ButtonRole.Secondary else ButtonRole.Primary,
                 onClick = { if (useNotification) onUseNotification?.invoke() else onDismiss() },
@@ -235,7 +235,7 @@ fun AlarmSetupSheet(onDismiss: () -> Unit, onUseNotification: (() -> Unit)? = nu
 /**
  * Extra phone settings (extra-phone-settings-sheet.png): what some phone makers add on top of
  * Android. Show over other apps is a switch (Android reports it; optional, never counted); Lock
- * screen & pop-ups and Battery open Weft's page in settings, as Android can't tell if they're on.
+ * screen & pop-ups and Battery open Asusual's page in settings, as Android can't tell if they're on.
  */
 @Composable
 fun ExtraPhoneSettingsSheet(state: AlarmSetupState, onDismiss: () -> Unit) {
@@ -244,7 +244,7 @@ fun ExtraPhoneSettingsSheet(state: AlarmSetupState, onDismiss: () -> Unit) {
         subtitle = stringResource(R.string.extra_phone_settings_text),
         onDismiss = onDismiss,
         footer = {
-            WeftButton(
+            AsusualButton(
                 stringResource(R.string.action_done),
                 ButtonRole.Primary,
                 onClick = onDismiss,
@@ -252,7 +252,7 @@ fun ExtraPhoneSettingsSheet(state: AlarmSetupState, onDismiss: () -> Unit) {
             )
         },
     ) {
-        // The same rows on every phone: Android reports only the first; the others are on Weft's app page.
+        // The same rows on every phone: Android reports only the first; the others are on Asusual's app page.
         SetupSwitchRow(stringResource(R.string.alarm_overlay), stringResource(R.string.alarm_overlay_desc), state.showOverApps, SheetRowPadding, state.openShowOverApps)
         SetupLinkRow(stringResource(R.string.alarm_lock_screen), stringResource(R.string.alarm_lock_screen_desc), SheetRowPadding, state.openPhoneSettings)
         SetupLinkRow(stringResource(R.string.alarm_battery), stringResource(R.string.alarm_battery_desc), SheetRowPadding, state.openBattery)

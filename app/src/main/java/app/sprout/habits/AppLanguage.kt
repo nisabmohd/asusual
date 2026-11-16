@@ -10,7 +10,7 @@ import android.os.LocaleList
 import java.util.Locale
 import kotlinx.coroutines.launch
 
-/** One language Weft ships: its tag, its name in its own script, and its English name. */
+/** One language Asusual ships: its tag, its name in its own script, and its English name. */
 data class Language(val tag: String, val nativeName: String, val englishName: String)
 
 /**
@@ -53,7 +53,7 @@ object AppLanguage {
             activity.getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit().putString(KEY, tag).commit()
             // The application context serves view models, notifications and widgets.
             apply(activity.applicationContext.resources, tag)
-            (activity.application as? WeftApp)?.let { app -> app.container.appScope.launch { app.container.widgets.updateAll() } }
+            (activity.application as? AsusualApp)?.let { app -> app.container.appScope.launch { app.container.widgets.updateAll() } }
             activity.recreate()
         }
     }

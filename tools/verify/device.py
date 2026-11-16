@@ -1,4 +1,4 @@
-"""Small helpers for driving the Weft app on an emulator or phone over adb.
+"""Small helpers for driving the Asusual app on an emulator or phone over adb.
 
 Only the Python standard library; finds elements by their visible text or TalkBack label
 (content description), so checks don't depend on screen coordinates.
@@ -161,7 +161,7 @@ def density():
 
 def nav(tab):
     """
-    Taps a bottom-bar tab by its label (the bar's labels are always the last matches). If Weft is
+    Taps a bottom-bar tab by its label (the bar's labels are always the last matches). If Asusual is
     on a screen without the bar (a habit, Manage habits, Backup & restore, left there by an earlier
     check), goes back to it first.
     """
@@ -232,7 +232,7 @@ def open_app():
 
 def pin_widget(kind):
     """
-    Empties the home screen and pins one Weft widget there ([kind]: week, today, strip, streak),
+    Empties the home screen and pins one Asusual widget there ([kind]: week, today, strip, streak),
     through the debug build's PinWidgetActivity. Clearing the launcher resets its layout, so only
     run this on a test emulator.
 
@@ -278,14 +278,14 @@ def _wait_for_home(home_app, timeout=40.0, still=5.0):
 
 
 def widget_nodes():
-    """Weft's widget views on the home screen (the launcher hosts them under Weft's package)."""
+    """Asusual's widget views on the home screen (the launcher hosts them under Asusual's package)."""
     return [n for n in dump() if n.package == PACKAGE]
 
 
 def show_widget_page():
     """
     The launcher may add a widget to another home screen page (when the first is full), and Home
-    always goes back to the first page. If no Weft widget is on screen, swipes across the pages to
+    always goes back to the first page. If no Asusual widget is on screen, swipes across the pages to
     it, and back to the first page if none has one.
     """
     if widget_nodes():

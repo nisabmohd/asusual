@@ -48,7 +48,7 @@ class StripWidget : GlanceAppWidget() {
         val bitmaps = WidgetBitmaps(context)
         provideContent {
             val live by liveWidgetData(context, data) { it.today() }
-            WeftGlanceTheme { StripContent(live, bitmaps) }
+            AsusualGlanceTheme { StripContent(live, bitmaps) }
         }
     }
 }

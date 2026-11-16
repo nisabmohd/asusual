@@ -118,8 +118,8 @@ def more():
 @screen
 def about():
     d.nav("More")
-    d.scroll_to("About Weft")
-    d.tap("About Weft")
+    d.scroll_to("About Asusual")
+    d.tap("About Asusual")
     time.sleep(1)
     save_full_length("about", 2778)
     d.back()
@@ -315,7 +315,7 @@ def habit_detail():
     """Read's page (edit, archive and delete buttons; recaptured 2026-11-08 for the new Edit / Archive icons)."""
     db = f"/data/data/{d.PACKAGE}/databases/sprout.db"
     hid = d.shell(f'sqlite3 {db} "select id from habit where name=\'Read\'"').strip()
-    d.shell(f"am start -a android.intent.action.VIEW -d weft://habit/{hid} {d.PACKAGE}")
+    d.shell(f"am start -a android.intent.action.VIEW -d asusual://habit/{hid} {d.PACKAGE}")
     assert d.exists("Read", timeout=8)
     save("habit-detail")
     d.back()
@@ -359,7 +359,7 @@ def alarm_permissions(notifications, exact, full_screen, restart=True):
     """Sets what alarms are allowed (1.6.2's Set up alarms), on a phone that passes for a OnePlus."""
     if restart:
         d.shell(f"am force-stop {d.PACKAGE}")
-        d.shell("setprop debug.weft.maker oneplus")
+        d.shell("setprop debug.asusual.maker oneplus")
     d.shell(f"pm {'grant' if notifications else 'revoke'} {d.PACKAGE} android.permission.POST_NOTIFICATIONS")
     # Off the battery allow-list (root puts the app there): allow-listed apps may always set exact alarms.
     d.shell(f"dumpsys deviceidle whitelist -{d.PACKAGE}")
@@ -369,7 +369,7 @@ def alarm_permissions(notifications, exact, full_screen, restart=True):
         d.shell(f"am start -W -n {d.PACKAGE}/.MainActivity")
         time.sleep(1.5)
     else:
-        # Weft re-reads them when it comes back to the front, as after the system settings page.
+        # Asusual re-reads them when it comes back to the front, as after the system settings page.
         d.shell("input keyevent KEYCODE_HOME")
         time.sleep(1)
         d.shell(f"am start -W -n {d.PACKAGE}/.MainActivity")
@@ -378,7 +378,7 @@ def alarm_permissions(notifications, exact, full_screen, restart=True):
 
 def alarm_permissions_reset():
     d.shell(f"am force-stop {d.PACKAGE}")
-    d.shell("setprop debug.weft.maker ''")
+    d.shell("setprop debug.asusual.maker ''")
     alarm_permissions(True, True, True, restart=False)
 
 
@@ -435,15 +435,15 @@ def more_reminders_alarms():
     save_full_length("more-reminders-alarms-row", 3800)
     d.scroll_to("Reminders & alarms")
     d.tap("Reminders & alarms")
-    assert d.exists("Allow Weft to", timeout=5)
+    assert d.exists("Allow Asusual to", timeout=5)
     save("more-reminders-alarms-screen")
     d.tap("Extra phone settings")
-    assert d.exists("Turn both on in Weft’s app info", timeout=5)
+    assert d.exists("Turn both on in Asusual’s app info", timeout=5)
     save("extra-phone-settings-sheet")
     d.tap("Done")
     d.scroll_to("Alarm sound")
     d.tap("Alarm sound")
-    d.tap("Weft")  # plays it: the row says "Playing"
+    d.tap("Asusual")  # plays it: the row says "Playing"
     save("alarm-11-sound-sheet")
     d.back()
     d.back()
@@ -477,7 +477,7 @@ def main(words):
     try:
         for s in picked:
             try:
-                # Each screen starts from Weft in front (a sheet's Back may have left the app).
+                # Each screen starts from Asusual in front (a sheet's Back may have left the app).
                 d.shell(f"am start -n {d.PACKAGE}/.MainActivity")
                 time.sleep(1.5)
                 s()

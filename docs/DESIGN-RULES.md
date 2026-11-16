@@ -20,7 +20,7 @@ These come on top of `docs/SPACING.md` and `docs/TYPOGRAPHY.md`. Follow them in 
 ## 3. Action sheets use grouped rows
 - Group the rows with 2dp gaps. The first row has 24dp top corners and 6dp bottom corners, the middle rows 6dp, and the last row 6dp top and 24dp bottom. Don't use dividers.
 - Row: 60dp tall, surfaceContainerHigh, 16dp horizontal padding, 16dp gap. Use 64dp+ when the row has a second line. Actions are one line: a verb, no subtitle.
-- Leading tile: 40dp, 14dp corners, **primaryContainer** with a 20dp onPrimaryContainer icon, the same tile as "Help translate Weft". Never secondaryContainer or a habit soft colour on a surfaceContainerHigh row; they blend into it.
+- Leading tile: 40dp, 14dp corners, **primaryContainer** with a 20dp onPrimaryContainer icon, the same tile as "Help translate Asusual". Never secondaryContainer or a habit soft colour on a surfaceContainerHigh row; they blend into it.
 - Give the list room: 20dp from the title block to the first row, and clear space above the gesture bar.
 - Label: 16sp Medium. An optional second line is 14sp onSurfaceVariant. Add a trailing chevron only when the row opens something.
 - Destructive: errorContainer tile, error icon and label, always the last row.
@@ -62,7 +62,7 @@ Habit colours (`hab()`) are only for a habit's own content: its tile, progress, 
 - No Undo when it can't be undone from the app: Disconnect (needs the Google sign-in again) shows a plain message.
 
 ## 11. Android's settings pages
-- Open them only through `notify/SystemPages.kt`: inside Weft's task (never `FLAG_ACTIVITY_NEW_TASK`, which can bring back a Settings page left open instead of the one asked for), with fallbacks from the exact page to the app's notification page to its app info, so every phone opens something right. No lists of phone makers for these rows.
+- Open them only through `notify/SystemPages.kt`: inside Asusual's task (never `FLAG_ACTIVITY_NEW_TASK`, which can bring back a Settings page left open instead of the one asked for), with fallbacks from the exact page to the app's notification page to its app info, so every phone opens something right. No lists of phone makers for these rows.
 - A row that opens a page says under its title what it is for and where it goes.
 
 ## 12. Named sizes only (user, 2026-11-11: "smallest detail matters")

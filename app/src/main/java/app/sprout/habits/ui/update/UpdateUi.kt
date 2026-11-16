@@ -11,7 +11,7 @@ import app.sprout.habits.ui.theme.Space16
 import app.sprout.habits.ui.theme.Space20
 import app.sprout.habits.ui.theme.Space4
 import app.sprout.habits.ui.theme.Space8
-import app.sprout.habits.ui.theme.WeftType
+import app.sprout.habits.ui.theme.AsusualType
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.foundation.rememberScrollState
 import androidx.lifecycle.compose.LifecycleResumeEffect
@@ -59,10 +59,10 @@ import app.sprout.habits.R
 import app.sprout.habits.ui.components.sheetBottomPadding
 import app.sprout.habits.ui.components.ButtonPair
 import app.sprout.habits.ui.components.ButtonRole
-import app.sprout.habits.ui.components.WeftButton
+import app.sprout.habits.ui.components.AsusualButton
 import app.sprout.habits.ui.components.SheetHeader
 import app.sprout.habits.ui.components.SheetSidePadding
-import app.sprout.habits.ui.components.WeftSheet
+import app.sprout.habits.ui.components.AsusualSheet
 import app.sprout.habits.data.update.AppUpdate
 import app.sprout.habits.data.update.DownloadState
 import app.sprout.habits.data.update.UpdateCheck
@@ -105,7 +105,7 @@ fun UpdateSheet(
 
     // A sheet like every prompt (`update-sheet.png`): the header, What's new in a card, then
     // Later | Update. The notes scroll on their own so the buttons stay at the bottom.
-    WeftSheet(onDismissRequest = onDismiss) {
+    AsusualSheet(onDismissRequest = onDismiss) {
         SheetHeader(stringResource(R.string.update_available), stringResource(R.string.update_version_line, update.version, currentVersionOverride ?: currentVersion))
         if (update.notes.isNotEmpty()) {
             Column(
@@ -119,11 +119,11 @@ fun UpdateSheet(
                     .padding(Space16),
                 verticalArrangement = Arrangement.spacedBy(Space12),
             ) {
-                Text(stringResource(R.string.whats_new), style = WeftType.cardTitle, color = colors.onSurface)
+                Text(stringResource(R.string.whats_new), style = AsusualType.cardTitle, color = colors.onSurface)
                 update.notes.forEach { line ->
                     Row(verticalAlignment = Alignment.Top) {
                         Box(Modifier.padding(top = Space8).size(Space8).background(colors.primary, CircleShape))
-                        Text(line, style = WeftType.body, color = colors.onSurface, modifier = Modifier.padding(start = Space12))
+                        Text(line, style = AsusualType.body, color = colors.onSurface, modifier = Modifier.padding(start = Space12))
                     }
                 }
             }
@@ -140,16 +140,16 @@ fun UpdateSheet(
                         else LinearProgressIndicator(progress = { fraction }, modifier = Modifier.fillMaxWidth())
                         Text(
                             if (fraction == null) stringResource(R.string.downloading) else stringResource(R.string.downloading_percent, (fraction * 100).toInt()),
-                            style = WeftType.supporting,
+                            style = AsusualType.supporting,
                             color = colors.onSurfaceVariant,
                         )
                     }
                     Spacer(Modifier.height(Space16))
-                    WeftButton(stringResource(R.string.later), ButtonRole.Secondary, onClick = onLater, modifier = Modifier.fillMaxWidth())
+                    AsusualButton(stringResource(R.string.later), ButtonRole.Secondary, onClick = onLater, modifier = Modifier.fillMaxWidth())
                 }
                 is DownloadState.Ready -> {
                     if (!canInstall) {
-                        Text(stringResource(R.string.allow_installs_hint), style = WeftType.supporting, color = colors.onSurfaceVariant, textAlign = TextAlign.Center)
+                        Text(stringResource(R.string.allow_installs_hint), style = AsusualType.supporting, color = colors.onSurfaceVariant, textAlign = TextAlign.Center)
                         Spacer(Modifier.height(Space12))
                     }
                     ButtonPair(stringResource(R.string.later), onLater, stringResource(R.string.install), {
@@ -157,7 +157,7 @@ fun UpdateSheet(
                     })
                 }
                 DownloadState.Failed -> {
-                    Text(stringResource(R.string.update_failed), style = WeftType.supporting, color = colors.error, textAlign = TextAlign.Center)
+                    Text(stringResource(R.string.update_failed), style = AsusualType.supporting, color = colors.error, textAlign = TextAlign.Center)
                     Spacer(Modifier.height(Space12))
                     ButtonPair(stringResource(R.string.later), onLater, stringResource(R.string.open_release_page), { openUrl(context, update.pageUrl); onDismiss() })
                 }
@@ -186,7 +186,7 @@ fun CheckForUpdates(updates: UpdateManager, play: PlayUpdates) {
     if (play.enabled) { PlayCheckForUpdates(play); return }
     if (!updates.enabled) {
         if (!BuildConfig.PLAY_STORE) {
-            Text(stringResource(R.string.updates_from_fdroid), style = WeftType.supporting, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            Text(stringResource(R.string.updates_from_fdroid), style = AsusualType.supporting, color = MaterialTheme.colorScheme.onSurfaceVariant)
         }
         return
     }
@@ -269,7 +269,7 @@ private fun UpdatesPill(state: CheckState, onClick: () -> Unit) {
                     CheckState.ERROR -> R.string.update_check_failed
                 },
             ),
-            style = WeftType.label,
+            style = AsusualType.label,
         )
     }
 }
@@ -309,12 +309,12 @@ private fun PlayUpdatePrompt(play: PlayUpdates) {
     }
 }
 
-/** A small "Update available" pill, for More → About Weft. */
+/** A small "Update available" pill, for More → About Asusual. */
 @Composable
 fun UpdateBadge() {
     Text(
         stringResource(R.string.update_available),
-        style = WeftType.captionStrong,
+        style = AsusualType.captionStrong,
         color = MaterialTheme.colorScheme.onPrimaryContainer,
         modifier = Modifier
             .background(MaterialTheme.colorScheme.primaryContainer, PillShape)

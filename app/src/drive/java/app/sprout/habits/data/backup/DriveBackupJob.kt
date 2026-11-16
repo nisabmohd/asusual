@@ -3,7 +3,7 @@ package app.sprout.habits.data.backup
 import android.annotation.SuppressLint
 import android.app.job.JobParameters
 import android.app.job.JobService
-import app.sprout.habits.WeftApp
+import app.sprout.habits.AsusualApp
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
@@ -13,7 +13,7 @@ import kotlinx.coroutines.launch
 
 /**
  * The scheduled Drive backup (JobScheduler: overnight, charging, on the right network). It never
- * shows a screen: if Google asks the user to allow Weft again, the backup is marked failed and
+ * shows a screen: if Google asks the user to allow Asusual again, the backup is marked failed and
  * Backup & restore shows "Last backup failed" with Try again.
  */
 // Its id is far above WorkManager's (see DriveBackup.JOB_ID), so no id range is needed.
@@ -23,7 +23,7 @@ class DriveBackupJob : JobService() {
     private var running: Job? = null
 
     override fun onStartJob(params: JobParameters): Boolean {
-        val container = (application as WeftApp).container
+        val container = (application as AsusualApp).container
         running = scope.launch {
             val drive = container.drive
             val s = container.settings.settings.first()

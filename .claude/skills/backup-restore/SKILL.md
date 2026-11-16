@@ -7,7 +7,7 @@ description: JSON export/import (habits, entries, notes and preferences) and CSV
 
 **Code:** `data/backup/Backup.kt` — `BackupFile` (versioned DTOs, separate from Room entities; `settings` is optional so older files still import), `BackupManager.parse` (validation, clear errors), `restore` (one transaction, then preferences), `csv`. UI: `ui/more/BackupSection.kt` (`CreateDocument` / `OpenDocument`, no storage permission). Unit tests: `BackupFormatTest`.
 
-**Verify:** More → Backups → Export to file (foss: Export now) → JSON → Save; read it with `adb exec-out cat /sdcard/Download/<file>`; change data or settings; Backups → Import from file → Replace; confirm everything is back. A non-backup JSON must show "This isn't a Weft backup file." and change nothing.
+**Verify:** More → Backups → Export to file (foss: Export now) → JSON → Save; read it with `adb exec-out cat /sdcard/Download/<file>`; change data or settings; Backups → Import from file → Replace; confirm everything is back. A non-backup JSON must show "This isn't an Asusual backup file." and change nothing.
 
 **Pitfalls:** bump `FORMAT_VERSION` only for incompatible changes; add new fields with defaults. Check under R8 with a release build (kotlinx.serialization).
 
