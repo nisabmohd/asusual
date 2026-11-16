@@ -1,23 +1,33 @@
 """Draws the Asusual mark (a wave: one line that rises, dips and settles, asusual-logo.zip, 2026-11-16)
 into every file that shows it, from one geometry, each centred exactly on its canvas.
 
-  launcher  app/src/main/res/drawable/ic_launcher_foreground.xml   56.2 dp wide on the 108 dp canvas (the zip's 0.66)
+  launcher  app/src/main/res/drawable/ic_launcher_foreground.xml   42 dp wide on the 108 dp canvas: 15 dp from each
+                                                                    side of the 72 dp that show (the same padding as
+                                                                    Unpeep and Burrow, 2026-11-17)
             app/src/main/res/drawable/ic_launcher_monochrome.xml   the same, for themed icons
   in app    app/src/main/res/drawable/ic_asusual.xml                20 of 24 units wide, black (tinted where used)
             app/src/main/res/drawable/ic_notification.xml           the same, white
-  store     release/icon.svg (512, full square: Play masks it)     404 px wide, as in the zip
+  store     release/icon.svg (512, full square: Play masks it)     299 px wide (42 of 72), drawn to icon-512.png
+            and fastlane icon.png with headless Chrome
   site      site/asusual.svg (rounded tile, 112 px corners)
+  design    design/app-icon.png (the launcher's 108 dp canvas at 1 px a dp, on green)
 
-usage: python3 tools/asusual_mark.py      then render release/icon.svg to release/icon-512.png (headless Chrome)
+usage: python3 tools/asusual_mark.py      then python3 tools/feature_graphic.py
 """
 import os
+import shutil
+import subprocess
+import tempfile
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 GREEN = "#2B6F52"   # the logo's tile, and the base colour of everything that follows the logo
 STROKE = 36         # in the mark's 512-unit space
 SIZE = 368 + STROKE # the wave's width with its round ends: the whole mark
 CENTRE = 256        # the wave's middle, both ways
-LAUNCHER = SIZE * 0.66 * 108 / 512  # the zip's adaptive foreground, in dp
+SHARE = 42 / 72     # the mark's width / the side that shows (launcher mask, store icon)
+LAUNCHER = 72 * SHARE               # 42 dp on the 108 dp adaptive canvas
+STORE = round(512 * SHARE)          # 299 px on the 512 store icon
+CHROME = "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 PATHS = [
     "M72 256C128 256 128 150 192 150S256 362 320 362S384 256 440 256",
 ]
@@ -65,10 +75,29 @@ def write(rel, text):
     print(rel)
 
 
+def render_png(svg_rel, png_rel, size=512):
+    """Draws an SVG to a PNG with headless Chrome."""
+    with tempfile.TemporaryDirectory() as tmp:
+        page = os.path.join(tmp, "page.html")
+        with open(page, "w") as f:
+            f.write(f'<html><body style="margin:0">{open(os.path.join(ROOT, svg_rel)).read()}</body></html>')
+        shot = os.path.join(tmp, "shot.png")
+        subprocess.run([CHROME, "--headless=new", "--disable-gpu", "--hide-scrollbars", "--force-device-scale-factor=1",
+                        f"--window-size={size},{size}", f"--screenshot={shot}", "file://" + page], check=True, capture_output=True)
+        shutil.copy(shot, os.path.join(ROOT, png_rel))
+    print(png_rel)
+
+
 D = "app/src/main/res/drawable/"
-write(D + "ic_launcher_foreground.xml", vector(108, 108, LAUNCHER, "#FFFFFFFF", "Launcher mark: white on the logo green (asusual_primary), 56.2 dp wide on the 108 dp canvas, centred."))
+write(D + "ic_launcher_foreground.xml", vector(108, 108, LAUNCHER, "#FFFFFFFF", "Launcher mark: white on the logo green (asusual_primary), 42 dp wide on the 108 dp canvas, centred."))
 write(D + "ic_launcher_monochrome.xml", vector(108, 108, LAUNCHER, "#FF000000", "Themed-icon mark (Android 13+): the launcher mark in one colour."))
 write(D + "ic_asusual.xml", vector(24, 24, 20, "#FF000000", "The Asusual mark for in-app use (Welcome, About, More, sheets, widget loading): tinted by the theme."))
 write(D + "ic_notification.xml", vector(24, 24, 20, "#FFFFFFFF", "Notification small icon: the Asusual mark as one white shape."))
-write("release/icon.svg", svg(512, SIZE, 0, GREEN, "#FFFFFF"))
-write("site/asusual.svg", svg(512, SIZE, 112, GREEN, "#FFFFFF"))
+write("release/icon.svg", svg(512, STORE, 0, GREEN, "#FFFFFF"))
+write("site/asusual.svg", svg(512, STORE, 112, GREEN, "#FFFFFF"))
+render_png("release/icon.svg", "release/icon-512.png")
+shutil.copy(os.path.join(ROOT, "release/icon-512.png"), os.path.join(ROOT, "fastlane/metadata/android/en-US/images/icon.png"))
+print("fastlane/metadata/android/en-US/images/icon.png")
+write("build/app-icon.svg", svg(108, LAUNCHER, 0, GREEN, "#FFFFFF"))
+render_png("build/app-icon.svg", "design/app-icon.png", 108)
+os.remove(os.path.join(ROOT, "build/app-icon.svg"))

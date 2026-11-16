@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.6.5
+
+Changed:
+
+- The icon has room to breathe: the wave is a little smaller and sits in the middle with the same space on every side, on the home screen (round, square or any other icon shape), in themed icons, in the Play Store and on the website.
+
+For contributors:
+
+- `tools/asusual_mark.py` sizes every copy of the mark by one rule: its width is 42 of the 72 dp a launcher shows (15 dp each side; it was 56.2 dp), 299 of the store icon's 512 px (it was 404). Burrow and Unpeep use the same rule. The script now also draws `release/icon-512.png`, the fastlane `icon.png` and `design/app-icon.png` with headless Chrome.
+- `tools/feature_graphic.py` centres the tile and the text as one group (they sat 96 px from the left and 229 px from the right) and gives the wave the launcher's share of its tile.
+
 ## 1.6.4
 
 Changed:

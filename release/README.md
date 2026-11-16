@@ -6,7 +6,7 @@ Graphics and listing text for the Play Store.
 
 | Asset | Play requirement | File | Status |
 | --- | --- | --- | --- |
-| App icon | 512 × 512 PNG, 32-bit, up to 1 MB. Full square, Play applies the rounded mask | `icon-512.png` (source `icon.svg`, written by `tools/asusual_mark.py`: the wave mark in white on green #2B6F52, 404px wide and exactly centred; render with headless Chrome) | Ready |
+| App icon | 512 × 512 PNG, 32-bit, up to 1 MB. Full square, Play applies the rounded mask | `icon-512.png` (source `icon.svg`, written by `tools/asusual_mark.py`: the wave mark in white on green #2B6F52, 299px wide (42 of 72, the launcher's share) and exactly centred; the script also draws the PNG with headless Chrome) | Ready |
 | Feature graphic | 1024 × 500 JPEG or 24-bit PNG, no transparency | `feature-graphic-1024x500.png` | Ready |
 | Phone screenshots | 2–8 images, PNG or JPEG, 16:9 or 9:16, each side 320–3840 px, long side at most 2× the short side. At least 4 at 1080 px or wider to be eligible for promotion | `phone-screenshots/01–08` (1080 × 1920) | Ready |
 | 7-inch tablet screenshots | Optional (needed only to show as tablet-ready) | – | Not made |
@@ -39,6 +39,17 @@ The feature graphic is made by `python3 tools/feature_graphic.py <folder of raw 
 | 8 | Today, dark | Private. Yours. / No ads, no tracking. Free and open source. |
 
 ## What's new (Play Console, 500 characters max)
+
+1.6.5 (versionCode 32). If 1.6.4 never went out on Play, use the second block, so people coming from Weft hear about the name:
+
+```
+A cleaner icon: the wave sits in the middle with the same space on every side, on any home screen.
+```
+
+```
+Weft is now called Asusual, with a new icon. Same app: your habits, notes, settings and backups stay.
+• A cleaner icon: the wave sits in the middle with the same space on every side, on any home screen.
+```
 
 1.6.4 (versionCode 31):
 
