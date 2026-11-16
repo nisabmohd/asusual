@@ -1,10 +1,12 @@
 package app.sprout.habits.notify
 
+import android.app.KeyguardManager
 import android.content.Context
 import android.graphics.PixelFormat
 import android.media.AudioManager
 import android.os.Handler
 import android.os.Looper
+import android.os.PowerManager
 import android.provider.Settings
 import android.view.View
 import android.view.ViewTreeObserver
@@ -12,12 +14,13 @@ import android.view.WindowManager
 import app.sprout.habits.ui.alarm.AlarmActivity
 
 /**
- * The optional "Show over other apps" fallback (features/FEATURE-ALARM-REMINDERS.md 7): some
- * phones (OnePlus / ColorOS seen, 2026-11-08) never open an alarm's full-screen intent, locked or
- * not. When the user allowed drawing over other apps, Weft opens the ringing screen itself if it
- * isn't up shortly after the alarm starts: on the lock screen and while the phone is in use too
- * (user, 2026-11-08: with everything allowed it should always fill the screen, not stay a card),
- * except during a call. Closing it returns to the app the person was in (its own task).
+ * The optional "Show over other apps" fallback (features/FEATURE-ALARM-REMINDERS.md 7, 12): some
+ * phones (OnePlus / ColorOS seen, 2026-11-08) never open an alarm's full-screen intent. When the
+ * user allowed drawing over other apps, Weft opens the ringing screen itself if it isn't up shortly
+ * after the alarm starts, but only when the phone was idle as it rang: screen off, or on and locked.
+ * While the person is using the phone the alarm stays a heads-up banner, like Android's own rule
+ * (user, 2026-11-15: banner and full screen together was wrong; this replaces "locked or in use",
+ * 2026-11-08). Never during a call.
  */
 object AlarmScreenFallback {
     /** Time Android gets to open the full-screen intent by itself first. */
@@ -36,10 +39,17 @@ object AlarmScreenFallback {
         context.getSystemService(AudioManager::class.java).mode in
             setOf(AudioManager.MODE_IN_CALL, AudioManager.MODE_IN_COMMUNICATION, AudioManager.MODE_RINGTONE)
 
-    /** After the alarm for [habitId] starts ringing; [stillRinging] says it hasn't been answered meanwhile. */
-    fun schedule(context: Context, habitId: Long, stillRinging: () -> Boolean) {
+    /** True when nobody is using the phone: the screen is off, or on and locked. */
+    fun idle(context: Context): Boolean =
+        !context.getSystemService(PowerManager::class.java).isInteractive ||
+            context.getSystemService(KeyguardManager::class.java).isKeyguardLocked
+
+    /** After the alarm for [habitId] starts ringing ([wasIdle]: see [idle]); [stillRinging] says it hasn't been answered meanwhile. */
+    fun schedule(context: Context, habitId: Long, wasIdle: Boolean, stillRinging: () -> Boolean) {
         val app = context.applicationContext
         if (!Settings.canDrawOverlays(app)) return
+        // [wasIdle] is read before the card is posted, as a full-screen intent can wake the screen.
+        if (!wasIdle) return
         // In a call the screen never opens; the heads-up card is enough (design 2026-11-08, 12).
         val needed = { stillRinging() && !AlarmActivity.showing && !inCall(app) }
         main.postDelayed({

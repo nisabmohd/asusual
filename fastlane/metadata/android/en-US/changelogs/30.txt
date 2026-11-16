@@ -1,0 +1,2 @@
+• Music pauses while an alarm rings and plays again after, instead of stuttering.
+• An alarm fills the screen when the phone is locked or off, and shows only a banner while you're using it, never both.
